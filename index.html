@@ -37,178 +37,199 @@
 <meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">某独立游戏开发者的记录</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Reuptake</a>
-        </h2>
-      
+  <!-- 底层深色背景，全站共用 -->
+  <div id="global-bg-container"></div>
+  <div id="global-bg-overlay"></div>
+
+  
+    <!-- ============================================== -->
+    <!-- 逻辑分流 A：如果是主页，渲染沉浸式全屏导航页 -->
+    <!-- ============================================== -->
+    <div id="splash-screen">
+      <div class="splash-content" id="phenomenon-layer">
+  <!-- 1. 标题加入 glitch-hover 机制，隐喻现象界的脆弱 -->
+  <h1 class="splash-title glitch-hover" data-text="某独立游戏开发者的记录">某独立游戏开发者的记录</h1>
+  <h2 class="splash-subtitle typing-effect">
+    Reuptake<span class="cursor">_</span>
+  </h2>
+  
+  <nav class="splash-nav">
+    <!-- 移除了分类和关于，仅保留绝对入口 -->
+    <a class="splash-nav-link entry-btn" href="/archives" id="dive-btn">Enter Database (系统接入)</a>
+  </nav>
+
+  <!-- 2. 动态监控终端 -->
+  <div class="meta-terminal">
+    <div class="terminal-header">
+      <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+      <!-- 终端头部：将你的网名作为最高系统权限实体显示 -->
+      <span class="terminal-title">bash - daimon_recovery_tool - root@お尼酱~</span>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/02/26/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2026-02-25T18:52:17.581Z" itemprop="datePublished">2026-02-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/02/26/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/02/26/hello-world/" data-id="cuid2A3t8XKkRbP4Y1dtvMtrR" data-title="Hello World" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">二月 2026</a></li></ul>
+    <div class="terminal-body" id="terminal-output">
+      <!-- 文本将通过下方的 JS 动态注入 -->
     </div>
   </div>
 
+  <!-- 新增：用于感官剥夺的绝对黑幕遮罩 -->
+  <div id="void-overlay"></div>
 
-  
+  <!-- 3. 内联样式扩展（故障艺术、终端光标与过场动画） -->
+  <style>
+    .typing-effect {
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 3px;
+    }
+    .cursor {
+      display: inline-block; width: 10px; animation: blink 1s step-end infinite; color: #00e5ff;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    .meta-terminal {
+      margin-top: 50px; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;
+      background: rgba(8, 10, 14, 0.8); border: 1px solid rgba(0, 229, 255, 0.2);
+      border-radius: 6px; text-align: left; font-family: 'Courier New', Courier, monospace;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      animation: terminalFadeIn 1s ease-out;
+    }
+    .terminal-header {
+      background: rgba(0, 0, 0, 0.7); padding: 8px 12px; border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+      font-size: 0.8rem; color: #666; display: flex; align-items: center;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+    .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
+    .terminal-title { margin-left: 10px; opacity: 0.7; }
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2026/02/26/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+    .terminal-body {
+      padding: 15px 20px; font-size: 0.9rem; color: #00e5ff; line-height: 1.8;
+      text-shadow: 0 0 5px rgba(0, 229, 255, 0.4); min-height: 140px;
+    }
+    .terminal-body p { margin: 0; opacity: 0.9; }
+    .warning { color: #ff5f56; text-shadow: 0 0 8px rgba(255, 95, 86, 0.6); }
+    .ok { color: #27c93f; text-shadow: 0 0 8px rgba(39, 201, 63, 0.6); }
+    .system-time { color: #ffbd2e; font-weight: bold; text-shadow: 0 0 8px rgba(255, 189, 46, 0.6); }
+    
+    .entity-name { color: #b388ff; font-weight: bold; text-shadow: 0 0 10px rgba(179, 136, 255, 0.8); letter-spacing: 1px;}
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+    @keyframes terminalFadeIn { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+
+    .glitch-hover { position: relative; transition: all 0.2s; }
+    .glitch-hover:hover {
+      animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+      color: transparent; text-shadow: 2px 0 #00e5ff, -2px 0 #ff5f56;
+    }
+    @keyframes glitch-skew {
+      0% { transform: skew(0deg); } 20% { transform: skew(-10deg); } 40% { transform: skew(10deg); }
+      60% { transform: skew(-5deg); } 80% { transform: skew(5deg); } 100% { transform: skew(0deg); }
+    }
+
+    /* ====================================================
+       过场动画核心样式 (Phenomenal Collapse) - 极速收束版
+       ==================================================== */
+    
+    /* 绝对黑幕：物理阻断视觉 */
+    #void-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #000; z-index: 9999; pointer-events: none;
+      opacity: 0; transition: opacity 0.2s cubic-bezier(0.19, 1, 0.22, 1); /* 加快黑幕压下速度 */
+    }
+    
+    /* 现象界崩坏：信号丢失与意识抽离（时长从 0.6s 压缩至 0.45s） */
+    .extreme-glitch-active {
+      animation: neural-shutdown 0.45s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+    @keyframes neural-shutdown {
+      0% { transform: translate(0) scale(1); filter: blur(0px) brightness(1); opacity: 1; }
+      15% { transform: translate(-15px, 0) skewX(10deg) scale(1.02); filter: hue-rotate(-45deg) blur(2px) brightness(0.8); }
+      30% { transform: translate(15px, 0) skewX(-10deg); filter: hue-rotate(45deg) blur(0px) brightness(1.2); }
+      45% { transform: translate(-5px, 5px) scaleY(0.9); filter: blur(4px) brightness(0.5); opacity: 0.9; }
+      60% { transform: translate(0, 0) scaleY(0.1) scaleX(1.1); filter: blur(8px) brightness(0.2); }
+      100% { transform: scaleY(0) scaleX(0); filter: blur(12px) brightness(0); opacity: 0; }
+    }
+  </style>
+
+  <!-- 4. 叙事化界面逻辑核心：序列化启动与过场劫持 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const terminal = document.getElementById('terminal-output');
+      let bootInterval;
       
-      &copy; 2026 お尼酱~<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+      const bootSequence = [
+        { text: "> INITIALIZING NEURAL LINK...", delay: 400 },
+        { text: "> BYPASSING FIREWALL [0x7F8C]...", delay: 600 },
+        { text: "> DAIMON.SYS MODULE: <span class='warning'>FRAGMENTED [ERR_NULL_POINTER]</span>", delay: 1200 },
+        { text: "> SENSORY_ANCHOR: <span class='ok'>ESTABLISHED</span>", delay: 800 },
+        { text: "> <span class='warning'>WARNING: EXTERNAL OBSERVER DETECTED.</span>", delay: 1000 },
+        { text: "> RESOLVING ENTITY_ID... <span class='entity-name'>[ お尼酱~ ]</span> AUTHENTICATED.", delay: 1500 },
+        { text: "> SYNCING LOCAL TIMELINE: <span id='real-time' class='system-time'></span>", delay: 400, isTime: true }
+      ];
+
+      let currentLine = 0;
+
+      function typeLine() {
+        if (currentLine >= bootSequence.length) return;
+        
+        const lineData = bootSequence[currentLine];
+        bootInterval = setTimeout(() => {
+          const p = document.createElement('p');
+          p.innerHTML = lineData.text;
+          terminal.appendChild(p);
+          
+          if (lineData.isTime) startTimeSync();
+          
+          currentLine++;
+          typeLine();
+        }, lineData.delay);
+      }
+
+      function startTimeSync() {
+        const timeSpan = document.getElementById('real-time');
+        setInterval(() => {
+          if(!timeSpan) return;
+          const now = new Date();
+          const timeString = now.toISOString().replace('T', ' ').replace('Z', '').slice(0, 23);
+          timeSpan.innerText = `[ ${timeString} ]`;
+        }, 47); 
+      }
+
+      typeLine();
+
+      // ==========================================
+      // 过场动画控制逻辑：劫持点击事件
+      // ==========================================
+      const diveBtn = document.getElementById('dive-btn');
+      const phenomenonLayer = document.getElementById('phenomenon-layer');
+      const voidOverlay = document.getElementById('void-overlay');
+
+      diveBtn.addEventListener('click', function(e) {
+        e.preventDefault(); // 阻止浏览器瞬间跳转
+        const targetUrl = this.getAttribute('href');
+
+        // 1. 中断常规启动序列
+        clearTimeout(bootInterval);
+
+        // 2. 注入恐慌信息
+        const panicNode = document.createElement('p');
+        panicNode.innerHTML = "<br><span class='warning' style='font-size:1.1rem; text-shadow:0 0 15px red;'>> [!] KERNEL PANIC: EGO BOUNDARY DISSOLVING...</span>";
+        terminal.appendChild(panicNode);
+
+        // 3. 触发视知觉过载动画 (快速几何坍缩)
+        phenomenonLayer.classList.add('extreme-glitch-active');
+
+        // 4. 250ms 后，黑幕瞬间压下
+        setTimeout(() => {
+          voidOverlay.style.opacity = '1';
+        }, 250);
+
+        // 5. 450ms 动画收束完毕，即刻物理跳转，消除一切拖沓
+        setTimeout(() => {
+          window.location.href = targetUrl;
+        }, 450);
+      });
+    });
+  </script>
+</div>
     </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
 </body>
 </html>
