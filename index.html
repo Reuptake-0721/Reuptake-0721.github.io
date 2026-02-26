@@ -37,64 +37,103 @@
 <meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
-  <!-- 底层深色背景，全站共用 -->
   <div id="global-bg-container"></div>
   <div id="global-bg-overlay"></div>
 
   
-    <!-- ============================================== -->
-    <!-- 逻辑分流 A：如果是主页，渲染沉浸式全屏导航页 -->
-    <!-- ============================================== -->
+    <!-- 主页独立全屏容器 -->
     <div id="splash-screen">
       <div class="splash-content" id="phenomenon-layer">
-  <!-- 1. 标题加入 glitch-hover 机制，隐喻现象界的脆弱 -->
-  <h1 class="splash-title glitch-hover" data-text="某独立游戏开发者的记录">某独立游戏开发者的记录</h1>
+  
+  <!-- 1. 标题区域：数据封装与色差剥离 -->
+  <div class="title-container">
+    <div class="title-meta">[SYS.MEM_BLOCK_A7] // PHENOMENON_RENDER_ACTIVE</div>
+    <h1 class="splash-title glitch-hover" data-text="某独立游戏开发者的记录">某独立游戏开发者的记录</h1>
+    <div class="title-barcode">|| | ||| | || | | || | || [404_EGO_NOT_FOUND]</div>
+  </div>
+
   <h2 class="splash-subtitle typing-effect">
     Reuptake<span class="cursor">_</span>
   </h2>
   
   <nav class="splash-nav">
-    <!-- 移除了分类和关于，仅保留绝对入口 -->
     <a class="splash-nav-link entry-btn" href="/archives" id="dive-btn">Enter Database (系统接入)</a>
   </nav>
 
   <!-- 2. 动态监控终端 -->
   <div class="meta-terminal">
     <div class="terminal-header">
-      <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-      <!-- 终端头部：将你的网名作为最高系统权限实体显示 -->
-      <span class="terminal-title">bash - daimon_recovery_tool - root@お尼酱~</span>
+      <div style="display:flex; align-items:center;">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="terminal-title">bash - daimon_recovery_tool - root@お尼酱~</span>
+      </div>
+      <!-- 新增：底层 Web Audio API 听觉锚点开关 -->
+      <div style="margin-left:auto; cursor:pointer; font-size:0.75rem;" id="audio-toggle">
+        SENSORY_ANCHOR: <span id="audio-status" class="warning">[OFF]</span>
+      </div>
     </div>
     <div class="terminal-body" id="terminal-output">
       <!-- 文本将通过下方的 JS 动态注入 -->
     </div>
   </div>
 
-  <!-- 新增：用于感官剥夺的绝对黑幕遮罩 -->
   <div id="void-overlay"></div>
 
-  <!-- 3. 内联样式扩展（故障艺术、终端光标与过场动画） -->
+  <!-- 3. 内联样式扩展 -->
   <style>
-    .typing-effect {
-      font-family: 'Courier New', Courier, monospace;
-      letter-spacing: 3px;
+    /* =========================================
+       重构标题视觉与基础设定
+       ========================================= */
+    
+    /* 彻底锁死全局滚动条，确保现象界（导航页）的绝对视觉封闭 */
+    body {
+      overflow: hidden !important;
     }
-    .cursor {
-      display: inline-block; width: 10px; animation: blink 1s step-end infinite; color: #00e5ff;
+
+    #phenomenon-layer {
+      /* 开启 3D 硬件加速与透视，为凝视视差做准备 */
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out; /* 视差阻尼感 */
     }
+
+    .title-container {
+      position: relative; display: inline-block; margin-bottom: 30px; text-align: center;
+      transform: translateZ(20px); /* 在Z轴上拉出层次感 */
+    }
+    .title-meta {
+      font-family: 'Courier New', monospace; font-size: 0.8rem; color: rgba(0, 229, 255, 0.6);
+      letter-spacing: 2px; margin-bottom: -10px; text-align: left; opacity: 0.8;
+    }
+    .title-barcode {
+      font-family: monospace; font-size: 0.8rem; color: rgba(255, 95, 86, 0.6);
+      letter-spacing: -1px; margin-top: -15px; text-align: right; opacity: 0.8;
+    }
+    .splash-title {
+      font-family: "Noto Serif SC", "Songti SC", "Times New Roman", serif !important; 
+      font-weight: 900; color: #f0f0f0; letter-spacing: 8px; padding: 10px 0; position: relative;
+      text-shadow: 4px 0px 0px rgba(0, 229, 255, 0.5), -4px 0px 0px rgba(255, 95, 86, 0.5), 0px 0px 15px rgba(255, 255, 255, 0.2);
+    }
+    .splash-title::after {
+      content: attr(data-text); position: absolute; top: 10px; left: 0; right: 0; bottom: 10px;
+      background: linear-gradient(to bottom, transparent 50%, rgba(10, 15, 20, 0.4) 51%);
+      background-size: 100% 6px; -webkit-background-clip: text; color: transparent; pointer-events: none; z-index: 2;
+    }
+
+    .typing-effect { font-family: 'Courier New', Courier, monospace; letter-spacing: 3px; transform: translateZ(10px); }
+    .cursor { display: inline-block; width: 10px; animation: blink 1s step-end infinite; color: #00e5ff; }
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
     .meta-terminal {
       margin-top: 50px; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;
       background: rgba(8, 10, 14, 0.8); border: 1px solid rgba(0, 229, 255, 0.2);
       border-radius: 6px; text-align: left; font-family: 'Courier New', Courier, monospace;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      animation: terminalFadeIn 1s ease-out;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      animation: terminalFadeIn 1s ease-out; transform: translateZ(30px); /* 终端悬浮在最前 */
     }
     .terminal-header {
       background: rgba(0, 0, 0, 0.7); padding: 8px 12px; border-bottom: 1px solid rgba(0, 229, 255, 0.1);
-      font-size: 0.8rem; color: #666; display: flex; align-items: center;
+      font-size: 0.8rem; color: #666; display: flex; align-items: center; justify-content: space-between;
     }
     .dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
     .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
@@ -102,16 +141,22 @@
     
     .terminal-body {
       padding: 15px 20px; font-size: 0.9rem; color: #00e5ff; line-height: 1.8;
-      text-shadow: 0 0 5px rgba(0, 229, 255, 0.4); min-height: 140px;
+      text-shadow: 0 0 5px rgba(0, 229, 255, 0.4); min-height: 140px; overflow-y: auto; max-height: 250px;
+      /* 抹杀默认滚动条视觉，但保留滚动特性 */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE 10+ */
     }
+    .terminal-body::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Edge */
+    }
+    
     .terminal-body p { margin: 0; opacity: 0.9; }
     .warning { color: #ff5f56; text-shadow: 0 0 8px rgba(255, 95, 86, 0.6); }
     .ok { color: #27c93f; text-shadow: 0 0 8px rgba(39, 201, 63, 0.6); }
     .system-time { color: #ffbd2e; font-weight: bold; text-shadow: 0 0 8px rgba(255, 189, 46, 0.6); }
-    
     .entity-name { color: #b388ff; font-weight: bold; text-shadow: 0 0 10px rgba(179, 136, 255, 0.8); letter-spacing: 1px;}
 
-    @keyframes terminalFadeIn { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+    @keyframes terminalFadeIn { 0% { opacity: 0; transform: translateY(10px) translateZ(30px); } 100% { opacity: 1; transform: translateY(0) translateZ(30px); } }
 
     .glitch-hover { position: relative; transition: all 0.2s; }
     .glitch-hover:hover {
@@ -123,23 +168,16 @@
       60% { transform: skew(-5deg); } 80% { transform: skew(5deg); } 100% { transform: skew(0deg); }
     }
 
-    /* ====================================================
-       过场动画核心样式 (Phenomenal Collapse) - 极速收束版
-       ==================================================== */
-    
-    /* 绝对黑幕：物理阻断视觉 */
+    /* 过场动画核心样式 */
     #void-overlay {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      background: #000; z-index: 9999; pointer-events: none;
-      opacity: 0; transition: opacity 0.2s cubic-bezier(0.19, 1, 0.22, 1); /* 加快黑幕压下速度 */
+      background: #000; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity 0.1s; 
     }
-    
-    /* 现象界崩坏：信号丢失与意识抽离（时长从 0.6s 压缩至 0.45s） */
     .extreme-glitch-active {
-      animation: neural-shutdown 0.45s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      animation: neural-shutdown 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
     }
     @keyframes neural-shutdown {
-      0% { transform: translate(0) scale(1); filter: blur(0px) brightness(1); opacity: 1; }
+      0% { transform: translate(0) scale(1) rotate(0); filter: blur(0px) brightness(1); opacity: 1; }
       15% { transform: translate(-15px, 0) skewX(10deg) scale(1.02); filter: hue-rotate(-45deg) blur(2px) brightness(0.8); }
       30% { transform: translate(15px, 0) skewX(-10deg); filter: hue-rotate(45deg) blur(0px) brightness(1.2); }
       45% { transform: translate(-5px, 5px) scaleY(0.9); filter: blur(4px) brightness(0.5); opacity: 0.9; }
@@ -148,9 +186,19 @@
     }
   </style>
 
-  <!-- 4. 叙事化界面逻辑核心：序列化启动与过场劫持 -->
+  <!-- 4. 叙事化界面逻辑核心：AJAX + WebAudio + 视差系统 -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+      // --- A. 页面预加载 (AJAX) ---
+      const targetUrl = "/archives";
+      let preloadedHTML = null;
+      let isDiving = false; // 全局锁
+
+      fetch(targetUrl)
+        .then(response => response.text())
+        .then(html => { preloadedHTML = html; })
+        .catch(err => console.warn("Prefetch warning:", err));
+
       const terminal = document.getElementById('terminal-output');
       let bootInterval;
       
@@ -158,7 +206,7 @@
         { text: "> INITIALIZING NEURAL LINK...", delay: 400 },
         { text: "> BYPASSING FIREWALL [0x7F8C]...", delay: 600 },
         { text: "> DAIMON.SYS MODULE: <span class='warning'>FRAGMENTED [ERR_NULL_POINTER]</span>", delay: 1200 },
-        { text: "> SENSORY_ANCHOR: <span class='ok'>ESTABLISHED</span>", delay: 800 },
+        { text: "> SENSORY_ANCHOR: <span class='warning'>AWAITING MANUAL OVERRIDE (CLICK HEADER)</span>", delay: 800 },
         { text: "> <span class='warning'>WARNING: EXTERNAL OBSERVER DETECTED.</span>", delay: 1000 },
         { text: "> RESOLVING ENTITY_ID... <span class='entity-name'>[ お尼酱~ ]</span> AUTHENTICATED.", delay: 1500 },
         { text: "> SYNCING LOCAL TIMELINE: <span id='real-time' class='system-time'></span>", delay: 400, isTime: true }
@@ -168,15 +216,14 @@
 
       function typeLine() {
         if (currentLine >= bootSequence.length) return;
-        
         const lineData = bootSequence[currentLine];
         bootInterval = setTimeout(() => {
           const p = document.createElement('p');
           p.innerHTML = lineData.text;
           terminal.appendChild(p);
+          terminal.scrollTop = terminal.scrollHeight; // 自动滚屏
           
           if (lineData.isTime) startTimeSync();
-          
           currentLine++;
           typeLine();
         }, lineData.delay);
@@ -191,41 +238,135 @@
           timeSpan.innerText = `[ ${timeString} ]`;
         }, 47); 
       }
-
       typeLine();
 
-      // ==========================================
-      // 过场动画控制逻辑：劫持点击事件
-      // ==========================================
+      // --- B. 拉康式凝视视差 (Parallax Gaze) ---
+      const layer = document.getElementById('phenomenon-layer');
+      let idleTimer;
+
+      document.addEventListener('mousemove', (e) => {
+        if (isDiving) return; // 崩溃过程中停止响应凝视
+
+        // 1. 物理位置偏移运算
+        const xAxis = (window.innerWidth / 2 - e.pageX) / 80; // 数值越大偏转越小
+        const yAxis = (window.innerHeight / 2 - e.pageY) / 80;
+        layer.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+
+        // 2. 互被动性监测重置
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => {
+          const p = document.createElement('p');
+          p.innerHTML = "> <span class='warning'>[!] OBSERVER ATTENTION DISENGAGED. SYNAPSE DECAYING...</span>";
+          terminal.appendChild(p);
+          terminal.scrollTop = terminal.scrollHeight;
+        }, 12000); // 12秒不移动鼠标判定为失去注意力
+      });
+
+      // --- C. Web Audio API 听觉锚点 (Brown Noise 生成器) ---
+      let audioCtx, noiseNode, gainNode, filterNode;
+      let isAudioActive = false;
+      const audioToggle = document.getElementById('audio-toggle');
+      const audioStatus = document.getElementById('audio-status');
+
+      audioToggle.addEventListener('click', function() {
+        if (!audioCtx) {
+          // 初始化音频图
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          
+          // 生成数学级白噪声并积分转化为布朗噪声（低沉的轰鸣声）
+          const bufferSize = audioCtx.sampleRate * 2; 
+          const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+          const output = noiseBuffer.getChannelData(0);
+          let lastOut = 0;
+          for (let i = 0; i < bufferSize; i++) {
+            let white = Math.random() * 2 - 1;
+            output[i] = (lastOut + (0.02 * white)) / 1.02; // 布朗噪声算法
+            lastOut = output[i];
+            output[i] *= 3.5; // 补偿音量
+          }
+          
+          noiseNode = audioCtx.createBufferSource();
+          noiseNode.buffer = noiseBuffer;
+          noiseNode.loop = true;
+
+          // 使用低通滤波器截断高频，只保留类似“深海”或“心跳环境”的低频嗡嗡声
+          filterNode = audioCtx.createBiquadFilter();
+          filterNode.type = 'lowpass';
+          filterNode.frequency.value = 350; 
+
+          gainNode = audioCtx.createGain();
+          gainNode.gain.value = 0.5; // 控制音量，别太吵
+
+          noiseNode.connect(filterNode);
+          filterNode.connect(gainNode);
+          gainNode.connect(audioCtx.destination);
+          noiseNode.start(0);
+          
+          isAudioActive = true;
+        } else {
+          if (audioCtx.state === 'running') {
+            audioCtx.suspend();
+            isAudioActive = false;
+          } else if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+            isAudioActive = true;
+          }
+        }
+
+        // 更新 UI 状态
+        if (isAudioActive) {
+          audioStatus.innerText = '[ON]';
+          audioStatus.className = 'ok';
+          const p = document.createElement('p');
+          p.innerHTML = "> <span class='ok'>SENSORY_ANCHOR [432Hz] ONLINE. DECAY PAUSED.</span>";
+          terminal.appendChild(p);
+          terminal.scrollTop = terminal.scrollHeight;
+        } else {
+          audioStatus.innerText = '[OFF]';
+          audioStatus.className = 'warning';
+        }
+      });
+
+      // --- D. 极速跳切与内存覆写 ---
       const diveBtn = document.getElementById('dive-btn');
-      const phenomenonLayer = document.getElementById('phenomenon-layer');
       const voidOverlay = document.getElementById('void-overlay');
 
       diveBtn.addEventListener('click', function(e) {
-        e.preventDefault(); // 阻止浏览器瞬间跳转
-        const targetUrl = this.getAttribute('href');
-
-        // 1. 中断常规启动序列
+        e.preventDefault(); 
+        isDiving = true; // 锁定系统，不再响应视差偏移
+        layer.style.transform = "none"; // 强制归位，准备渲染崩溃动画
         clearTimeout(bootInterval);
+        clearTimeout(idleTimer);
 
-        // 2. 注入恐慌信息
+        if(audioCtx && audioCtx.state === 'running') {
+          // 坍缩时制造失真：拉高滤波器频率，营造刺耳的报错感，然后迅速切断
+          filterNode.frequency.exponentialRampToValueAtTime(8000, audioCtx.currentTime + 0.4);
+          gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+        }
+
         const panicNode = document.createElement('p');
         panicNode.innerHTML = "<br><span class='warning' style='font-size:1.1rem; text-shadow:0 0 15px red;'>> [!] KERNEL PANIC: EGO BOUNDARY DISSOLVING...</span>";
         terminal.appendChild(panicNode);
 
-        // 3. 触发视知觉过载动画 (快速几何坍缩)
-        phenomenonLayer.classList.add('extreme-glitch-active');
+        // 强行附加崩溃动画
+        layer.classList.add('extreme-glitch-active');
 
-        // 4. 250ms 后，黑幕瞬间压下
-        setTimeout(() => {
-          voidOverlay.style.opacity = '1';
-        }, 250);
+        setTimeout(() => { voidOverlay.style.opacity = '1'; }, 540);
 
-        // 5. 450ms 动画收束完毕，即刻物理跳转，消除一切拖沓
         setTimeout(() => {
-          window.location.href = targetUrl;
-        }, 450);
+          if (audioCtx) audioCtx.close(); // 清除音频进程
+          if (preloadedHTML) {
+            window.history.pushState({}, "", targetUrl);
+            document.open();
+            document.write(preloadedHTML);
+            document.close();
+          } else {
+            window.location.href = targetUrl;
+          }
+        }, 580);
       });
+
+      window.addEventListener('popstate', () => { window.location.reload(); });
     });
   </script>
 </div>
