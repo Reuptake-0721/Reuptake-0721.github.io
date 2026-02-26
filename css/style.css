@@ -1652,6 +1652,325 @@ body {
   position: relative;
   z-index: 1; /* 约束主内容的层级，使其乖乖待在导航栏下方 */
 }
+/* ====================================================
+   导航栏空间压缩与居中重构 (Header Compression)
+   ==================================================== */
+#header {
+  height: 50px !important; /* 强制压缩高度（减半），粉碎原本 300px 的幽灵高度 */
+  position: relative;
+  z-index: 1000 !important; /* 强制提升层级，防止被下方元素遮挡导致无法点击 */
+  border-bottom: 1px solid rgba(255,255,255,0.05); /* 极暗的物理分界线 */
+}
+#header-outer {
+  height: 100% !important;
+  position: relative;
+  z-index: 1000 !important;
+}
+/* 强制接管导航栏流式布局，转换为 Flex 绝对居中 */
+#main-nav {
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: box !important;
+  display: flex !important;
+  float: none !important;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+  padding-top: 0 !important;
+}
+.main-nav-link {
+  float: none !important;
+  margin: 0 15px !important; /* 按钮横向间距大幅缩减 */
+  font-size: 0.95rem !important; /* 字号微调，贴合系统 UI 感 */
+  letter-spacing: 1px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1001 !important;
+}
+.main-nav-link:hover {
+  color: #00e5ff !important;
+  text-shadow: 0 0 8px rgba(0,229,255,0.6);
+}
+/* 彻底抹杀右上角冗余的搜索框和 RSS 小图标 */
+#sub-nav {
+  display: none !important;
+}
+/* 重新规划主体内容的顶部间距 */
+.outer {
+  margin-top: 20px !important;
+  position: relative;
+  z-index: 1;
+}
+/* ====================================================
+   导航栏空间压缩与居中重构 (Header Compression)
+   ==================================================== */
+#header {
+  height: 70px !important; /* 增加高度解决页面缩小的压抑感 */
+  position: relative;
+  z-index: 1000 !important;
+  border-bottom: 1px solid rgba(0,229,255,0.15); /* 赛博蓝分界线 */
+  background: rgba(8,11,15,0.4) !important;
+  backdrop-filter: blur(10px);
+}
+#header-outer {
+  height: 100% !important;
+  position: relative;
+  z-index: 1000 !important;
+}
+#main-nav {
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: box !important;
+  display: flex !important;
+  float: none !important;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+}
+.main-nav-link {
+  float: none !important;
+  margin: 0 25px !important;
+  font-size: 1.1rem !important; /* 提升字号 */
+  letter-spacing: 2px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1001 !important;
+}
+.main-nav-link:hover {
+  color: #00e5ff !important;
+  text-shadow: 0 0 12px rgba(0,229,255,0.8);
+}
+#sub-nav {
+  display: none !important;
+}
+.outer {
+  margin-top: 35px !important;
+  position: relative;
+  z-index: 1;
+}
+/* ====================================================
+   导航栏空间压缩与居中重构 (Header Compression)
+   ==================================================== */
+#header {
+  height: 70px !important; /* 增加高度解决页面缩小的压抑感 */
+  position: relative;
+  z-index: 1000 !important;
+  border-bottom: 1px solid rgba(0,229,255,0.15); /* 赛博蓝分界线 */
+  background: rgba(8,11,15,0.4) !important;
+  backdrop-filter: blur(10px);
+}
+#header-outer {
+  height: 100% !important;
+  position: relative;
+  z-index: 1000 !important;
+}
+#main-nav {
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: box !important;
+  display: flex !important;
+  float: none !important;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+}
+.main-nav-link {
+  float: none !important;
+  margin: 0 25px !important;
+  font-size: 1.1rem !important; /* 提升字号 */
+  letter-spacing: 2px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1001 !important;
+}
+.main-nav-link:hover {
+  color: #00e5ff !important;
+  text-shadow: 0 0 12px rgba(0,229,255,0.8);
+}
+#sub-nav {
+  display: none !important;
+}
+.outer {
+  margin-top: 35px !important;
+  position: relative;
+  z-index: 1;
+}
+/* ====================================================
+   导航栏重构与社交气泡修复
+   ==================================================== */
+#header {
+  height: 70px !important;
+  position: relative;
+  z-index: 1000 !important;
+  border-bottom: 1px solid rgba(0,229,255,0.15);
+  background: rgba(8,11,15,0.4) !important;
+  backdrop-filter: blur(10px);
+}
+#header-outer {
+  height: 100% !important;
+  z-index: 1000 !important;
+}
+#main-nav {
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: box !important;
+  display: flex !important;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+}
+.main-nav-link {
+  margin: 0 25px !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 2px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  z-index: 1001 !important;
+}
+.main-nav-link:hover {
+  color: #00e5ff !important;
+  text-shadow: 0 0 12px rgba(0,229,255,0.8);
+}
+#header-inner {
+  position: relative !important;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#social-nav {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  height: 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 1002;
+}
+.social-icon {
+  color: #888;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 6px;
+}
+.social-icon:hover {
+  color: #00e5ff;
+}
+/* QQ 气泡修复：左偏对齐，防止被右边缘裁切 */
+.qq-hover {
+  position: relative;
+}
+.qq-hover .qq-tooltip {
+  position: absolute;
+  top: 130%;
+  right: 0 !important; /* 核心：对齐右边缘，向左扩展内容 */
+  left: auto !important;
+  background: rgba(10,14,20,0.95);
+  border: 1px solid rgba(0,229,255,0.4);
+  padding: 8px 15px;
+  border-radius: 4px;
+  color: #00e5ff;
+  font-family: monospace;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -moz-transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -ms-transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  backdrop-filter: blur(8px);
+  -webkit-box-shadow: 0 8px 25px rgba(0,0,0,0.8);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.8);
+  pointer-events: none;
+  z-index: 2000;
+}
+.qq-hover:hover .qq-tooltip {
+  opacity: 1;
+  visibility: visible;
+  top: 110%;
+}
 @-moz-keyframes fadeIn {
   from {
     opacity: 0;

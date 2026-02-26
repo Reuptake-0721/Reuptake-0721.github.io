@@ -39,29 +39,21 @@
 <meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
+  <!-- 纯净的全局背景容器，通过 CSS 注入图片 -->
   <div id="global-bg-container"></div>
   <div id="global-bg-overlay"></div>
 
   
-    <!-- 子页面容器 -->
     <div id="container">
       <div id="wrap">
         <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">某独立游戏开发者的记录</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Reuptake</a>
-        </h2>
-      
-    </div>
+    
     <div id="header-inner" class="inner">
+      <!-- 居中导航按钮组 -->
       <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        <a id="main-nav-toggle" class="nav-icon"></a>
         
           <a class="main-nav-link" href="/">首页</a>
         
@@ -70,70 +62,275 @@
           <a class="main-nav-link" href="/about">关于</a>
         
       </nav>
-      <nav id="sub-nav">
+      
+      <!-- 右侧社交节点：嵌入矢量图标 -->
+      <nav id="social-nav">
+        <!-- Bilibili -->
+        <a class="social-icon" href="https://space.bilibili.com/497736825?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili">
+          <svg class="svg-icon" viewBox="0 0 1024 1024" width="20" height="20"><path d="M777.582 171.42a80 80 0 0 1 71.647 115.538l-4.52 8.762H832a128 128 0 0 1 128 128v320a128 128 0 0 1-128 128H192a128 128 0 0 1-128-128V423.72a128 128 0 0 1 128-128h11.215l-4.522-8.762a80 80 0 0 1 141.694-74.118L405.07 334.332 512 248.514l106.93 85.818 64.685-121.312a80 80 0 0 1 93.967-41.599zM832 359.72H192a64 64 0 0 0-64 64v320a64 64 0 0 0 64 64h640a64 64 0 0 0 64-64v-320a64 64 0 0 0-64-64zM352 487.72a48 48 0 1 1 0 96 48 48 0 0 1 0-96z m320 0a48 48 0 1 1 0 96 48 48 0 0 1 0-96z" fill="currentColor"></path></svg>
+          <span class="icon-label">Bilibili</span>
+        </a>
         
+        <!-- Tieba -->
+        <a class="social-icon" href="https://tieba.baidu.com/home/main?id=tb.1.38ab261c.n61QU4RXrrZZmRutwnXpTw?t=1715280897&fr=index" target="_blank" title="Tieba">
+          <svg class="svg-icon" viewBox="0 0 1024 1024" width="20" height="20"><path d="M512 64C264.6 64 64 246.4 64 471.5c0 137.4 74.3 259.6 190.1 334.6-9.1 43.1-33.1 106.3-81 154.6-5.1 5.1-1.6 13.9 5.6 13.9 91.5 0 162-45.7 205-95.2 41.6 11.5 85.7 17.8 131.3 17.8 247.4 0 448-182.4 448-426.1S759.4 64 512 64zM320 544c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48z m192 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48z m192 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48z" fill="currentColor"></path></svg>
+          <span class="icon-label">贴吧</span>
+        </a>
         
-          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+        <!-- QQ -->
+        <div class="social-icon qq-hover">
+          <svg class="svg-icon" viewBox="0 0 1024 1024" width="20" height="20"><path d="M824.8 613.2c-16-81.4-45.6-114-61.6-127-1.4-1.2-3.2-1.8-5.2-1.8-1.2 0-2.4 0.2-3.6 0.6-26 9.4-100.2 30-242.4 30-142.2 0-216.4-20.6-242.4-30-1.2-0.4-2.4-0.6-3.6-0.6-2 0-3.8 0.6-5.2 1.8-16 13-45.6 45.6-61.6 127-14.8 75.2 6.8 150.2 12.4 167.6 3.6 11.2 1.2 23.6-6.4 32.8-21.8 26.6-60.6 74.4-60.6 120.4 0 54 58 57.6 58 57.6l2.2 0.2c2.8 0.2 5.6 0.2 8.4 0.2 46.8 0 81.8-24 113.6-45.6 9-6.2 21-8.2 31.6-5 47.8 14.6 115 22.8 190.6 22.8 75.6 0 142.8-8.2 190.6-22.8 10.6-3.2 22.6-1.2 31.6 5 31.8 21.6 66.8 45.6 113.6 45.6 2.8 0 5.6 0 8.4-0.2l2.2-0.2s58-3.6 58-57.6c0-46-38.8-93.8-60.6-120.4-7.6-9.2-10-21.6-6.4-32.8 5.6-17.4 27.2-92.4 12.4-167.6zM512 448c113.4 0 197.4-78.4 197.4-198.2S625.4 51.6 512 51.6s-197.4 78.4-197.4 198.2S398.6 448 512 448z" fill="currentColor"></path></svg>
+          <span class="icon-label">QQ</span>
+          <div class="qq-tooltip">3482770380</div>
+        </div>
       </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
+
+      <nav id="sub-nav" style="display:none;"></nav>
     </div>
   </div>
 </header>
-
         <div class="outer">
           
-          <!-- 判定探针：检测当前渲染路径是否包含 'about' -->
+          <!-- 核心逻辑 1：探针检测当前是否处于需要全屏的系统页面 -->
           
           
-          <!-- 核心：如果是关于页面，强行摧毁浮动布局并接管 100% 宽度 -->
-          <section id="main" style="width: 100%; float: none;"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/about/index.html" class="article-date">
-  <time class="dt-published" datetime="2026-02-26T12:37:30.000Z" itemprop="datePublished">2026-02-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      实体档案：root@お尼酱~
-    </h1>
-  
+          <!-- 核心逻辑 2：如果是系统页面，强行摧毁浮动布局并接管 100% 宽度 -->
+          <section id="main" style="width: 100%; float: none;">
 
-      </header>
+
+  <!-- ====================================================
+       独立系统级 UI 2：高权限实体档案 (Entity Dossier)
+       ==================================================== -->
+  <div class="entity-dossier-container" style="animation: terminalFadeIn 0.8s ease-out; position: relative; z-index: 10; max-width: 1000px; margin: 0 auto;">
     
-    <div class="e-content article-entry" itemprop="articleBody">
+    <!-- 档案头部 -->
+    <div class="dossier-header">
+      <div style="display: flex; align-items: center;">
+        <span class="dot" style="background:#ff5f56;"></span>
+        <span class="dot" style="background:#ffbd2e;"></span>
+        <span class="dot" style="background:#27c93f;"></span>
+        <span class="header-path">daimon.sys / core_logs / entity_profile_root.log</span>
+      </div>
+      <span class="header-status">[ 绝密档案 ]</span>
+    </div>
+
+    <!-- 档案主体布局 -->
+    <div class="dossier-body">
       
-        <p>我是一名独立游戏开发者与跨学科探索者。我的知识图谱交织于底层代码、神经药理学与存在主义哲学之间。</p>
+      <!-- 左侧：生物机能与哲学参数监控面板 -->
+      <div class="dossier-sidebar">
+        <!-- 重构：仿生光学透镜/视网膜捕捉 -->
+        <div class="gaze-sensor-container">
+          <div class="optic-lens">
+            <div class="lens-bracket tl"></div>
+            <div class="lens-bracket tr"></div>
+            <div class="lens-bracket bl"></div>
+            <div class="lens-bracket br"></div>
+            <div class="lens-ring out"></div>
+            <div class="lens-ring mid"></div>
+            <div class="lens-ring in"></div>
+            <div class="retina-scan"></div>
+            <div class="pupil-core"></div>
+          </div>
+          <div class="sensor-label">[ 视网膜特征捕捉中... ]</div>
+        </div>
+
+        <!-- 硬核监控参数（全面汉化） -->
+        <div class="bio-metrics">
+          <div class="metric-row">
+            <span class="metric-label">实体标识</span>
+            <span class="metric-value entity-name">root@お尼酱~</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">系统职级</span>
+            <span class="metric-value">见习修复师 [STUDENT_NODE]</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">互被动性</span>
+            <span class="metric-value warning" style="animation: glitchText 3s infinite;">0.00% [已剥离]</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">自我边界</span>
+            <span class="metric-value">高渗透态</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-row">
+            <span class="metric-label">5-HT (血清素)</span>
+            <span class="metric-value ok">稳态维持</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">DA (多巴胺)</span>
+            <span class="metric-value warning">高频震荡</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">感知锚点</span>
+            <span class="metric-value ok">已接通</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧：Markdown 解析提取区 -->
+      <div class="dossier-main">
+        <!-- 修复：强制清理上方边距，防止顶空 -->
+        <h1 class="dossier-title" style="margin-top: 0 !important;">> 正在解密观测者物理特征... <span class="blink">_</span></h1>
+        
+        <!-- 强行接管 Hexo 的 Markdown 渲染，剔除原生博客样式 -->
+        <div class="dossier-markdown-content">
+          <p>我是一名独立游戏开发者与跨学科探索者。我的知识图谱交织于底层代码、神经药理学与存在主义哲学之间。</p>
 <p>我独立开发的短篇Meta 视觉小说《断线综合征》已完工。在我的设计哲学中，游戏与代码不应仅仅是讨好视觉的“现象界”标本，或是提供廉价掌控感的电子盆栽。我拒绝传统的“互被动性（Interpassivity）”叙事，致力于通过系统级交互、神经工效学（Neuroergonomics）与叙事化界面（Diegetic UI），打破屏幕的第四面墙。</p>
 <p>相比于感性的情绪渲染，我更倾向于探究意识的重构、痛觉的锚点以及绝对自由背后的虚无。当我构建一段程序时，我希望它不是供人旁观的死寂窗口，而是能够反向凝视观测者、解构玩家存在状态的深渊.</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/about/index.html" data-id="cuidyXe-DwLzsqJ7de9OcMKND" data-title="实体档案：root@お尼酱~" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-  
-</article>
+        </div>
+      </div>
 
+    </div>
+  </div>
+
+  <style>
+    /* 强制抹除原生博客的底部版权栏，保持系统界面的绝对封闭 */
+    #footer { display: none !important; }
+
+    /* =========================================
+       实体档案专属视觉样式
+       ========================================= */
+    .entity-dossier-container {
+      background: rgba(8, 11, 15, 0.95);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      border-radius: 6px;
+      backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+    }
+
+    .dossier-header {
+      background: rgba(0, 0, 0, 0.9); padding: 12px 20px;
+      border-bottom: 1px solid rgba(0, 229, 255, 0.3);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }
+    .header-path { color: #888; font-family: monospace; font-size: 0.8rem; margin-left: 15px; letter-spacing: 1px; }
+    .header-status { color: #ff5f56; font-family: "Microsoft YaHei", monospace; font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; text-shadow: 0 0 5px rgba(255,95,86,0.5); }
+
+    .dossier-body { display: flex; flex-direction: row; min-height: 500px; }
+
+    /* --- 左侧雷达与参数栏 --- */
+    .dossier-sidebar {
+      width: 320px; background: rgba(0, 0, 0, 0.4);
+      border-right: 1px solid rgba(0, 229, 255, 0.15);
+      padding: 30px 20px; display: flex; flex-direction: column; align-items: center;
+    }
+
+    /* 重构后的仿生光学透镜 */
+    .gaze-sensor-container { margin-bottom: 40px; display: flex; flex-direction: column; align-items: center; }
+    .optic-lens {
+      width: 140px; height: 140px; position: relative;
+      display: flex; justify-content: center; align-items: center;
+    }
+    /* 四角锁定边框 */
+    .lens-bracket { position: absolute; width: 15px; height: 15px; border-color: rgba(0, 229, 255, 0.6); border-style: solid; z-index: 2; }
+    .lens-bracket.tl { top: -5px; left: -5px; border-width: 2px 0 0 2px; }
+    .lens-bracket.tr { top: -5px; right: -5px; border-width: 2px 2px 0 0; }
+    .lens-bracket.bl { bottom: -5px; left: -5px; border-width: 0 0 2px 2px; }
+    .lens-bracket.br { bottom: -5px; right: -5px; border-width: 0 2px 2px 0; }
+
+    /* 多层动态焦距环 */
+    .lens-ring { position: absolute; border-radius: 50%; }
+    .lens-ring.out {
+      width: 130px; height: 130px;
+      border: 1px solid rgba(0, 229, 255, 0.15);
+      border-top: 2px solid rgba(0, 229, 255, 0.7);
+      border-bottom: 2px solid rgba(0, 229, 255, 0.7);
+      animation: spin-slow 6s linear infinite;
+    }
+    .lens-ring.mid {
+      width: 100px; height: 100px;
+      border: 1px dashed rgba(0, 229, 255, 0.4);
+      animation: spin-reverse 8s linear infinite;
+    }
+    .lens-ring.in {
+      width: 60px; height: 60px;
+      border: 2px dotted rgba(255, 95, 86, 0.5);
+      animation: spin-slow 4s linear infinite;
+    }
+
+    /* 视网膜扫描激光 */
+    .retina-scan {
+      position: absolute; width: 140px; height: 1px;
+      background: rgba(0, 229, 255, 0.8);
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.9);
+      animation: scan-vertical 2.5s ease-in-out infinite alternate;
+      z-index: 3;
+    }
+
+    /* 瞳孔缩放核心 */
+    .pupil-core {
+      width: 8px; height: 8px; background: #ff5f56; border-radius: 50%;
+      box-shadow: 0 0 15px #ff5f56, 0 0 25px rgba(255, 95, 86, 0.4);
+      animation: pupil-dilate 1.5s ease-in-out infinite alternate;
+      z-index: 1;
+    }
+    
+    .sensor-label { margin-top: 25px; color: #00e5ff; font-family: "Microsoft YaHei", monospace; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8; }
+
+    /* 参数列表 */
+    .bio-metrics { width: 100%; display: flex; flex-direction: column; gap: 12px; }
+    .metric-row { display: flex; justify-content: space-between; align-items: center; font-family: "Microsoft YaHei", monospace; font-size: 0.8rem; }
+    .metric-label { color: #666; letter-spacing: 1px; }
+    .metric-value { color: #dcdcdc; font-weight: bold; text-align: right; }
+    .metric-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 10px 0; }
+    
+    .ok { color: #27c93f !important; text-shadow: 0 0 5px rgba(39, 201, 63, 0.4); }
+    .warning { color: #ffbd2e !important; text-shadow: 0 0 5px rgba(255, 189, 46, 0.4); }
+    .entity-name { color: #b388ff !important; text-shadow: 0 0 8px rgba(179, 136, 255, 0.6); }
+
+    /* --- 右侧文本解析区 --- */
+    .dossier-main {
+      flex: 1; padding: 40px; position: relative; overflow-y: auto;
+    }
+    .dossier-title {
+      color: #00e5ff; font-family: "Microsoft YaHei", monospace; font-size: 1.3rem;
+      letter-spacing: 2px; margin-bottom: 30px; text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+      border-bottom: 1px dashed rgba(0, 229, 255, 0.3); padding-bottom: 15px;
+    }
+
+    /* 强制接管 Markdown 渲染样式，展现底层解码质感 */
+    .dossier-markdown-content {
+      font-family: "Noto Serif SC", "Songti SC", serif;
+      color: #ccc; line-height: 2; font-size: 1.05rem;
+    }
+    .dossier-markdown-content h1, 
+    .dossier-markdown-content h2, 
+    .dossier-markdown-content h3 {
+      font-family: 'Courier New', monospace, "Microsoft YaHei";
+      color: #fff; margin-top: 30px; margin-bottom: 15px;
+      font-weight: bold; letter-spacing: 1px;
+    }
+    .dossier-markdown-content h3 { color: #b388ff; font-size: 1.15rem; }
+    .dossier-markdown-content p { margin-bottom: 20px; text-align: justify; }
+    .dossier-markdown-content strong { color: #ff5f56; font-weight: normal; } /* 强调文字化作系统高亮红 */
+    .dossier-markdown-content code { background: rgba(255,255,255,0.1); padding: 2px 6px; font-family: monospace; color: #00e5ff; border-radius: 3px; }
+    .dossier-markdown-content ul, .dossier-markdown-content ol { padding-left: 20px; margin-bottom: 20px; color: #888; }
+    .dossier-markdown-content li { margin-bottom: 8px; font-family: "Microsoft YaHei", monospace; }
+    .dossier-markdown-content hr { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 30px 0; }
+
+    /* 新增硬核动画定义 */
+    @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes spin-reverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+    @keyframes scan-vertical { 0% { top: 10px; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 130px; opacity: 0; } }
+    @keyframes pupil-dilate { 0% { transform: scale(0.8); opacity: 0.6; } 100% { transform: scale(1.4); opacity: 1; } }
+    @keyframes glitchText { 0%, 95% { opacity: 1; transform: translateX(0); } 96% { opacity: 0.2; transform: translateX(-2px); } 98% { opacity: 1; transform: translateX(2px); } 100% { opacity: 1; transform: translateX(0); } }
+
+    /* 响应式降级 */
+    @media (max-width: 768px) {
+      .dossier-body { flex-direction: column; }
+      .dossier-sidebar { width: 100%; border-right: none; border-bottom: 1px solid rgba(0, 229, 255, 0.15); }
+      .dossier-main { padding: 20px; }
+    }
+  </style>
 
 </section>
           
-          <!-- 核心：如果不是关于页面，才允许侧边栏挂载 -->
+          <!-- 核心逻辑 3：仅当“不是系统页面”时，才允许侧边栏挂载 -->
           
 
         </div>
@@ -149,6 +346,15 @@
 </footer>
 
       </div>
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories" class="mobile-nav-link">分类</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
       
 
 

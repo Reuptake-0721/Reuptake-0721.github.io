@@ -37,11 +37,11 @@
 <meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
+  <!-- 纯净的全局背景容器，通过 CSS 注入图片 -->
   <div id="global-bg-container"></div>
   <div id="global-bg-overlay"></div>
 
   
-    <!-- 主页独立全屏容器 -->
     <div id="splash-screen">
       <div class="splash-content" id="phenomenon-layer">
   
@@ -57,7 +57,8 @@
   </h2>
   
   <nav class="splash-nav">
-    <a class="splash-nav-link entry-btn" href="/archives" id="dive-btn">Enter Database (系统接入)</a>
+    <!-- 移除了分类和关于，仅保留绝对入口 -->
+    <a class="splash-nav-link entry-btn" href="/categories" id="dive-btn">Enter Database (系统接入)</a>
   </nav>
 
   <!-- 2. 动态监控终端 -->
@@ -186,11 +187,11 @@
     }
   </style>
 
-  <!-- 4. 叙事化界面逻辑核心：AJAX + WebAudio + 视差系统 -->
+  <!-- 4. 叙事化界面逻辑核心：AJAX 内存级覆写 -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // --- A. 页面预加载 (AJAX) ---
-      const targetUrl = "/archives";
+      const targetUrl = "/categories";
       let preloadedHTML = null;
       let isDiving = false; // 全局锁
 
