@@ -51,6 +51,37 @@
   <div id="header-outer" class="outer">
     
     <div id="header-inner" class="inner">
+      
+      <!-- 左侧操作节点：支持与下载 -->
+      <nav id="action-nav">
+        <!-- 支持（爱发电）：神经电位/能量传输 -->
+        <a class="social-icon" href="https://afdian.com/a/onijiang" target="_blank" title="支持作者">
+          <svg class="colored-svg-icon" viewBox="0 0 100 100" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="42" fill="#946ce6"/>
+            <path d="M58 20 L30 55 H52 L42 80 L72 45 H50 Z" fill="#FFF"/>
+          </svg>
+          <span class="icon-label">支持</span>
+        </a>
+        
+        <!-- 游戏下载（itch.io）：控制终端与数据下行 -->
+        <a class="social-icon" href="https://onijiang.itch.io/" target="_blank" title="获取游戏">
+          <svg class="colored-svg-icon" viewBox="0 0 100 100" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
+            <!-- 手柄主体 -->
+            <rect x="8" y="25" width="84" height="50" rx="25" fill="#fa5c5c"/>
+            <!-- 左侧十字方向键 -->
+            <rect x="22" y="47" width="16" height="6" rx="1" fill="#FFF"/>
+            <rect x="27" y="42" width="6" height="16" rx="1" fill="#FFF"/>
+            <!-- 右侧动作按键 -->
+            <circle cx="75" cy="43" r="5" fill="#FFF"/>
+            <circle cx="63" cy="57" r="5" fill="#FFF"/>
+            <!-- 中央数据下行箭头 (Download) -->
+            <path d="M46 38 v 12 h -4 l 8 8 l 8 -8 h -4 v -12 z" fill="#FFF"/>
+          </svg>
+          <span class="icon-label">游戏下载</span>
+        </a>
+      </nav>
+
+      <!-- 中央主干导航 -->
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
@@ -62,31 +93,35 @@
         
       </nav>
       
+      <!-- 右侧社交监控节点 -->
       <nav id="social-nav">
-        <a class="social-icon" href="https://space.bilibili.com/497736825?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili" target="_blank" title="Bilibili">
-          <!-- B站：代码重绘版彩色小电视 -->
+        <!-- CnGal 资料站：Galgame档案夹实体 -->
+        <a class="social-icon" href="https://app.cngal.org/space/index/49097b39-8c7a-47d3-8e71-9cf19c3a3de4" target="_blank" title="CnGal资料站">
           <svg class="colored-svg-icon" viewBox="0 0 100 100" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
-            <!-- 天线 -->
+            <path d="M 15 25 L 35 25 L 45 35 L 85 35 Q 90 35 90 40 V 80 Q 90 85 85 85 H 15 Q 10 85 10 80 V 30 Q 10 25 15 25 Z" fill="#FF5C8D"/>
+            <rect x="25" y="45" width="50" height="30" rx="2" fill="#FFF"/>
+            <path d="M 50 68 C 50 68 40 60 40 54 A 5.5 5.5 0 0 1 50 50 A 5.5 5.5 0 0 1 60 54 C 60 60 50 68 50 68 Z" fill="#FF5C8D"/>
+          </svg>
+          <span class="icon-label">CnGal</span>
+        </a>
+
+        <!-- Bilibili：已注入实际地址 -->
+        <a class="social-icon" href="https://space.bilibili.com/497736825?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili">
+          <svg class="colored-svg-icon" viewBox="0 0 100 100" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
             <path d="M 28 20 L 42 34 M 72 20 L 58 34" stroke="#FB7299" stroke-width="7" stroke-linecap="round"/>
-            <!-- 电视外壳 -->
             <rect x="10" y="32" width="80" height="56" rx="16" fill="#FB7299"/>
-            <!-- 白色屏幕 -->
             <rect x="20" y="42" width="60" height="36" rx="8" fill="#FFF"/>
-            <!-- 标志性小眼睛 -->
             <rect x="30" y="54" width="12" height="5" rx="2.5" fill="#FB7299"/>
             <rect x="58" y="54" width="12" height="5" rx="2.5" fill="#FB7299"/>
           </svg>
           <span class="icon-label">Bilibili</span>
         </a>
         
+        <!-- 贴吧：已注入实际地址 -->
         <a class="social-icon" href="https://tieba.baidu.com/home/main?id=tb.1.38ab261c.n61QU4RXrrZZmRutwnXpTw?t=1715280897&fr=index" target="_blank" title="Tieba">
-          <!-- 贴吧：代码重绘版蓝色论坛气泡 -->
           <svg class="colored-svg-icon" viewBox="0 0 100 100" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
-            <!-- 气泡主体 -->
             <rect x="10" y="20" width="80" height="55" rx="22" fill="#2B82F9"/>
-            <!-- 气泡尾巴 -->
             <path d="M 25 65 L 15 85 L 42 70 Z" fill="#2B82F9"/>
-            <!-- 论坛省略号 -->
             <circle cx="30" cy="47" r="6" fill="#FFF"/>
             <circle cx="50" cy="47" r="6" fill="#FFF"/>
             <circle cx="70" cy="47" r="6" fill="#FFF"/>
@@ -94,25 +129,18 @@
           <span class="icon-label">贴吧</span>
         </a>
         
+        <!-- QQ：已注入实权识别码 -->
         <div class="social-icon qq-hover">
-          <!-- QQ：代码手绘初代彩色企鹅 -->
           <svg class="colored-svg-icon" viewBox="0 0 100 100" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
-            <!-- 胖胖的黑身体 -->
             <path d="M50 8 C25 8 15 35 15 60 C15 85 25 90 50 90 C75 90 85 85 85 60 C85 35 75 8 50 8 Z" fill="#111"/>
-            <!-- 白肚皮 -->
             <path d="M50 38 C32 38 25 55 25 70 C25 85 35 88 50 88 C65 88 75 85 75 70 C75 55 68 38 50 38 Z" fill="#FFF"/>
-            <!-- 左眼 -->
             <ellipse cx="37" cy="34" rx="7" ry="10" fill="#FFF"/>
             <circle cx="39" cy="35" r="3" fill="#111"/>
-            <!-- 右眼 (标志性眨眼) -->
             <ellipse cx="63" cy="34" rx="7" ry="10" fill="#FFF"/>
             <path d="M 59 34 Q 63 30 67 34" stroke="#111" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <!-- 黄嘴巴 -->
             <ellipse cx="50" cy="47" rx="14" ry="6" fill="#FFB800"/>
-            <!-- 红围巾 -->
             <path d="M18 58 Q50 68 82 58 L79 66 Q50 76 21 66 Z" fill="#E60012"/>
             <path d="M28 62 L28 82 L40 76 L40 65 Z" fill="#E60012"/>
-            <!-- 黄脚丫 -->
             <ellipse cx="35" cy="88" rx="12" ry="5" fill="#FFB800"/>
             <ellipse cx="65" cy="88" rx="12" ry="5" fill="#FFB800"/>
           </svg>
@@ -125,27 +153,180 @@
     </div>
   </div>
   
-  <!-- 局部样式补丁：强制修复气泡内文字被腰斩的底层渲染冲突 -->
   <style>
+    /* =========================================
+       0. 视界全局等比升维 (Global UI Scale)
+       ========================================= */
+    body {
+      zoom: 1.2; /* 强制将整个视界（包含中央终端、侧边栏、导航）等比物理放大 20% */
+    }
+    
+    @-moz-document url-prefix() {
+      body {
+        transform: scale(1.2);
+        transform-origin: top center;
+        width: 83.33%;
+        overflow-x: hidden;
+      }
+    }
+
+    /* =========================================
+       1. 绝对防坍缩架构 (无视挤压的拓扑防御)
+       ========================================= */
+    #header {
+      height: 80px !important; 
+      overflow: visible !important;
+    }
+
+    #header-outer.outer {
+      height: 100% !important;
+      overflow: visible !important;
+      padding: 0 !important; 
+    }
+
+    #header-inner.inner {
+      display: flex !important;
+      align-items: center !important;
+      width: 100% !important;
+      max-width: 100% !important; 
+      height: 100% !important;
+      /* 视知觉补偿：左侧推离30px，右侧强行压缩至10px以抵消滚动条带来的视觉留白 */
+      padding: 0 10px 0 30px !important; 
+      position: relative !important; 
+      box-sizing: border-box !important;
+    }
+
+    /* =========================================
+       2. 根除竖向折行 (White-space Lock)
+       ========================================= */
+    #action-nav, #main-nav, #social-nav {
+      position: static !important;
+      height: auto !important;
+      margin: 0 !important;
+      white-space: nowrap !important; 
+      flex-shrink: 0 !important;      
+    }
+
+    /* 左侧停靠区 */
+    #action-nav { 
+      display: flex !important; 
+      align-items: center !important; 
+      gap: 15px !important; 
+    }
+    
+    /* 右侧推离区 */
+    #social-nav { 
+      display: flex !important; 
+      align-items: center !important; 
+      gap: 15px !important; 
+      margin-left: auto !important; 
+    }
+
+    /* 中央绝对锚定：无论两侧挤压，永远定死在屏幕中轴 */
+    #main-nav { 
+      display: flex !important; 
+      align-items: center !important; 
+      gap: 30px !important; 
+      position: absolute !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+    }
+
+    /* =========================================
+       3. 子元素精细化渲染
+       ========================================= */
+    .social-icon {
+      display: flex !important;
+      align-items: center !important;
+      gap: 5px !important; 
+      color: #ccc !important;
+      text-decoration: none !important;
+      transition: all 0.3s ease !important;
+    }
+
+    #header #header-inner .icon-label {
+      font-family: "Microsoft YaHei", monospace !important;
+      font-size: 0.95rem !important; 
+      font-weight: bold !important;
+      letter-spacing: 1px !important;
+      line-height: 1 !important;
+      transform: translateY(1px) !important;
+    }
+
+    #header #header-inner .colored-svg-icon {
+      display: block !important;
+      width: 22px !important;  
+      height: 22px !important;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    }
+
+    .social-icon:hover .colored-svg-icon {
+      transform: scale(1.15) rotate(-5deg) !important;
+      filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.8)) !important;
+    }
+    .social-icon:hover .icon-label {
+      color: #00e5ff !important;
+      text-shadow: 0 0 8px rgba(0, 229, 255, 0.5) !important;
+    }
+
+    #header #header-inner .main-nav-link {
+      font-size: 1.1rem !important; 
+      font-weight: bold !important;
+      letter-spacing: 3px !important;
+      color: #fff !important;
+      transition: all 0.3s ease !important;
+    }
+
+    #header #header-inner .main-nav-link:hover {
+      color: #00e5ff !important;
+      text-shadow: 0 0 12px rgba(0, 229, 255, 0.8) !important;
+    }
+
+    /* QQ 气泡坐标锁定 */
+    .qq-hover { position: relative !important; display: flex !important; align-items: center !important; }
     .qq-hover .qq-tooltip {
       box-sizing: border-box !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      min-height: 35px !important; 
-      line-height: normal !important; /* 粉碎 Hexo 默认行高污染 */
-      padding: 6px 16px !important;
+      position: absolute !important;
+      top: 55px !important;
+      right: 0 !important;
+      min-height: 40px !important; 
+      line-height: normal !important; 
+      padding: 6px 15px !important;
+      font-size: 1rem !important; 
+      background: rgba(10, 14, 20, 0.95) !important;
+      border: 1px solid rgba(0, 229, 255, 0.5) !important;
+      border-radius: 6px !important;
+      color: #00e5ff !important;
+      font-family: monospace !important;
+      letter-spacing: 1px !important;
+      white-space: nowrap !important;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+      backdrop-filter: blur(8px) !important;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.8) !important;
+      pointer-events: none !important;
+      z-index: 2000 !important;
     }
-    
-    /* 统一的彩色代码图标基准与跳动反馈 */
-    .colored-svg-icon {
-      display: block;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    .qq-hover:hover .qq-tooltip {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(5px) !important;
     }
-    
-    .social-icon:hover .colored-svg-icon {
-      transform: scale(1.15) rotate(-5deg); /* 悬浮时的物理微动 */
-      filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.4)); /* 增加微弱的赛博光晕 */
+
+    /* =========================================
+       4. 极限防挤压策略 (Extreme Width Protection)
+       ========================================= */
+    @media (max-width: 1400px) { 
+      .icon-label { display: none !important; } 
+      #action-nav { gap: 15px !important; }
+      #social-nav { gap: 15px !important; }
+      #main-nav { gap: 20px !important; }
+      #header #header-inner .main-nav-link { font-size: 1rem !important; letter-spacing: 2px !important; }
     }
   </style>
 </header>
