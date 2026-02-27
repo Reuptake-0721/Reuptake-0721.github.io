@@ -110,9 +110,15 @@ button::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
+/* 核心修复 1：彻底粉碎 Hexo 默认的灰色画布，强制透明 */
 html,
-body,
+body {
+  height: 100%;
+  font-size: 18px !important;
+  background: transparent !important;
+}
 #container {
+  position: relative;
   height: 100%;
 }
 .outer {
@@ -145,12 +151,10 @@ body,
 .clear {
   clear: both;
 }
-#container {
-  position: relative;
-}
 .mobile-nav-on {
   overflow: hidden;
 }
+/* 核心修复 2：剥离包裹层可能存在的底色 */
 #wrap {
   height: 100%;
   width: 100%;
@@ -162,7 +166,8 @@ body,
   -ms-transition: 0.2s ease-out;
   transition: 0.2s ease-out;
   z-index: 1;
-  background: #eee;
+  background: transparent !important;
+  backdrop-filter: none !important;
 }
 .mobile-nav-on #wrap {
   left: 280px;
@@ -1345,15 +1350,15 @@ pre .javascript .function {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -999;
+/* 核心修复 3：跳出 -999 的底层深渊，设为 -1，使其位于透明 body 之后，内容之前 */
+  z-index: -1;
   background-color: #000;
-  background-image: url("/images/bg.jpg"); /* 直接从根目录读取图片 */
+  background-image: url("/images/bg.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  filter: brightness(0.6); /* 压暗亮度 */
+  filter: brightness(0.5);
 }
-/* 视觉阻断遮罩 */
 #global-bg-overlay {
   position: fixed;
   top: 0;
@@ -1362,30 +1367,24 @@ pre .javascript .function {
   height: 100%;
   background: rgba(10,15,20,0.4);
   pointer-events: none;
-  z-index: -998;
-}
-/* 提升前景容器的通透感，让后面的背景透出来 */
-#wrap {
-  background-color: rgba(255,255,255,0.85) !important;
-  backdrop-filter: blur(5px);
+  z-index: 0;
 }
 #container,
 .outer {
   background: transparent !important;
 }
-/* ====================================================
-   清理原主题冗余视觉元素
-   ==================================================== */
-#banner {
+/* 统一隐藏废弃元素 */
+#banner,
+#header-title,
+.site-title,
+.site-subtitle,
+#mobile-nav,
+#sub-nav,
+#footer {
   display: none !important;
-}
-#header,
-#header-outer {
-  background: transparent !important;
 }
 /* ====================================================
    独立导航页视觉样式 (Splash Page)
-   粘贴到 style.styl 最末尾
    ==================================================== */
 #splash-screen {
   position: relative;
@@ -1414,18 +1413,18 @@ pre .javascript .function {
   -webkit-animation: fadeIn 2s ease-out;
   -moz-animation: fadeIn 2s ease-out;
   -ms-animation: fadeIn 2s ease-out;
-  animation: fadeIn 2s ease-out; /* 简单的淡入动效，减缓视觉冲击 */
+  animation: fadeIn 2s ease-out;
 }
 .splash-title {
-  font-size: 3.5rem;
+  font-size: 5rem !important;
   color: #fff;
   letter-spacing: 5px;
   margin-bottom: 10px;
-  font-family: monospace, "Microsoft YaHei"; /* 贴合代码与独立游戏的质感 */
-  text-shadow: 0px 4px 20px rgba(0,0,0,0.8); /* 字体分离阴影 */
+  font-family: monospace, "Microsoft YaHei";
+  text-shadow: 0px 4px 20px rgba(0,0,0,0.8);
 }
 .splash-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.5rem !important;
   color: #ccc;
   margin-bottom: 50px;
   letter-spacing: 2px;
@@ -1452,11 +1451,11 @@ pre .javascript .function {
 .splash-nav-link {
   color: #fff;
   text-decoration: none;
-  font-size: 1rem;
-  padding: 12px 25px;
+  font-size: 1.25rem !important;
+  padding: 15px 30px !important;
   border: 1px solid rgba(255,255,255,0.3);
   background: rgba(10,10,15,0.4);
-  backdrop-filter: blur(4px); /* 按钮本身也加上微弱的毛玻璃 */
+  backdrop-filter: blur(4px);
   -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   -moz-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   -ms-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -1464,378 +1463,75 @@ pre .javascript .function {
 }
 .splash-nav-link:hover {
   background: rgba(255,255,255,0.15);
-  border-color: #fff;
-  -webkit-box-shadow: 0 0 15px rgba(255,255,255,0.3);
-  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+  border-color: #00e5ff;
+  -webkit-box-shadow: 0 0 15px rgba(0,229,255,0.3);
+  box-shadow: 0 0 15px rgba(0,229,255,0.3);
   -webkit-transform: translateY(-2px);
   -moz-transform: translateY(-2px);
   -ms-transform: translateY(-2px);
   transform: translateY(-2px);
 }
-.splash-nav-link.entry-btn {
-  border-color: #4caf50; /* 给主干入口加点高亮区分 */
-}
-.splash-nav-link.entry-btn:hover {
-  border-color: #81c784;
-  -webkit-box-shadow: 0 0 15px rgba(76,175,80,0.5);
-  box-shadow: 0 0 15px rgba(76,175,80,0.5);
-}
 /* ====================================================
    子页面深度透明化与元素隐藏 (代码解构视觉)
    ==================================================== */
-/* 1. 彻底抹除子页面头部的“某独立游戏开发者的记录”大标题区域，及泄漏到底层的移动端导航 */
-#header-title,
-.site-title,
-.site-subtitle,
-#mobile-nav {
-  display: none !important;
-}
-/* 2. 剥离外层容易造成大面积泛白的包裹层，为悬浮卡片让路 */
-#wrap {
-  background: transparent !important;
-  backdrop-filter: none !important;
-}
-/* 3. 核心：将文章容器、侧边栏（标签、归档等）强制转换为深色赛博玻璃卡片 */
 .article-inner,
 .widget,
 .archive-article-inner {
-  background: rgba(15,18,25,0.7) !important; /* 极深蓝黑色的半透明底，透出bg.jpg */
-  border: 1px solid rgba(255,255,255,0.08) !important; /* 极细微的边缘反光 */
-  backdrop-filter: blur(12px) !important; /* 强效毛玻璃打散背景轮廓 */
+  background: rgba(15,18,25,0.7) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   -webkit-box-shadow: 0 8px 32px rgba(0,0,0,0.8) !important;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.8) !important; /* 增强悬浮的Z轴深度 */
+  box-shadow: 0 8px 32px rgba(0,0,0,0.8) !important;
   border-radius: 4px !important;
 }
-/* 4. 底层变暗后的全局文本反白处理（保证阅读低认知负荷） */
 .article-title {
   color: #fff !important;
+  font-size: 2.2rem !important;
 }
 .article-entry p,
 .article-entry h1,
 .article-entry h2,
 .article-entry h3,
 .article-entry li {
-  color: #dcdcdc !important; /* 正文使用高灰度白，避免纯白刺眼 */
+  color: #dcdcdc !important;
+  font-size: 1.15rem !important;
+  line-height: 2 !important;
 }
 .article-meta a,
 .article-tag-list-link {
-  color: #00e5ff !important; /* 标签和元数据采用冷蓝高亮，契合系统UI感 */
+  color: #00e5ff !important;
 }
-/* 5. 侧边栏专属文字覆写 */
 .widget-title {
   color: #00e5ff !important;
   letter-spacing: 2px;
   text-shadow: 0 0 8px rgba(0,229,255,0.3);
   border-bottom: 1px solid rgba(255,255,255,0.1) !important;
   padding-bottom: 5px;
+  font-size: 1.3rem !important;
 }
-.widget a {
+.widget a,
+.archive-article-date {
   color: #aaa !important;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -ms-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  font-size: 1.1rem !important;
 }
 .widget a:hover {
   color: #fff !important;
   text-shadow: 0 0 5px rgba(255,255,255,0.5);
-  padding-left: 5px; /* 交互反馈：悬浮时代码块右移 */
-}
-/* ====================================================
-   全局字体放大补丁 (Global Typography Scale-up)
-   ==================================================== */
-/* 1. 提升根基准字号 (默认通常是 14px，这里提升约 30% 到 18px) */
-html,
-body {
-  font-size: 18px !important;
-}
-/* 2. 独立导航页 (Splash) 暴力放大 */
-.splash-title {
-  font-size: 5rem !important; /* 主标题巨型化 */
-}
-.splash-subtitle {
-  font-size: 1.5rem !important; /* 副标题跟进 */
-}
-.splash-nav-link {
-  font-size: 1.25rem !important; /* 导航按钮字号 */
-  padding: 15px 30px !important; /* 同步撑大按钮体积 */
-}
-.terminal-body {
-  font-size: 1rem !important; /* 终端命令行字号 */
-}
-.terminal-header {
-  font-size: 0.85rem !important;
-}
-/* 3. 阅读区（归档、正文、侧边栏）放大与排版优化 */
-.article-title {
-  font-size: 2.2rem !important; /* 文章大标题 */
-}
-.article-entry p,
-.article-entry li,
-.article-entry h2,
-.article-entry h3 {
-  font-size: 1.15rem !important; /* 正文文字 */
-  line-height: 2 !important; /* 字号变大后，必须增加行高以降低视觉拥挤感 */
-}
-.widget-title {
-  font-size: 1.3rem !important; /* 侧边栏“标签”、“归档”等标题 */
-}
-.widget a,
-.archive-article-date {
-  font-size: 1.1rem !important; /* 侧边栏列表里的链接字号 */
+  padding-left: 5px;
 }
 .archive-year {
-  font-size: 2rem !important; /* 归档页面的年份数字 */
+  font-size: 2rem !important;
 }
 .archive-article-title {
-  font-size: 1.2rem !important; /* 归档页面的文章标题 */
+  font-size: 1.2rem !important;
 }
 /* ====================================================
    导航栏空间压缩与居中重构 (Header Compression)
-   ==================================================== */
-#header {
-  height: 70px !important; /* 彻底抹除原版预留给 Banner 的 300px 幽灵高度 */
-  position: relative;
-  z-index: 1000 !important; /* 【核心修复】将 Z 轴层级拉到最高，防止被下方透明容器遮挡 */
-}
-#header-outer {
-  height: 100% !important;
-  position: relative;
-  z-index: 1000 !important;
-}
-/* 强制接管导航栏流式布局，转换为 Flex 居中 */
-#main-nav {
-  display: -webkit-box !important;
-  display: -moz-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: box !important;
-  display: flex !important; /* 覆盖可能存在的隐藏状态 */
-  float: none !important;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center; /* 确保垂直居中 */
-  height: 100%;
-  padding-top: 0 !important; /* 清除默认的顶部填充 */
-}
-.main-nav-link {
-  float: none !important;
-  margin: 0 25px !important; /* 拉开按钮间距 */
-  font-size: 1.1rem !important;
-  letter-spacing: 1px;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 1001 !important; /* 确保超链接具有绝对的点击优先级 */
-}
-.main-nav-link:hover {
-  color: #00e5ff !important;
-  text-shadow: 0 0 8px rgba(0,229,255,0.6);
-}
-/* 抹杀右上角冗余的 RSS 和搜索小图标 */
-#sub-nav {
-  display: none !important;
-}
-/* 让主体内容适度上移，弥补压缩后的一点空隙 */
-.outer {
-  margin-top: 20px !important;
-  position: relative;
-  z-index: 1; /* 约束主内容的层级，使其乖乖待在导航栏下方 */
-}
-/* ====================================================
-   导航栏空间压缩与居中重构 (Header Compression)
-   ==================================================== */
-#header {
-  height: 50px !important; /* 强制压缩高度（减半），粉碎原本 300px 的幽灵高度 */
-  position: relative;
-  z-index: 1000 !important; /* 强制提升层级，防止被下方元素遮挡导致无法点击 */
-  border-bottom: 1px solid rgba(255,255,255,0.05); /* 极暗的物理分界线 */
-}
-#header-outer {
-  height: 100% !important;
-  position: relative;
-  z-index: 1000 !important;
-}
-/* 强制接管导航栏流式布局，转换为 Flex 绝对居中 */
-#main-nav {
-  display: -webkit-box !important;
-  display: -moz-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: box !important;
-  display: flex !important;
-  float: none !important;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  height: 100%;
-  padding-top: 0 !important;
-}
-.main-nav-link {
-  float: none !important;
-  margin: 0 15px !important; /* 按钮横向间距大幅缩减 */
-  font-size: 0.95rem !important; /* 字号微调，贴合系统 UI 感 */
-  letter-spacing: 1px;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 1001 !important;
-}
-.main-nav-link:hover {
-  color: #00e5ff !important;
-  text-shadow: 0 0 8px rgba(0,229,255,0.6);
-}
-/* 彻底抹杀右上角冗余的搜索框和 RSS 小图标 */
-#sub-nav {
-  display: none !important;
-}
-/* 重新规划主体内容的顶部间距 */
-.outer {
-  margin-top: 20px !important;
-  position: relative;
-  z-index: 1;
-}
-/* ====================================================
-   导航栏空间压缩与居中重构 (Header Compression)
-   ==================================================== */
-#header {
-  height: 70px !important; /* 增加高度解决页面缩小的压抑感 */
-  position: relative;
-  z-index: 1000 !important;
-  border-bottom: 1px solid rgba(0,229,255,0.15); /* 赛博蓝分界线 */
-  background: rgba(8,11,15,0.4) !important;
-  backdrop-filter: blur(10px);
-}
-#header-outer {
-  height: 100% !important;
-  position: relative;
-  z-index: 1000 !important;
-}
-#main-nav {
-  display: -webkit-box !important;
-  display: -moz-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: box !important;
-  display: flex !important;
-  float: none !important;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  height: 100%;
-}
-.main-nav-link {
-  float: none !important;
-  margin: 0 25px !important;
-  font-size: 1.1rem !important; /* 提升字号 */
-  letter-spacing: 2px;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 1001 !important;
-}
-.main-nav-link:hover {
-  color: #00e5ff !important;
-  text-shadow: 0 0 12px rgba(0,229,255,0.8);
-}
-#sub-nav {
-  display: none !important;
-}
-.outer {
-  margin-top: 35px !important;
-  position: relative;
-  z-index: 1;
-}
-/* ====================================================
-   导航栏空间压缩与居中重构 (Header Compression)
-   ==================================================== */
-#header {
-  height: 70px !important; /* 增加高度解决页面缩小的压抑感 */
-  position: relative;
-  z-index: 1000 !important;
-  border-bottom: 1px solid rgba(0,229,255,0.15); /* 赛博蓝分界线 */
-  background: rgba(8,11,15,0.4) !important;
-  backdrop-filter: blur(10px);
-}
-#header-outer {
-  height: 100% !important;
-  position: relative;
-  z-index: 1000 !important;
-}
-#main-nav {
-  display: -webkit-box !important;
-  display: -moz-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: box !important;
-  display: flex !important;
-  float: none !important;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  height: 100%;
-}
-.main-nav-link {
-  float: none !important;
-  margin: 0 25px !important;
-  font-size: 1.1rem !important; /* 提升字号 */
-  letter-spacing: 2px;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 1001 !important;
-}
-.main-nav-link:hover {
-  color: #00e5ff !important;
-  text-shadow: 0 0 12px rgba(0,229,255,0.8);
-}
-#sub-nav {
-  display: none !important;
-}
-.outer {
-  margin-top: 35px !important;
-  position: relative;
-  z-index: 1;
-}
-/* ====================================================
-   导航栏重构与社交气泡修复
    ==================================================== */
 #header {
   height: 70px !important;
@@ -1844,46 +1540,17 @@ body {
   border-bottom: 1px solid rgba(0,229,255,0.15);
   background: rgba(8,11,15,0.4) !important;
   backdrop-filter: blur(10px);
+/* 粉碎底层裁切设定 */
+  overflow: visible !important;
 }
-#header-outer {
+#header-outer,
+#header-inner {
   height: 100% !important;
+  position: relative;
   z-index: 1000 !important;
-}
-#main-nav {
-  display: -webkit-box !important;
-  display: -moz-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: box !important;
-  display: flex !important;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  height: 100%;
-}
-.main-nav-link {
-  margin: 0 25px !important;
-  font-size: 1.1rem !important;
-  letter-spacing: 2px;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  z-index: 1001 !important;
-}
-.main-nav-link:hover {
-  color: #00e5ff !important;
-  text-shadow: 0 0 12px rgba(0,229,255,0.8);
+  overflow: visible !important;
 }
 #header-inner {
-  position: relative !important;
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -1893,6 +1560,56 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
+/* 强行居中逻辑 */
+#main-nav {
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: box !important;
+  display: flex !important;
+  float: none !important;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.main-nav-link {
+  float: none !important;
+  margin: 0 25px !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 2px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1001 !important;
+}
+.main-nav-link:hover {
+  color: #00e5ff !important;
+  text-shadow: 0 0 12px rgba(0,229,255,0.8);
+}
+.outer {
+  margin-top: 35px !important;
+  position: relative;
+  z-index: 1;
+}
+/* ====================================================
+   右侧社交链接导航 (Social Nav)
+   ==================================================== */
 #social-nav {
   position: absolute;
   right: 20px;
@@ -1932,18 +1649,41 @@ body {
   -webkit-align-items: center;
   align-items: center;
   gap: 6px;
+  height: 100%;
 }
 .social-icon:hover {
   color: #00e5ff;
 }
-/* QQ 气泡修复：左偏对齐，防止被右边缘裁切 */
+/* 图标物理对齐锁定 */
+.svg-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  opacity: 0.7;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.social-icon:hover .svg-icon {
+  opacity: 1;
+  filter: drop-shadow(0 0 5px rgba(0,229,255,0.6));
+}
+.icon-label {
+  font-family: "Microsoft YaHei", monospace;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+/* QQ 气泡反向防裁切设定 */
 .qq-hover {
   position: relative;
 }
 .qq-hover .qq-tooltip {
   position: absolute;
-  top: 130%;
-  right: 0 !important; /* 核心：对齐右边缘，向左扩展内容 */
+  top: 100%;
+  right: -10px;
   left: auto !important;
   background: rgba(10,14,20,0.95);
   border: 1px solid rgba(0,229,255,0.4);
@@ -1951,7 +1691,7 @@ body {
   border-radius: 4px;
   color: #00e5ff;
   font-family: monospace;
-  font-size: 1rem;
+  font-size: 1.05rem;
   letter-spacing: 1px;
   white-space: nowrap;
   opacity: 0;
@@ -1969,7 +1709,10 @@ body {
 .qq-hover:hover .qq-tooltip {
   opacity: 1;
   visibility: visible;
-  top: 110%;
+  -webkit-transform: translateY(5px);
+  -moz-transform: translateY(5px);
+  -ms-transform: translateY(5px);
+  transform: translateY(5px);
 }
 @-moz-keyframes fadeIn {
   from {
