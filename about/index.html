@@ -63,8 +63,8 @@
           <span class="icon-label">支持</span>
         </a>
         
-        <!-- 游戏下载（itch.io）：控制终端与数据下行 -->
-        <a class="social-icon" href="https://onijiang.itch.io/" target="_blank" title="获取游戏">
+        <!-- 游戏下载：控制终端与数据下行（带下拉分支） -->
+        <div class="social-icon download-dropdown" title="获取游戏">
           <svg class="colored-svg-icon" viewBox="0 0 100 100" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
             <!-- 手柄主体 -->
             <rect x="8" y="25" width="84" height="50" rx="25" fill="#fa5c5c"/>
@@ -78,7 +78,13 @@
             <path d="M46 38 v 12 h -4 l 8 8 l 8 -8 h -4 v -12 z" fill="#FFF"/>
           </svg>
           <span class="icon-label">游戏下载</span>
-        </a>
+          
+          <!-- 下拉菜单内容 -->
+          <div class="cyber-dropdown-content">
+              <a href="https://www.taptap.cn/app/821537?os=pc" target="_blank" rel="noopener noreferrer">TapTap 端</a>
+              <a href="https://onijiang.itch.io/" target="_blank" rel="noopener noreferrer">itch.io 端</a>
+          </div>
+        </div>
       </nav>
 
       <!-- 中央主干导航 -->
@@ -316,6 +322,71 @@
       opacity: 1 !important;
       visibility: visible !important;
       transform: translateY(5px) !important;
+    }
+
+    /* =========================================
+       5. 游戏下载下拉菜单模块 (Download Dropdown)
+       ========================================= */
+    .download-dropdown {
+      position: relative !important;
+      cursor: pointer !important;
+    }
+
+    .download-dropdown .cyber-dropdown-content {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute !important;
+      top: 40px !important; /* 根据导航栏高度调整下拉弹出位置 */
+      left: 50% !important;
+      transform: translateX(-50%) translateY(-10px) !important; /* 居中并带一点上浮特效 */
+      background-color: rgba(5, 10, 16, 0.85) !important;
+      min-width: 130px !important;
+      border: 1px solid rgba(0, 229, 255, 0.3) !important;
+      border-radius: 4px !important;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 229, 255, 0.1) !important;
+      backdrop-filter: blur(8px) !important;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      z-index: 100 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 5px 0 !important;
+    }
+
+    .download-dropdown:hover .cyber-dropdown-content {
+      visibility: visible !important;
+      opacity: 1 !important;
+      transform: translateX(-50%) translateY(0) !important;
+    }
+
+    .cyber-dropdown-content a {
+      color: #a0b0c0 !important;
+      padding: 12px 18px !important;
+      text-decoration: none !important;
+      font-size: 0.95rem !important;
+      font-family: "Microsoft YaHei", monospace !important;
+      font-weight: bold !important;
+      border-left: 2px solid transparent !important;
+      transition: all 0.2s ease !important;
+      white-space: nowrap !important;
+      display: block !important;
+    }
+
+    .cyber-dropdown-content a:hover {
+      background-color: rgba(0, 229, 255, 0.08) !important;
+      color: #00e5ff !important;
+      border-left: 2px solid #00e5ff !important;
+      letter-spacing: 1px !important;
+    }
+
+    .cyber-dropdown-content a::before {
+      content: ">_ " !important;
+      opacity: 0 !important;
+      color: #00e5ff !important;
+      transition: opacity 0.2s ease !important;
+    }
+
+    .cyber-dropdown-content a:hover::before {
+      opacity: 1 !important;
     }
 
     /* =========================================

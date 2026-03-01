@@ -63,8 +63,8 @@
           <span class="icon-label">支持</span>
         </a>
         
-        <!-- 游戏下载（itch.io）：控制终端与数据下行 -->
-        <a class="social-icon" href="https://onijiang.itch.io/" target="_blank" title="获取游戏">
+        <!-- 游戏下载：控制终端与数据下行（带下拉分支） -->
+        <div class="social-icon download-dropdown" title="获取游戏">
           <svg class="colored-svg-icon" viewBox="0 0 100 100" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
             <!-- 手柄主体 -->
             <rect x="8" y="25" width="84" height="50" rx="25" fill="#fa5c5c"/>
@@ -78,7 +78,13 @@
             <path d="M46 38 v 12 h -4 l 8 8 l 8 -8 h -4 v -12 z" fill="#FFF"/>
           </svg>
           <span class="icon-label">游戏下载</span>
-        </a>
+          
+          <!-- 下拉菜单内容 -->
+          <div class="cyber-dropdown-content">
+              <a href="https://www.taptap.cn/app/821537?os=pc" target="_blank" rel="noopener noreferrer">TapTap 端</a>
+              <a href="https://onijiang.itch.io/" target="_blank" rel="noopener noreferrer">itch.io 端</a>
+          </div>
+        </div>
       </nav>
 
       <!-- 中央主干导航 -->
@@ -319,6 +325,71 @@
     }
 
     /* =========================================
+       5. 游戏下载下拉菜单模块 (Download Dropdown)
+       ========================================= */
+    .download-dropdown {
+      position: relative !important;
+      cursor: pointer !important;
+    }
+
+    .download-dropdown .cyber-dropdown-content {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute !important;
+      top: 40px !important; /* 根据导航栏高度调整下拉弹出位置 */
+      left: 50% !important;
+      transform: translateX(-50%) translateY(-10px) !important; /* 居中并带一点上浮特效 */
+      background-color: rgba(5, 10, 16, 0.85) !important;
+      min-width: 130px !important;
+      border: 1px solid rgba(0, 229, 255, 0.3) !important;
+      border-radius: 4px !important;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 229, 255, 0.1) !important;
+      backdrop-filter: blur(8px) !important;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      z-index: 100 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 5px 0 !important;
+    }
+
+    .download-dropdown:hover .cyber-dropdown-content {
+      visibility: visible !important;
+      opacity: 1 !important;
+      transform: translateX(-50%) translateY(0) !important;
+    }
+
+    .cyber-dropdown-content a {
+      color: #a0b0c0 !important;
+      padding: 12px 18px !important;
+      text-decoration: none !important;
+      font-size: 0.95rem !important;
+      font-family: "Microsoft YaHei", monospace !important;
+      font-weight: bold !important;
+      border-left: 2px solid transparent !important;
+      transition: all 0.2s ease !important;
+      white-space: nowrap !important;
+      display: block !important;
+    }
+
+    .cyber-dropdown-content a:hover {
+      background-color: rgba(0, 229, 255, 0.08) !important;
+      color: #00e5ff !important;
+      border-left: 2px solid #00e5ff !important;
+      letter-spacing: 1px !important;
+    }
+
+    .cyber-dropdown-content a::before {
+      content: ">_ " !important;
+      opacity: 0 !important;
+      color: #00e5ff !important;
+      transition: opacity 0.2s ease !important;
+    }
+
+    .cyber-dropdown-content a:hover::before {
+      opacity: 1 !important;
+    }
+
+    /* =========================================
        4. 极限防挤压策略 (Extreme Width Protection)
        ========================================= */
     @media (max-width: 1400px) { 
@@ -369,28 +440,9 @@
         
         
           
-          <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" class="cyber-track">
-            <div class="track-col col-address" style="width:25%; display:flex; flex-direction:column;">
-              <span class="static-addr" style="color:#888; font-size:0.85rem;">0xCD5EF7</span>
-              <span class="glitch-data" style="color:rgba(255,95,86,0.4); font-size:0.7rem;">01001011</span>
-            </div>
-            <div class="track-col col-name" style="width:45%; display:flex; flex-direction:column;">
-              <span class="cat-title" style="font-family:'Noto Serif SC', serif; font-size:1.3rem; color:#dcdcdc; font-weight:bold;">游戏开发</span>
-              <span class="cat-count" style="color:#666; font-size:0.75rem;">碎片数量: 1</span>
-            </div>
-            <div class="track-col col-integrity" style="width:30%; display:flex; flex-direction:column; align-items:flex-end;">
-              <div class="integrity-bar-bg" style="width:100%; height:6px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); margin-bottom:6px;">
-                <div class="integrity-bar-fill" style="height:100%; background:#00e5ff; width:67.8%; transition:width 1s;"></div>
-              </div>
-              <span class="integrity-val" style="color:#00e5ff; font-size:0.8rem;">67.8%</span>
-            </div>
-            <div class="hover-scanner" style="position:absolute; width:40px; left:-50px; background:linear-gradient(to right, transparent, rgba(0,229,255,0.2), transparent); transform:skewX(-15deg); height:100%;"></div>
-          </a>
-        
-          
           <a href="/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/" class="cyber-track">
             <div class="track-col col-address" style="width:25%; display:flex; flex-direction:column;">
-              <span class="static-addr" style="color:#888; font-size:0.85rem;">0x2FDFD1</span>
+              <span class="static-addr" style="color:#888; font-size:0.85rem;">0x4431D9</span>
               <span class="glitch-data" style="color:rgba(255,95,86,0.4); font-size:0.7rem;">01001011</span>
             </div>
             <div class="track-col col-name" style="width:45%; display:flex; flex-direction:column;">
@@ -399,9 +451,28 @@
             </div>
             <div class="track-col col-integrity" style="width:30%; display:flex; flex-direction:column; align-items:flex-end;">
               <div class="integrity-bar-bg" style="width:100%; height:6px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); margin-bottom:6px;">
-                <div class="integrity-bar-fill" style="height:100%; background:#00e5ff; width:68.3%; transition:width 1s;"></div>
+                <div class="integrity-bar-fill" style="height:100%; background:#00e5ff; width:66.9%; transition:width 1s;"></div>
               </div>
-              <span class="integrity-val" style="color:#00e5ff; font-size:0.8rem;">68.3%</span>
+              <span class="integrity-val" style="color:#00e5ff; font-size:0.8rem;">66.9%</span>
+            </div>
+            <div class="hover-scanner" style="position:absolute; width:40px; left:-50px; background:linear-gradient(to right, transparent, rgba(0,229,255,0.2), transparent); transform:skewX(-15deg); height:100%;"></div>
+          </a>
+        
+          
+          <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" class="cyber-track">
+            <div class="track-col col-address" style="width:25%; display:flex; flex-direction:column;">
+              <span class="static-addr" style="color:#888; font-size:0.85rem;">0x199E3E</span>
+              <span class="glitch-data" style="color:rgba(255,95,86,0.4); font-size:0.7rem;">01001011</span>
+            </div>
+            <div class="track-col col-name" style="width:45%; display:flex; flex-direction:column;">
+              <span class="cat-title" style="font-family:'Noto Serif SC', serif; font-size:1.3rem; color:#dcdcdc; font-weight:bold;">游戏开发</span>
+              <span class="cat-count" style="color:#666; font-size:0.75rem;">碎片数量: 1</span>
+            </div>
+            <div class="track-col col-integrity" style="width:30%; display:flex; flex-direction:column; align-items:flex-end;">
+              <div class="integrity-bar-bg" style="width:100%; height:6px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); margin-bottom:6px;">
+                <div class="integrity-bar-fill" style="height:100%; background:#00e5ff; width:61.0%; transition:width 1s;"></div>
+              </div>
+              <span class="integrity-val" style="color:#00e5ff; font-size:0.8rem;">61.0%</span>
             </div>
             <div class="hover-scanner" style="position:absolute; width:40px; left:-50px; background:linear-gradient(to right, transparent, rgba(0,229,255,0.2), transparent); transform:skewX(-15deg); height:100%;"></div>
           </a>
@@ -409,7 +480,7 @@
           
           <a href="javascript:void(0);" class="cyber-track corrupted-track">
             <div class="track-col col-address" style="width:25%; display:flex; flex-direction:column;">
-              <span class="static-addr" style="color:#888; font-size:0.85rem;">0x18EBE5</span>
+              <span class="static-addr" style="color:#888; font-size:0.85rem;">0x98A2D5</span>
               <span class="glitch-data" style="color:rgba(255,95,86,0.4); font-size:0.7rem;">01001011</span>
             </div>
             <div class="track-col col-name" style="width:45%; display:flex; flex-direction:column;">
@@ -418,9 +489,9 @@
             </div>
             <div class="track-col col-integrity" style="width:30%; display:flex; flex-direction:column; align-items:flex-end;">
               <div class="integrity-bar-bg" style="width:100%; height:6px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); margin-bottom:6px;">
-                <div class="integrity-bar-fill" style="height:100%; background:#00e5ff; width:1.4%; transition:width 1s;"></div>
+                <div class="integrity-bar-fill" style="height:100%; background:#00e5ff; width:2.5%; transition:width 1s;"></div>
               </div>
-              <span class="integrity-val" style="color:#00e5ff; font-size:0.8rem;">1.4%</span>
+              <span class="integrity-val" style="color:#00e5ff; font-size:0.8rem;">2.5%</span>
             </div>
             <div class="hover-scanner" style="position:absolute; width:40px; left:-50px; background:linear-gradient(to right, transparent, rgba(0,229,255,0.2), transparent); transform:skewX(-15deg); height:100%;"></div>
           </a>
