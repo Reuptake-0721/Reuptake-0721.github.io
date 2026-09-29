@@ -1,0 +1,113 @@
+/* ============================================================
+   jirai-niche-extra — 檔案館質感補強
+   直角化 / 尋檔懸停 / 最新入庫戳記 / 條碼頁腳
+   ============================================================ */
+
+/* ---------------------------------------------- 直角化：去掉圓潤感 */
+.nav-links a { border-radius: 3px; }
+.nav-links a.active::after { bottom: -5px; }
+.pager a, .pager span { border-radius: 3px; }
+.tag-chip { border-radius: 2px; }
+.tag-cloud a { border-radius: 2px; }
+.profile .avatar, .profile .avatar-fallback { border-radius: 4px; }
+.widget { border-radius: 4px; }
+.card { border-radius: 4px; }
+.toc-box { border-radius: 3px; }
+.term { border-radius: 3px; }
+.term::after { border-radius: 2px; }
+.post-nav a { border-radius: 3px; }
+.cab-type { border-radius: 2px; }
+.to-top, .ambient { border-radius: 4px; }
+.variant-btn { border-radius: 2px; }
+.room-tag { border-radius: 2px; }
+.barcode { opacity: .5; }
+
+/* ---------------------------------------------- 尋檔懸停 */
+.cab-row { cursor: crosshair; }
+.cab-row:hover .cab-no { color: #fff; text-shadow: 0 0 10px rgba(192, 57, 43, .9); }
+.cab-row:hover .cab-type {
+  color: var(--seal);
+  border-color: var(--seal-soft);
+  transform: rotate(-1.5deg);
+}
+.cab-type { transition: transform .18s ease, color .18s ease, border-color .18s ease; }
+
+/* 最新一份：蓋上「最新入庫」斜戳 */
+.cab-row.is-new::after {
+  content: '最新入庫';
+  position: absolute;
+  right: 76px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-7deg);
+  padding: 1px 6px;
+  font-family: var(--font-head);
+  font-size: 9.5px;
+  letter-spacing: .12em;
+  color: var(--seal);
+  border: 1px solid var(--seal-soft);
+  border-radius: 2px;
+  opacity: .55;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.cab-row.is-new:hover::after { opacity: .95; }
+
+/* ---------------------------------------------- 卷宗內的細節 */
+.dossier h1 { word-break: break-word; }
+.meta-row .k::after { content: '：'; opacity: .5; }
+
+/* 診斷碼標籤改成病歷貼紙感 */
+.post-foot .tag-chip {
+  font-family: var(--font-mono);
+  letter-spacing: .08em;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(192, 57, 43, .16) 0 4px,
+    rgba(192, 57, 43, 0) 4px 8px
+  );
+  border-color: rgba(192, 57, 43, .4);
+  color: #d3a49c;
+}
+.post-foot .tag-chip:hover {
+  background: rgba(192, 57, 43, .22);
+  border-color: var(--seal);
+  color: #fff;
+  box-shadow: 0 0 14px rgba(192, 57, 43, .4);
+}
+
+/* 引用的 [!memo] 在窄螢幕下不浮動 */
+@media (max-width: 1399px) {
+  .memo { float: none; width: auto; }
+}
+
+/* ---------------------------------------------- 頁腳：館藏編號 */
+.footer::after {
+  content: 'COLLECTION OF FRAGMENTS · 館藏 · NO SIGNAL';
+  display: block;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .34em;
+  color: rgba(125, 113, 137, .55);
+}
+
+/* ---------------------------------------------- 首頁卷宗標題的紅點 */
+.ch-title span { text-shadow: 0 0 12px rgba(192, 57, 43, .8); }
+
+/* 乾掉的血跡：標題底部一點暈染 */
+.cabinet-head { position: relative; }
+.cabinet-head::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -1px;
+  width: 74px; height: 3px;
+  background: linear-gradient(90deg, var(--seal), transparent);
+  opacity: .55;
+  filter: blur(1px);
+}
+
+@media (max-width: 720px) {
+  .cab-row.is-new::after { display: none; }
+  .dossier { min-height: 0; padding-left: 0; }
+  .dossier-spine { height: auto; width: auto; }
+}

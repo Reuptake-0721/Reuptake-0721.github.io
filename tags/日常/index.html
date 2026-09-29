@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#08050a">
+  <title>某独立游戏开发者的记录</title>
+
   
+  <script>try{if(sessionStorage.getItem('jirai-booted')==='1'){document.documentElement.className+=' boot-skip';}}catch(e){}</script>
   
-  <title>标签: 日常 | 某独立游戏开发者的记录</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <meta name="generator" content="Hexo 8.1.1">
+  
+    <meta name="description" content="关于编程开发、药理学探讨、脑神经科学以及一些日常哲学思考的个人空间">
+  
+  <meta name="keywords" content="游戏开发, RenPy, 视觉小说, VRChat, 脑神经, 药理学, 哲学">
+  <meta name="author" content="お尼酱~">
+
+  <link rel="canonical" href="http://example.com/tags/%E6%97%A5%E5%B8%B8/index.html">
+  <link rel="icon" href="/window_icon.png">
+
   <meta name="description" content="关于编程开发、药理学探讨、脑神经科学以及一些日常哲学思考的个人空间">
 <meta property="og:type" content="website">
 <meta property="og:title" content="某独立游戏开发者的记录">
@@ -15,584 +29,363 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="お尼酱~">
 <meta property="article:tag" content="游戏开发, RenPy, 视觉小说, VRChat, 脑神经, 药理学, 哲学">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="某独立游戏开发者的记录" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500&family=JetBrains+Mono:wght@400;700&display=swap">
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/css/jirai.css">
 
   
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
-<meta name="generator" content="Hexo 8.1.1"></head>
-
-<body>
-  <!-- 纯净的全局背景容器，通过 CSS 注入图片 -->
-  <div id="global-bg-container"></div>
-  <div id="global-bg-overlay"></div>
+<link rel="stylesheet" href="/css/jirai-deco.css">
 
   
-    <div id="container">
-      <div id="wrap">
-        <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    
-    <div id="header-inner" class="inner">
-      
-      <!-- 左侧操作节点：支持与下载 -->
-      <nav id="action-nav">
-        <!-- 支持（爱发电）：神经电位/能量传输 -->
-        <a class="social-icon" href="https://afdian.com/a/onijiang" target="_blank" title="支持作者">
-          <svg class="colored-svg-icon" viewBox="0 0 100 100" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="42" fill="#946ce6"/>
-            <path d="M58 20 L30 55 H52 L42 80 L72 45 H50 Z" fill="#FFF"/>
-          </svg>
-          <span class="icon-label">支持</span>
-        </a>
-        
-        <!-- 游戏下载：控制终端与数据下行（带下拉分支） -->
-        <div class="social-icon download-dropdown" title="获取游戏">
-          <svg class="colored-svg-icon" viewBox="0 0 100 100" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
-            <!-- 手柄主体 -->
-            <rect x="8" y="25" width="84" height="50" rx="25" fill="#fa5c5c"/>
-            <!-- 左侧十字方向键 -->
-            <rect x="22" y="47" width="16" height="6" rx="1" fill="#FFF"/>
-            <rect x="27" y="42" width="6" height="16" rx="1" fill="#FFF"/>
-            <!-- 右侧动作按键 -->
-            <circle cx="75" cy="43" r="5" fill="#FFF"/>
-            <circle cx="63" cy="57" r="5" fill="#FFF"/>
-            <!-- 中央数据下行箭头 (Download) -->
-            <path d="M46 38 v 12 h -4 l 8 8 l 8 -8 h -4 v -12 z" fill="#FFF"/>
-          </svg>
-          <span class="icon-label">游戏下载</span>
-          
-          <!-- 下拉菜单内容 -->
-          <div class="cyber-dropdown-content">
-              <a href="https://www.taptap.cn/app/821537?os=pc" target="_blank" rel="noopener noreferrer">TapTap 端</a>
-              <a href="https://onijiang.itch.io/" target="_blank" rel="noopener noreferrer">itch.io 端</a>
-          </div>
-        </div>
-      </nav>
+<link rel="stylesheet" href="/css/jirai-boom.css">
 
-      <!-- 中央主干导航 -->
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">首页</a>
-        
-          <a class="main-nav-link" href="/categories">分类</a>
-        
-          <a class="main-nav-link" href="/about">关于</a>
-        
-      </nav>
-      
-      <!-- 右侧社交监控节点 -->
-      <nav id="social-nav">
-        <!-- CnGal 资料站：Galgame档案夹实体 -->
-        <a class="social-icon" href="https://app.cngal.org/space/index/49097b39-8c7a-47d3-8e71-9cf19c3a3de4" target="_blank" title="CnGal资料站">
-          <svg class="colored-svg-icon" viewBox="0 0 100 100" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 15 25 L 35 25 L 45 35 L 85 35 Q 90 35 90 40 V 80 Q 90 85 85 85 H 15 Q 10 85 10 80 V 30 Q 10 25 15 25 Z" fill="#FF5C8D"/>
-            <rect x="25" y="45" width="50" height="30" rx="2" fill="#FFF"/>
-            <path d="M 50 68 C 50 68 40 60 40 54 A 5.5 5.5 0 0 1 50 50 A 5.5 5.5 0 0 1 60 54 C 60 60 50 68 50 68 Z" fill="#FF5C8D"/>
-          </svg>
-          <span class="icon-label">CnGal</span>
-        </a>
+  
+<link rel="stylesheet" href="/css/jirai-niche.css">
 
-        <!-- Bilibili：已注入实际地址 -->
-        <a class="social-icon" href="https://space.bilibili.com/497736825?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili">
-          <svg class="colored-svg-icon" viewBox="0 0 100 100" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 28 20 L 42 34 M 72 20 L 58 34" stroke="#FB7299" stroke-width="7" stroke-linecap="round"/>
-            <rect x="10" y="32" width="80" height="56" rx="16" fill="#FB7299"/>
-            <rect x="20" y="42" width="60" height="36" rx="8" fill="#FFF"/>
-            <rect x="30" y="54" width="12" height="5" rx="2.5" fill="#FB7299"/>
-            <rect x="58" y="54" width="12" height="5" rx="2.5" fill="#FB7299"/>
-          </svg>
-          <span class="icon-label">Bilibili</span>
-        </a>
-        
-        <!-- 贴吧：已注入实际地址 -->
-        <a class="social-icon" href="https://tieba.baidu.com/home/main?id=tb.1.38ab261c.n61QU4RXrrZZmRutwnXpTw?t=1715280897&fr=index" target="_blank" title="Tieba">
-          <svg class="colored-svg-icon" viewBox="0 0 100 100" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="20" width="80" height="55" rx="22" fill="#2B82F9"/>
-            <path d="M 25 65 L 15 85 L 42 70 Z" fill="#2B82F9"/>
-            <circle cx="30" cy="47" r="6" fill="#FFF"/>
-            <circle cx="50" cy="47" r="6" fill="#FFF"/>
-            <circle cx="70" cy="47" r="6" fill="#FFF"/>
-          </svg>
-          <span class="icon-label">贴吧</span>
-        </a>
-        
-        <!-- QQ：已注入实权识别码 -->
-        <div class="social-icon qq-hover">
-          <svg class="colored-svg-icon" viewBox="0 0 100 100" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 8 C25 8 15 35 15 60 C15 85 25 90 50 90 C75 90 85 85 85 60 C85 35 75 8 50 8 Z" fill="#111"/>
-            <path d="M50 38 C32 38 25 55 25 70 C25 85 35 88 50 88 C65 88 75 85 75 70 C75 55 68 38 50 38 Z" fill="#FFF"/>
-            <ellipse cx="37" cy="34" rx="7" ry="10" fill="#FFF"/>
-            <circle cx="39" cy="35" r="3" fill="#111"/>
-            <ellipse cx="63" cy="34" rx="7" ry="10" fill="#FFF"/>
-            <path d="M 59 34 Q 63 30 67 34" stroke="#111" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <ellipse cx="50" cy="47" rx="14" ry="6" fill="#FFB800"/>
-            <path d="M18 58 Q50 68 82 58 L79 66 Q50 76 21 66 Z" fill="#E60012"/>
-            <path d="M28 62 L28 82 L40 76 L40 65 Z" fill="#E60012"/>
-            <ellipse cx="35" cy="88" rx="12" ry="5" fill="#FFB800"/>
-            <ellipse cx="65" cy="88" rx="12" ry="5" fill="#FFB800"/>
-          </svg>
-          <span class="icon-label">QQ</span>
-          <div class="qq-tooltip">3482770380</div>
-        </div>
-      </nav>
+  
+<link rel="stylesheet" href="/css/jirai-niche-extra.css">
 
-      <nav id="sub-nav" style="display:none;"></nav>
+</head>
+<body class=" ">
+
+  
+
+
+<div class="boot" id="jirai-boot" role="status" aria-label="加载中"
+     data-min-ms="1800">
+  <div class="boot-panel">
+    <div class="boot-brand">
+      <span class="boot-mark">✚</span>
+      <span class="boot-title" data-text="JIRAI-OS">JIRAI-OS</span>
+      <span class="boot-ver">v1.0 / 地雷系</span>
     </div>
+    <p class="boot-sub">地雷系个人终端 · 起動シーケンス</p>
+
+    <div class="boot-log" id="boot-log">
+      
+        <span class="boot-line" data-i="0">CHECKING CONSCIOUSNESS ......... OK</span>
+      
+        <span class="boot-line" data-i="1">LOADING NEUROTRANSMITTER ...... 87%</span>
+      
+        <span class="boot-line" data-i="2">SCANNING FOR LANDMINES ........ 3 FOUND</span>
+      
+        <span class="boot-line" data-i="3">MOUNTING /dev/heart ........... FAILED</span>
+      
+        <span class="boot-line" data-i="4">RETRYING WITH TEARS ........... OK</span>
+      
+        <span class="boot-line" data-i="5">WARNING: 取り扱い注意 · HANDLE WITH CARE</span>
+      
+    </div>
+
+    <div class="boot-bar"><i id="boot-fill"></i></div>
+
+    <div class="boot-foot">
+      <span class="boot-pct"><b id="boot-pct">0</b>%</span>
+      <button class="boot-skip" id="boot-skip" type="button">SKIP / 跳过 ›</button>
+    </div>
+
+    <p class="boot-finish" id="boot-finish">進入許可 / ACCESS GRANTED</p>
   </div>
+  <div class="boot-shutter left"></div>
+  <div class="boot-shutter right"></div>
+  <div class="boot-grid" aria-hidden="true"></div>
+</div>
+
+
+
+<canvas id="jirai-particles" class="particles" aria-hidden="true"
+        data-count="70"
+        data-trail="true"
+        data-trail-max="26"
+        data-link="0"
+        data-gravity="-0.012"></canvas>
+
+
+
+
+
+<button class="ambient" id="jirai-ambient" type="button"
+        aria-pressed="false"
+        data-volume="0.16"
+        data-style="music-box"
+        data-bpm="52"
+        data-autoplay="false"
+        title="氛围音（Web Audio 合成）">
+  <span class="amb-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+  <span class="amb-label">AMBIENT</span>
+</button>
+
+
+
   
-  <style>
-    /* =========================================
-       0. 视界全局等比升维 (Global UI Scale)
-       ========================================= */
-    body {
-      zoom: 1.2; /* 强制将整个视界（包含中央终端、侧边栏、导航）等比物理放大 20% */
-    }
-    
-    @-moz-document url-prefix() {
-      body {
-        transform: scale(1.2);
-        transform-origin: top center;
-        width: 83.33%;
-        overflow-x: hidden;
-      }
-    }
+  <div class="grain" aria-hidden="true"></div>
+  
 
-    /* =========================================
-       1. 绝对防坍缩架构 (无视挤压的拓扑防御)
-       ========================================= */
-    #header {
-      height: 80px !important; 
-      overflow: visible !important;
-    }
+  
+<header class="nav" id="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 21s-8-4.9-8-10.2A4.8 4.8 0 0 1 12 7.6a4.8 4.8 0 0 1 8 3.2C20 16.1 12 21 12 21z"/>
+      </svg>
+      <span class="brand-text">某独立游戏开发者的记录</span>
+      <span class="brand-sub">Reuptake</span>
+    </a>
 
-    #header-outer.outer {
-      height: 100% !important;
-      overflow: visible !important;
-      padding: 0 !important; 
-    }
+    <button class="nav-toggle" id="nav-toggle" aria-label="菜单" aria-expanded="false">
+      <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
 
-    #header-inner.inner {
-      display: flex !important;
-      align-items: center !important;
-      width: 100% !important;
-      max-width: 100% !important; 
-      height: 100% !important;
-      /* 视知觉补偿：左侧推离30px，右侧强行压缩至10px以抵消滚动条带来的视觉留白 */
-      padding: 0 10px 0 30px !important; 
-      position: relative !important; 
-      box-sizing: border-box !important;
-    }
-
-    /* =========================================
-       2. 根除竖向折行 (White-space Lock)
-       ========================================= */
-    #action-nav, #main-nav, #social-nav {
-      position: static !important;
-      height: auto !important;
-      margin: 0 !important;
-      white-space: nowrap !important; 
-      flex-shrink: 0 !important;      
-    }
-
-    /* 左侧停靠区 */
-    #action-nav { 
-      display: flex !important; 
-      align-items: center !important; 
-      gap: 15px !important; 
-    }
-    
-    /* 右侧推离区 */
-    #social-nav { 
-      display: flex !important; 
-      align-items: center !important; 
-      gap: 15px !important; 
-      margin-left: auto !important; 
-    }
-
-    /* 中央绝对锚定：无论两侧挤压，永远定死在屏幕中轴 */
-    #main-nav { 
-      display: flex !important; 
-      align-items: center !important; 
-      gap: 30px !important; 
-      position: absolute !important;
-      left: 50% !important;
-      transform: translateX(-50%) !important;
-    }
-
-    /* =========================================
-       3. 子元素精细化渲染
-       ========================================= */
-    .social-icon {
-      display: flex !important;
-      align-items: center !important;
-      gap: 5px !important; 
-      color: #ccc !important;
-      text-decoration: none !important;
-      transition: all 0.3s ease !important;
-    }
-
-    #header #header-inner .icon-label {
-      font-family: "Microsoft YaHei", monospace !important;
-      font-size: 0.95rem !important; 
-      font-weight: bold !important;
-      letter-spacing: 1px !important;
-      line-height: 1 !important;
-      transform: translateY(1px) !important;
-    }
-
-    #header #header-inner .colored-svg-icon {
-      display: block !important;
-      width: 22px !important;  
-      height: 22px !important;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-    }
-
-    .social-icon:hover .colored-svg-icon {
-      transform: scale(1.15) rotate(-5deg) !important;
-      filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.8)) !important;
-    }
-    .social-icon:hover .icon-label {
-      color: #00e5ff !important;
-      text-shadow: 0 0 8px rgba(0, 229, 255, 0.5) !important;
-    }
-
-    #header #header-inner .main-nav-link {
-      font-size: 1.1rem !important; 
-      font-weight: bold !important;
-      letter-spacing: 3px !important;
-      color: #fff !important;
-      transition: all 0.3s ease !important;
-    }
-
-    #header #header-inner .main-nav-link:hover {
-      color: #00e5ff !important;
-      text-shadow: 0 0 12px rgba(0, 229, 255, 0.8) !important;
-    }
-
-    /* QQ 气泡坐标锁定 */
-    .qq-hover { position: relative !important; display: flex !important; align-items: center !important; }
-    .qq-hover .qq-tooltip {
-      box-sizing: border-box !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      position: absolute !important;
-      top: 55px !important;
-      right: 0 !important;
-      min-height: 40px !important; 
-      line-height: normal !important; 
-      padding: 6px 15px !important;
-      font-size: 1rem !important; 
-      background: rgba(10, 14, 20, 0.95) !important;
-      border: 1px solid rgba(0, 229, 255, 0.5) !important;
-      border-radius: 6px !important;
-      color: #00e5ff !important;
-      font-family: monospace !important;
-      letter-spacing: 1px !important;
-      white-space: nowrap !important;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-      backdrop-filter: blur(8px) !important;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.8) !important;
-      pointer-events: none !important;
-      z-index: 2000 !important;
-    }
-
-    .qq-hover:hover .qq-tooltip {
-      opacity: 1 !important;
-      visibility: visible !important;
-      transform: translateY(5px) !important;
-    }
-
-    /* =========================================
-       5. 游戏下载下拉菜单模块 (Download Dropdown)
-       ========================================= */
-    .download-dropdown {
-      position: relative !important;
-      cursor: pointer !important;
-    }
-
-    .download-dropdown .cyber-dropdown-content {
-      visibility: hidden;
-      opacity: 0;
-      position: absolute !important;
-      top: 40px !important; /* 根据导航栏高度调整下拉弹出位置 */
-      left: 50% !important;
-      transform: translateX(-50%) translateY(-10px) !important; /* 居中并带一点上浮特效 */
-      background-color: rgba(5, 10, 16, 0.85) !important;
-      min-width: 130px !important;
-      border: 1px solid rgba(0, 229, 255, 0.3) !important;
-      border-radius: 4px !important;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 229, 255, 0.1) !important;
-      backdrop-filter: blur(8px) !important;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-      z-index: 100 !important;
-      display: flex !important;
-      flex-direction: column !important;
-      padding: 5px 0 !important;
-    }
-
-    .download-dropdown:hover .cyber-dropdown-content {
-      visibility: visible !important;
-      opacity: 1 !important;
-      transform: translateX(-50%) translateY(0) !important;
-    }
-
-    .cyber-dropdown-content a {
-      color: #a0b0c0 !important;
-      padding: 12px 18px !important;
-      text-decoration: none !important;
-      font-size: 0.95rem !important;
-      font-family: "Microsoft YaHei", monospace !important;
-      font-weight: bold !important;
-      border-left: 2px solid transparent !important;
-      transition: all 0.2s ease !important;
-      white-space: nowrap !important;
-      display: block !important;
-    }
-
-    .cyber-dropdown-content a:hover {
-      background-color: rgba(0, 229, 255, 0.08) !important;
-      color: #00e5ff !important;
-      border-left: 2px solid #00e5ff !important;
-      letter-spacing: 1px !important;
-    }
-
-    .cyber-dropdown-content a::before {
-      content: ">_ " !important;
-      opacity: 0 !important;
-      color: #00e5ff !important;
-      transition: opacity 0.2s ease !important;
-    }
-
-    .cyber-dropdown-content a:hover::before {
-      opacity: 1 !important;
-    }
-
-    /* =========================================
-       4. 极限防挤压策略 (Extreme Width Protection)
-       ========================================= */
-    @media (max-width: 1400px) { 
-      .icon-label { display: none !important; } 
-      #action-nav { gap: 15px !important; }
-      #social-nav { gap: 15px !important; }
-      #main-nav { gap: 20px !important; }
-      #header #header-inner .main-nav-link { font-size: 1rem !important; letter-spacing: 2px !important; }
-    }
-  </style>
+    <ul class="nav-links" id="nav-links">
+      <li><a class="" href="/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5h6l2 2.2h10V19H3z"/></svg><span>碎片檔案庫</span></a></li><li><a class="" href="/archives/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg><span>病歷庫</span></a></li><li><a class="" href="/categories/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5c1.4-3.8 4-5.6 7.5-5.6s6.1 1.8 7.5 5.6"/></svg><span>部位索引</span></a></li><li><a class="active" href="/tags/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.8 3.4 20.6 9.2M17.9 6.5 8.7 15.7l-3.4.9.9-3.4 9.2-9.2zM4.4 19.6l2.4-2.4"/></svg><span>診斷碼表</span></a></li><li><a class="" href="/about/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11a7 7 0 0 1 14 0v3.2l-1.6 1.2v2.1a1.5 1.5 0 0 1-1.5 1.5H8.1a1.5 1.5 0 0 1-1.5-1.5v-2.1L5 14.2z"/><circle cx="9.2" cy="11.4" r="1.5"/><circle cx="14.8" cy="11.4" r="1.5"/><path d="M11 15.6h2"/></svg><span>施術者</span></a></li>
+    </ul>
+  </div>
 </header>
-        <div class="outer">
-          
-          <!-- 核心逻辑 1：探针检测当前是否处于需要全屏的系统页面 -->
-          
-          
-          <!-- 核心逻辑 2：如果是系统页面，强行摧毁浮动布局并接管 100% 宽度 -->
-          <section id="main" >
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2026" class="archive-year">2026</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2026/08/19/%E7%8E%B0%E5%AE%9E%E7%B2%89%E7%A2%8E%E7%97%87%E5%80%99%E7%BE%A4%EF%BC%9A%E7%BA%AA%E5%BF%B5%E6%88%91%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%AC%AC%E4%B8%80%E4%BD%8D%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C%E4%BC%99%E4%BC%B4/" class="archive-article-date">
-  <time class="dt-published" datetime="2026-08-18T19:16:00.000Z" itemprop="datePublished">8月 19</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2026/08/19/%E7%8E%B0%E5%AE%9E%E7%B2%89%E7%A2%8E%E7%97%87%E5%80%99%E7%BE%A4%EF%BC%9A%E7%BA%AA%E5%BF%B5%E6%88%91%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%AC%AC%E4%B8%80%E4%BD%8D%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C%E4%BC%99%E4%BC%B4/">现实粉碎症候群：纪念我真正的第一位游戏制作伙伴</a>
-    </h1>
+
   
 
-    </header>
+
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon-track" style="animation-duration:34s">
+    <span class="ribbon-run">⚠ 危険地帯 ⚠ 立ち入り禁止 · 地雷系 · JIRAI-KEI · 取り扱い注意 · 触らないで · DO NOT TOUCH · ⚠ 危険地帯 ⚠ 立ち入り禁止 · 地雷系 · JIRAI-KEI · 取り扱い注意 · 触らないで · DO NOT TOUCH · </span>
+    <span class="ribbon-run">⚠ 危険地帯 ⚠ 立ち入り禁止 · 地雷系 · JIRAI-KEI · 取り扱い注意 · 触らないで · DO NOT TOUCH · ⚠ 危険地帯 ⚠ 立ち入り禁止 · 地雷系 · JIRAI-KEI · 取り扱い注意 · 触らないで · DO NOT TOUCH · </span>
   </div>
-</article>
-  
-  
-    </div></section>
-  
+</div>
 
 
-</section>
-          
-          <!-- 核心逻辑 3：仅当“不是系统页面”时，才允许侧边栏挂载 -->
-          
-            <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E5%BC%80%E6%88%98%E4%B9%A6/">公开战书</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/">日常生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a></li></ul>
-    </div>
-  </div>
+
+<div class="halo-layer" aria-hidden="true"><i></i></div>
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meta/" rel="tag">Meta</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ai%E5%AF%B9%E8%AF%9D/" rel="tag">ai对话</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%B2%E5%AD%A6/" rel="tag">哲学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E6%83%85/" rel="tag">感情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%98%E4%B9%A6/" rel="tag">战书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E5%B8%B8/" rel="tag">日常</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%95%99%E5%BF%B5/" rel="tag">留念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%84%91%E7%A7%91%E5%AD%A6/" rel="tag">脑科学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/" rel="tag">视觉小说</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
-    </div>
-  </div>
+<div class="deco"><span>†</span></div>
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/08/">八月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/07/">七月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/05/">五月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">二月 2026</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2026/08/19/%E7%8E%B0%E5%AE%9E%E7%B2%89%E7%A2%8E%E7%97%87%E5%80%99%E7%BE%A4%EF%BC%9A%E7%BA%AA%E5%BF%B5%E6%88%91%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%AC%AC%E4%B8%80%E4%BD%8D%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C%E4%BC%99%E4%BC%B4/">现实粉碎症候群：纪念我真正的第一位游戏制作伙伴</a>
-          </li>
-        
-          <li>
-            <a href="/2026/08/17/%E9%80%80%E5%87%BA%E8%B5%9B%E5%8D%9A%E8%A7%92%E6%96%97%E5%9C%BA/">退出赛博角斗场</a>
-          </li>
-        
-          <li>
-            <a href="/2026/08/04/%E5%AF%B9%E6%B7%B1%E5%BA%A6%E6%B2%9F%E9%80%9A%E7%9A%84%E6%8E%A2%E7%B4%A2%EF%BC%88ai%E5%AF%B9%E8%AF%9D%E6%97%A5%E5%B8%B82)/">对深度沟通的探索（ai对话日常2）</a>
-          </li>
-        
-          <li>
-            <a href="/2026/07/25/%E5%85%AC%E5%BC%80%E6%88%98%E4%B9%A6/">公开战书</a>
-          </li>
-        
-          <li>
-            <a href="/2026/07/23/%E5%AF%B9%E6%97%A0%E6%84%8F%E8%AF%86%E7%9A%84%E6%8E%A2%E7%B4%A2%EF%BC%88ai%E5%AF%B9%E8%AF%9D%E6%97%A5%E5%B8%B81%EF%BC%89/">对无意识的探索（ai对话日常1）</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
+<aside class="hud" id="hud" aria-hidden="true">
+  <div class="hud-line top"></div>
+  <div class="hud-pct"><span id="hud-pct">0</span><em>%</em></div>
+  <div class="hud-vert">記 録 中</div>
+  <div class="hud-bar"><i id="hud-fill"></i></div>
+  <div class="hud-line bottom"></div>
 </aside>
-          
-
-        </div>
-        <footer id="footer">
-	
-		<div class="outer">
-			<div id="footer-info" class="inner">
-				
-      &copy; 2026 お尼酱~<br>
-						Powered by <a href="https://hexo.io/" target="_blank">Hexo</a><br>
-
-							<!-- 下面是新增的不蒜子访问统计代码 -->
-							<script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-							<span id="busuanzi_container_site_pv">
-								本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
-							</span>
-							<span style="margin: 0 5px;">|</span>
-							<span id="busuanzi_container_site_uv">
-								本站访客数 <span id="busuanzi_value_site_uv"></span> 人
-							</span>
-
-						</div>
-		</div>
-	</footer>
-      </div>
-      <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">首页</a>
-  
-    <a href="/categories" class="mobile-nav-link">分类</a>
-  
-    <a href="/about" class="mobile-nav-link">关于</a>
-  
-</nav>
-      
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
 
 
 
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+<div class="toast" id="jirai-toast" role="status" data-once="true">
+  <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.2 21 19.8H3z"/><path d="M12 10v4.2"/><circle cx="12" cy="17" r=".9" fill="currentColor" stroke="none"/></svg>
+  <span class="toast-text">ようこそ、ここは地雷原です。踩到不负责。</span>
+  <button class="toast-x" id="toast-x" aria-label="关闭"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <i class="toast-timer"></i>
+</div>
 
 
+<div class="med-cursor" id="med-cursor" aria-hidden="true">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="10.4" fill="none" stroke="currentColor" stroke-width="1.1" stroke-dasharray="3 4" opacity=".55"/>
+    <path d="M12 4.6v14.8M4.6 12h14.8" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+  </svg>
+</div>
 
 
-<script src="/js/script.js"></script>
+  <main class="wrap">
 
-
-
-
-
-      <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">首页</a>
-  
-    <a href="/categories" class="mobile-nav-link">分类</a>
-  
-    <a href="/about" class="mobile-nav-link">关于</a>
-  
-</nav>
-      
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-      
-
-
+    
+    <div class="curtain" aria-hidden="true">
+      <span class="curtain-line"></span>
+      <span class="curtain-text">と て も い た い の</span>
+      <span class="curtain-line"></span>
     </div>
+    
+
+    
+
+
+  <div class="layout">
+    <div class="main-col">
+      <div class="cabinet-head">
+        <h1 class="ch-title">日常 <span>†</span></h1>
+        <div class="ch-meta">
+          診斷碼<br>
+          1 紙
+        </div>
+      </div>
+
+      <div class="cabinet">
+        
+          
+            <a class="cab-row" href="/2026/08/19/%E7%8E%B0%E5%AE%9E%E7%B2%89%E7%A2%8E%E7%97%87%E5%80%99%E7%BE%A4%EF%BC%9A%E7%BA%AA%E5%BF%B5%E6%88%91%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%AC%AC%E4%B8%80%E4%BD%8D%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C%E4%BC%99%E4%BC%B4/">
+              <span class="cab-no">A-009</span>
+              <span class="cab-date">2026.08.19</span>
+              <span class="cab-title">现实粉碎症候群：纪念我真正的第一位游戏制作伙伴</span>
+              <span class="cab-type">碎片</span>
+            </a>
+          
+        
+      </div>
+
+      
+    </div>
+
+    <aside class="side">
+      <div class="widget">
+        <div class="widget-title"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.8 3.4 20.6 9.2M17.9 6.5 8.7 15.7l-3.4.9.9-3.4 9.2-9.2zM4.4 19.6l2.4-2.4"/></svg><span>全部代碼</span></div>
+        <div class="tag-cloud">
+          
+            <a href="/tags/Meta/">
+              Meta<span class="count"> · 1</span>
+            </a>
+          
+            <a href="/tags/ai%E5%AF%B9%E8%AF%9D/">
+              ai对话<span class="count"> · 2</span>
+            </a>
+          
+            <a href="/tags/%E5%93%B2%E5%AD%A6/">
+              哲学<span class="count"> · 2</span>
+            </a>
+          
+            <a href="/tags/%E6%84%9F%E6%83%85/">
+              感情<span class="count"> · 1</span>
+            </a>
+          
+            <a href="/tags/%E6%88%98%E4%B9%A6/">
+              战书<span class="count"> · 1</span>
+            </a>
+          
+            <a href="/tags/%E6%97%A5%E5%B8%B8/" style=&#34;border-color:var(--seal);color:#fff;background:rgba(192,57,43,.18)&#34;>
+              日常<span class="count"> · 1</span>
+            </a>
+          
+            <a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">
+              游戏开发<span class="count"> · 1</span>
+            </a>
+          
+            <a href="/tags/%E7%95%99%E5%BF%B5/">
+              留念<span class="count"> · 1</span>
+            </a>
+          
+            <a href="/tags/%E8%84%91%E7%A7%91%E5%AD%A6/">
+              脑科学<span class="count"> · 2</span>
+            </a>
+          
+            <a href="/tags/%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/">
+              视觉小说<span class="count"> · 1</span>
+            </a>
+          
+            <a href="/tags/%E9%9A%8F%E7%AC%94/">
+              随笔<span class="count"> · 3</span>
+            </a>
+          
+        </div>
+      </div>
+      <div class="widget">
+        <div class="widget-title"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9z"/><path d="M18.6 3.2l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg><span>近期收錄</span></div>
+        <ul class="widget-list">
+          
+            <li>
+              <a href="/2026/08/19/%E7%8E%B0%E5%AE%9E%E7%B2%89%E7%A2%8E%E7%97%87%E5%80%99%E7%BE%A4%EF%BC%9A%E7%BA%AA%E5%BF%B5%E6%88%91%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%AC%AC%E4%B8%80%E4%BD%8D%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C%E4%BC%99%E4%BC%B4/">现实粉碎症候群：纪念我真正的第一位游戏制作伙伴</a>
+              <span class="n">A-009</span>
+            </li>
+          
+            <li>
+              <a href="/2026/08/17/%E9%80%80%E5%87%BA%E8%B5%9B%E5%8D%9A%E8%A7%92%E6%96%97%E5%9C%BA/">退出赛博角斗场</a>
+              <span class="n">A-008</span>
+            </li>
+          
+            <li>
+              <a href="/2026/08/04/%E5%AF%B9%E6%B7%B1%E5%BA%A6%E6%B2%9F%E9%80%9A%E7%9A%84%E6%8E%A2%E7%B4%A2%EF%BC%88ai%E5%AF%B9%E8%AF%9D%E6%97%A5%E5%B8%B82)/">对深度沟通的探索（ai对话日常2）</a>
+              <span class="n">A-007</span>
+            </li>
+          
+            <li>
+              <a href="/2026/07/25/%E5%85%AC%E5%BC%80%E6%88%98%E4%B9%A6/">公开战书</a>
+              <span class="n">A-006</span>
+            </li>
+          
+            <li>
+              <a href="/2026/07/23/%E5%AF%B9%E6%97%A0%E6%84%8F%E8%AF%86%E7%9A%84%E6%8E%A2%E7%B4%A2%EF%BC%88ai%E5%AF%B9%E8%AF%9D%E6%97%A5%E5%B8%B81%EF%BC%89/">对无意识的探索（ai对话日常1）</a>
+              <span class="n">A-005</span>
+            </li>
+          
+            <li>
+              <a href="/2026/05/10/%E7%A5%9E%E7%BB%8F%E9%80%92%E8%B4%A8%E7%9B%91%E6%B5%8B%E6%97%A5%E5%B8%B8_03/">日常切片_03</a>
+              <span class="n">A-004</span>
+            </li>
+          
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+
+
+
+    
+    <div class="heart-beat" aria-hidden="true">
+      <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.8s-7.8-4.8-7.8-9.8A4.5 4.5 0 0 1 12 7.9a4.5 4.5 0 0 1 7.8 3.1c0 5-7.8 9.8-7.8 9.8z"/><path d="M12 7.9v3.3l-2 1.6 2.6 1.6"/></svg>
+    </div>
+    
+
+  </main>
+
   
+<footer class="footer">
+  <div class="footer-warn" aria-hidden="true">
+    <span>取り扱い注意</span>
+  </div>
+  <svg class="foot-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12 21s-8-4.9-8-10.2A4.8 4.8 0 0 1 12 7.6a4.8 4.8 0 0 1 8 3.2C20 16.1 12 21 12 21z"/>
+  </svg>
+  <div>© 2026 お尼酱~</div>
+  <div style="margin-top:8px">
+    <span>運轉於 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a></span>
+    <span class="foot-sep">·</span>
+    <span>裝訂 <span class="theme-name">jirai</span> 地雷系</span>
+    
+  </div>
+  <div style="margin-top:12px;opacity:.55;font-family:var(--font-mono);font-size:11px;letter-spacing:.18em">
+    EST. 2026 — 無訊號，僅雜訊
+  </div>
+</footer>
+
+<div class="progress" id="read-progress"></div>
+
+<button class="to-top" id="to-top" aria-label="歸位">
+  <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19.5V5.2"/><path d="M6 11.2 12 5.2l6 6"/></svg>
+</button>
+
+
+<button class="variant-btn" id="jirai-variant" type="button" aria-pressed="false"
+        title="切換簡體 / 繁體（Alt+V）">
+  <span>繁體</span><small>ALT+V</small>
+</button>
+<script type="application/json" id="jirai-variant-map">{"p":{},"c":{"开":"開","战":"戰","书":"書","寻":"尋","级":"級","来":"來","场":"場","时":"時","个":"個","从":"從","发":"發","游":"遊","戏":"戲","并":"並","过":"過","审":"審","后":"後","给":"給","数":"數","据":"據","间":"間","凭":"憑","绝":"絕","对":"對","规":"規","则":"則","纯":"純","协":"協","运":"運","营":"營","听":"聽","论":"論","怀":"懷","终":"終","关":"關","胜":"勝","赌":"賭","愿":"願","输":"輸","败":"敗","无":"無","条":"條","帮":"幫","项":"項","没":"沒","资":"資","历":"歷","视":"視","链":"鏈","实":"實","说":"說","话":"話","吗":"嗎","沟":"溝","问":"問","双":"雙","观":"觀","点":"點","题":"題","冲":"衝","议":"議","为":"為","确":"確","认":"認","谁":"誰","错":"錯","质":"質","称":"稱","现":"現","际":"際","达":"達","这":"這","属":"屬","范":"範","经":"經","离":"離","断":"斷","准":"準","诉":"訴","触":"觸","学":"學","逻":"邏","谈":"談","机":"機","制":"製","几":"幾","觉":"覺","锐":"銳","细":"細","节":"節","轻":"輕","误":"誤","区":"區","进":"進","证":"證","层":"層","够":"夠","齐":"齊","种":"種","设":"設","计":"計","况":"況","复":"複","杂":"雜","罗":"羅","马":"馬","径":"徑","风":"風","险":"險","难":"難","统":"統","将":"將","补":"補","构":"構","会":"會","变":"變","单":"單","绪":"緒","权":"權","夺":"奪","随":"隨","见":"見","隐":"隱","动":"動","锋":"鋒","决":"決","须":"須","赢":"贏","满":"滿","系":"係","当":"當","识":"識","转":"轉","换":"換","弃":"棄","体":"體","华":"華","让":"讓","术":"術","语":"語","极":"極","标":"標","谓":"謂","讨":"討","抛":"拋","垒":"壘","态":"態","虽":"雖","执":"執","词":"詞","着":"著","仅":"僅","筛":"篩","选":"選","优":"優","脱":"脫","们":"們","应":"應","务":"務","继":"繼","续":"續","驳":"駁","别":"別","总":"總","结":"結","许":"許","记":"記","伤":"傷","维":"維","护":"護","击":"擊","恶":"惡","脑":"腦","读":"讀","还":"還","该":"該","闲":"閒","线":"線","领":"領","图":"圖","监":"監","预":"預","剑":"劍","气":"氣","带":"帶","强":"強","汇":"匯","释":"釋","长":"長","评":"評","旧":"舊","里":"裡","汉":"漢","测":"測","顾":"顧","贯":"貫","暂":"暫","键":"鍵","刚":"剛","闪":"閃","坏":"壞","滤":"濾","彻":"徹","写":"寫","边":"邊","缓":"緩","择":"擇","静":"靜","处":"處","样":"樣","响":"響","损":"損","头":"頭","愤":"憤","状":"狀","办":"辦","诚":"誠","类":"類","压":"壓","旷":"曠","担":"擔","忧":"憂","启":"啟","志":"誌","虚":"虛","闭":"閉","负":"負","责":"責","额":"額","叶":"葉","远":"遠","赖":"賴","忆":"憶","车":"車","温":"溫","脸":"臉","剧":"劇","试":"試","电":"電","声":"聲","简":"簡","顶":"頂","雾":"霧","导":"導","恋":"戀","紧":"緊","欢":"歡","娱":"娛","乐":"樂","爱":"愛","习":"習","惯":"慣","义":"義","叹":"嘆","秘":"祕","潜":"潛","疗":"療","码":"碼","灾":"災","画":"畫","调":"調","独":"獨","综":"綜","围":"圍","绕":"繞","残":"殘","梦":"夢","师":"師","干":"幹","块":"塊","渐":"漸","针":"針","泪":"淚","诸":"諸","户":"戶","墙":"牆","阶":"階","拟":"擬","窥":"窺","装":"裝","环":"環","笼":"籠","团":"團","频":"頻","采":"採","蓝":"藍","参":"參","约":"約","验":"驗","纪":"紀","毕":"畢","联":"聯","络":"絡","录":"錄","尘":"塵","热":"熱","挂":"掛","鸡":"雞","闹":"鬧","灵":"靈","赛":"賽","弹":"彈","轨":"軌","迹":"跡","传":"傳","网":"網","适":"適","缝":"縫","尔":"爾","兴":"興","脚":"腳","谢":"謝","儿":"兒","号":"號","请":"請","郁":"鬱","药":"藥","尽":"盡","获":"獲","郑":"鄭","废":"廢","扫":"掃","递":"遞","劲":"勁","悦":"悅","骄":"驕","虑":"慮","纵":"縱","叙":"敘","乱":"亂","烂":"爛","怜":"憐","东":"東","费":"費","扩":"擴","医":"醫","麦":"麥","笔":"筆","摇":"搖","纠":"糾","缠":"纏","腻":"膩","烦":"煩","连":"連","懒":"懶","缩":"縮","诞":"誕","顿":"頓","载":"載","银":"銀","谋":"謀","浅":"淺","韩":"韓","欲":"慾","灭":"滅","赞":"讚","谅":"諒","显":"顯","阳":"陽","贝":"貝","钟":"鐘","辅":"輔","备":"備","碍":"礙","镜":"鏡","骤":"驟","报":"報","迟":"遲","惧":"懼","检":"檢","跃":"躍","浓":"濃","门":"門","讲":"講","陈":"陳","货":"貨","脉":"脈","纱":"紗","众":"眾","盘":"盤","厅":"廳","禅":"禪","奋":"奮","锁":"鎖","顺":"順","诱":"誘","牵":"牽","敌":"敵","队":"隊","员":"員","坚":"堅","练":"練","鸣":"鳴","骂":"罵","艺":"藝","畅":"暢","钱":"錢","课":"課","组":"組","织":"織","毁":"毀","济":"濟","辈":"輩","驱":"驅","贵":"貴","训":"訓","雇":"僱","势":"勢","壳":"殼","杀":"殺","迈":"邁","侧":"側","赏":"賞","撑":"撐","劳":"勞","创":"創","馈":"饋","饰":"飾","钢":"鋼","铁":"鐵","躯":"軀","洁":"潔","础":"礎","聪":"聰","稳":"穩","奖":"獎","锻":"鍛","摆":"擺","厌":"厭","软":"軟","荣":"榮","译":"譯","积":"積","缘":"緣","销":"銷","赚":"賺","阐":"闡","润":"潤","舍":"捨","编":"編"}}</script>
+<script src="/js/jirai-variant.js" defer></script>
+
+
+<script src="/js/jirai.js" defer></script>
+<script src="/js/jirai-deco.js" defer></script>
+<script src="/js/jirai-boom.js" defer></script>
+<script>
+  window.__JIRAI__ = {
+    scanline: true,
+    lace: true,
+    hearts: true,
+    cursorGlitter: true,
+    medCross: true,
+    hud: true,
+    toast: true,
+    boot: true,
+    particles: true,
+    rail: true,
+    ambient: true,
+    danger: true,
+    mark: '†'
+  };
+</script>
+
 </body>
 </html>
