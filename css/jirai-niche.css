@@ -156,7 +156,7 @@ body.no-paper::after { display: none; }
 .dossier {
   position: relative;
   padding-left: 56px;   /* 給直排檔號書脊留位置 */
-  min-height: 104px;    /* 保證書脊不會溢出到正文 */
+  min-height: 96px;     /* 保證書脊不會溢出到正文 */
   border-bottom: 1px dashed rgba(46, 32, 51, .9);
   margin-bottom: 26px;
   padding-bottom: 20px;
@@ -164,7 +164,7 @@ body.no-paper::after { display: none; }
 .dossier-spine {
   position: absolute;
   left: 0; top: 4px;
-  height: 104px;
+  height: 96px;
   width: 34px;
   writing-mode: vertical-rl;
   text-orientation: upright;

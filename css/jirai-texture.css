@@ -1,0 +1,290 @@
+/* ============================================================
+   jirai-texture — 質感層
+   蕾絲畫框 / 直排側帶 / 心電監護條 / 複寫紙網紋 / 繃帶分隔 / 墨滲
+   ============================================================ */
+
+/* ---------------------------------------------- 全屏蕾絲畫框 */
+.laceframe {
+  position: fixed;
+  inset: 0;
+  z-index: 9991;
+  pointer-events: none;
+}
+/* 四邊蕾絲條 */
+.laceframe i {
+  position: absolute;
+  background-repeat: repeat;
+  opacity: .5;
+}
+.laceframe .lf-top,
+.laceframe .lf-bottom {
+  left: 0; right: 0;
+  height: 13px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='13'%3E%3Cpath d='M0 0h28v1.6c-2.3 0-4.2 2-4.2 4.5s1.9 4.5 4.2 4.5V13H0v-2.4c2.3 0 4.2-2 4.2-4.5S2.3 1.6 0 1.6z' fill='%23ff2d78' fill-opacity='0.20'/%3E%3Ccircle cx='14' cy='6.1' r='1.1' fill='%23ff2d78' fill-opacity='0.42'/%3E%3C/svg%3E");
+  background-size: 28px 13px;
+}
+.laceframe .lf-top { top: 0; }
+.laceframe .lf-bottom { bottom: 0; transform: scaleY(-1); }
+.laceframe .lf-left,
+.laceframe .lf-right {
+  top: 0; bottom: 0;
+  width: 13px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='28'%3E%3Cpath d='M0 0v28h1.6c0-2.3 2-4.2 4.5-4.2s4.5 1.9 4.5 4.2H13V0h-2.4c0 2.3-2 4.2-4.5 4.2S1.6 2.3 1.6 0z' fill='%23ff2d78' fill-opacity='0.20'/%3E%3Ccircle cx='6.1' cy='14' r='1.1' fill='%23ff2d78' fill-opacity='0.42'/%3E%3C/svg%3E");
+  background-size: 13px 28px;
+}
+.laceframe .lf-left { left: 0; }
+.laceframe .lf-right { right: 0; transform: scaleX(-1); }
+
+/* 四角花飾 */
+.laceframe b {
+  position: absolute;
+  width: 74px; height: 74px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: .72;
+  filter: drop-shadow(0 0 6px rgba(255, 45, 120, .35));
+}
+.laceframe b::after {
+  content: '';
+  position: absolute;
+  width: 9px; height: 9px;
+  background: var(--pink);
+  box-shadow: 0 0 8px rgba(255, 45, 120, .9);
+  transform: rotate(45deg);
+}
+.laceframe .lf-tl { top: 8px; left: 8px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='74' height='74' viewBox='0 0 74 74'%3E%3Cg fill='none' stroke='%23ff2d78' stroke-opacity='0.55' stroke-width='1.2'%3E%3Cpath d='M2 42a40 40 0 0 1 40-40M2 60A58 58 0 0 1 60 2M2 72A70 70 0 0 1 72 2'/%3E%3Cpath d='M8 30c6 0 10-4 10-10 0 6 4 10 10 10-6 0-10 4-10 10 0-6-4-10-10-10z' fill='%23ff2d78' fill-opacity='0.3' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+}
+.laceframe .lf-tl::after { top: 0; left: 0; }
+.laceframe .lf-tr { top: 8px; right: 8px; transform: scaleX(-1);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='74' height='74' viewBox='0 0 74 74'%3E%3Cg fill='none' stroke='%23ff2d78' stroke-opacity='0.55' stroke-width='1.2'%3E%3Cpath d='M2 42a40 40 0 0 1 40-40M2 60A58 58 0 0 1 60 2M2 72A70 70 0 0 1 72 2'/%3E%3Cpath d='M8 30c6 0 10-4 10-10 0 6 4 10 10 10-6 0-10 4-10 10 0-6-4-10-10-10z' fill='%23ff2d78' fill-opacity='0.3' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+}
+.laceframe .lf-tr::after { top: 0; right: 0; }
+.laceframe .lf-bl { bottom: 8px; left: 8px; transform: scaleY(-1);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='74' height='74' viewBox='0 0 74 74'%3E%3Cg fill='none' stroke='%23ff2d78' stroke-opacity='0.55' stroke-width='1.2'%3E%3Cpath d='M2 42a40 40 0 0 1 40-40M2 60A58 58 0 0 1 60 2M2 72A70 70 0 0 1 72 2'/%3E%3Cpath d='M8 30c6 0 10-4 10-10 0 6 4 10 10 10-6 0-10 4-10 10 0-6-4-10-10-10z' fill='%23ff2d78' fill-opacity='0.3' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+}
+.laceframe .lf-bl::after { bottom: 0; left: 0; }
+.laceframe .lf-br { bottom: 8px; right: 8px; transform: scale(-1, -1);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='74' height='74' viewBox='0 0 74 74'%3E%3Cg fill='none' stroke='%23ff2d78' stroke-opacity='0.55' stroke-width='1.2'%3E%3Cpath d='M2 42a40 40 0 0 1 40-40M2 60A58 58 0 0 1 60 2M2 72A70 70 0 0 1 72 2'/%3E%3Cpath d='M8 30c6 0 10-4 10-10 0 6 4 10 10 10-6 0-10 4-10 10 0-6-4-10-10-10z' fill='%23ff2d78' fill-opacity='0.3' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+}
+.laceframe .lf-br::after { bottom: 0; right: 0; }
+
+body.no-laceframe .laceframe { display: none; }
+
+/* ---------------------------------------------- 直排側帶 */
+.sidetab {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 898;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 5px 16px 3px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  color: rgba(255, 122, 184, .6);
+  background: linear-gradient(180deg, transparent, rgba(10, 6, 13, .85) 18%, rgba(10, 6, 13, .85) 82%, transparent);
+  border-right: 1px solid rgba(255, 45, 120, .18);
+  pointer-events: none;
+  user-select: none;
+}
+.sidetab::before {
+  content: '✚';
+  color: var(--pink);
+  font-size: 12px;
+  writing-mode: horizontal-tb;
+  text-shadow: 0 0 10px rgba(255, 45, 120, .8);
+  animation: heartbeat 2.6s ease-in-out infinite;
+}
+.sidetab::after {
+  content: '';
+  width: 1px;
+  height: 46px;
+  background: linear-gradient(180deg, var(--pink), transparent);
+  writing-mode: horizontal-tb;
+}
+
+/* ---------------------------------------------- 心電監護條 */
+.ecg-strip {
+  position: relative;
+  margin: 34px 0;
+  height: 56px;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 45, 120, .16);
+  border-bottom: 1px solid rgba(255, 45, 120, .16);
+  background:
+    linear-gradient(180deg, rgba(255, 45, 120, .04), transparent 60%),
+    repeating-linear-gradient(90deg, rgba(255, 45, 120, .09) 0 1px, transparent 1px 34px);
+}
+.ecg-strip svg {
+  position: absolute;
+  left: 0; top: 14px;
+  width: 200%;
+  height: 100%;
+  animation: ecg-run 7s linear infinite;
+}
+.ecg-strip svg path {
+  fill: none;
+  stroke: var(--pink);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 5px rgba(255, 45, 120, .85));
+}
+.ecg-strip .ecg-lead {
+  position: absolute;
+  right: 8px; bottom: 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .22em;
+  color: rgba(255, 122, 184, .5);
+}
+.ecg-strip .ecg-bpm {
+  position: absolute;
+  left: 8px; bottom: 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .18em;
+  color: var(--pink);
+  opacity: .8;
+  text-shadow: 0 0 8px rgba(255, 45, 120, .7);
+}
+@keyframes ecg-run {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ---------------------------------------------- 複寫紙網紋 */
+body.crosshatch .card,
+body.crosshatch .widget,
+body.crosshatch .term {
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255, 45, 120, .028) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(-45deg, rgba(255, 45, 120, .022) 0 1px, transparent 1px 9px),
+    linear-gradient(180deg, var(--bg-card), var(--bg-soft));
+}
+body.crosshatch .cabinet {
+  background-image: repeating-linear-gradient(0deg, rgba(255, 45, 120, .022) 0 1px, transparent 1px 6px);
+}
+/* 檔案列加一格一格的格線感 */
+body.crosshatch .cab-row:nth-child(odd) {
+  background-image: linear-gradient(90deg, rgba(255, 45, 120, .022), transparent 40%);
+}
+
+/* ---------------------------------------------- 繃帶分隔（<hr>） */
+body.bandage-hr .post-body hr {
+  height: 26px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='26' viewBox='0 0 88 26'%3E%3Cg%3E%3Crect x='0' y='8' width='88' height='10' rx='5' fill='%23ff2d78' fill-opacity='0.07'/%3E%3Cg fill='%23ff2d78' fill-opacity='0.34'%3E%3Crect x='6' y='10' width='4' height='6' rx='1'/%3E%3Crect x='15' y='10' width='4' height='6' rx='1'/%3E%3Crect x='24' y='10' width='4' height='6' rx='1'/%3E%3Crect x='60' y='10' width='4' height='6' rx='1'/%3E%3Crect x='69' y='10' width='4' height='6' rx='1'/%3E%3Crect x='78' y='10' width='4' height='6' rx='1'/%3E%3C/g%3E%3Cg stroke='%23ff2d78' stroke-opacity='0.5' stroke-width='1.1' fill='none'%3E%3Ccircle cx='44' cy='13' r='6'/%3E%3Cpath d='M44 7v12M38 13h12'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: auto 26px;
+}
+
+/* ---------------------------------------------- 標題墨滲 */
+.ink {
+  position: relative;
+  display: inline-block;
+}
+.ink::after {
+  content: '';
+  position: absolute;
+  left: -4px; right: -4px; bottom: -.12em;
+  height: .13em;
+  background: linear-gradient(90deg, transparent, rgba(255, 45, 120, .7) 18%, rgba(255, 45, 120, .7) 82%, transparent);
+  filter: blur(1.4px);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform .5s cubic-bezier(.16, 1, .3, 1);
+}
+.ink.show::after { transform: scaleX(1); }
+
+/* 名字與卷宗標題的墨滲（懸停觸發） */
+.dossier h1 { position: relative; }
+.dossier h1::before {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--pink), rgba(255, 45, 120, 0));
+  filter: blur(.6px);
+  transition: width .55s cubic-bezier(.16, 1, .3, 1);
+}
+.dossier:hover h1::before { width: 62%; }
+
+/* ---------------------------------------------- 朱印多態 */
+/* 朱印內容固定三行：狀態 / 檔號 / 附註，避免長文案撐破方框 */
+.seal-mark {
+  width: 86px;
+  height: 86px;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: .04em;
+  flex-direction: column;
+}
+.seal-mark .seal-no {
+  display: block;
+  margin: 1px 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0;
+  opacity: .85;
+}
+.seal-mark .seal-sub {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .08em;
+  opacity: .75;
+}
+/* 未完成：朱印偏轉、缺角 */
+.seal-mark.seal-draft {
+  border-style: dashed;
+  opacity: .58;
+  transform: rotate(-13deg);
+}
+/* 私密：雙框 */
+.seal-mark.seal-private::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid var(--seal-soft);
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------- 卡片四角蕾絲角標 */
+body.crosshatch .card::before,
+.widget::before { transition: color .25s ease; }
+
+/* 分類列的小十字 */
+.term .term-count::before {
+  content: '✚ ';
+  font-size: 9px;
+  opacity: .55;
+}
+
+/* ---------------------------------------------- 響應式 */
+@media (max-width: 1400px) {
+  .sidetab { display: none; }
+}
+@media (max-width: 900px) {
+  .laceframe b { width: 52px; height: 52px; }
+  .laceframe i { opacity: .34; }
+  .ecg-strip { height: 50px; margin: 26px 0; }
+  .ecg-strip svg { top: 12px; }
+}
+@media (max-width: 720px) {
+  .laceframe b { display: none; }
+  .laceframe .lf-top, .laceframe .lf-bottom { height: 9px; background-size: 20px 9px; }
+  .laceframe .lf-left, .laceframe .lf-right { width: 9px; background-size: 9px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ecg-strip svg { animation: none; }
+  .sidetab::before { animation: none; }
+  .ink::after { transition: none; }
+}
