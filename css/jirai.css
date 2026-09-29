@@ -20,9 +20,11 @@
   --line-pink: rgba(255, 45, 120, 0.35);
   --glow-pink: 0 0 6px rgba(255, 45, 120, 0.55), 0 0 18px rgba(255, 45, 120, 0.28);
   --glow-soft: 0 0 12px rgba(255, 45, 120, 0.18);
-  --font-head: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'SimSun', 'Yu Mincho', 'Times New Roman', serif;
-  --font-body: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Cascadia Code', Consolas, 'Courier New', monospace;
+  /* 系统字体栈：中文用衬线（宋体系），拉丁优先 Georgia/Times，
+     不再依赖外部 Web 字体（详见 _config.yml 的 webfont 说明） */
+  --font-head: Georgia, 'Times New Roman', 'Songti SC', 'Source Han Serif SC', 'Noto Serif CJK SC', SimSun, 'Yu Mincho', serif;
+  --font-body: system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans', 'Noto Sans CJK SC', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'JetBrains Mono', Consolas, 'Courier New', monospace;
   --radius: 14px;
   --nav-h: 62px;
   --maxw: 1120px;
