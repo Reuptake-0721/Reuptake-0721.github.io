@@ -405,7 +405,26 @@
   transform: rotate(-.5deg);
   transition: transform .3s ease, box-shadow .3s ease;
 }
-.post-body img.jirai-photo:nth-of-type(even) { transform: rotate(.6deg); }
+/* <picture> 会成为 <img> 的父元素，导致 img:nth-of-type(even) 永远选中第一张、
+   交替倾斜失效。改为按 <picture> 计数。*/
+.post-body picture { display: block; }
+/* 交替倾斜：<picture> 已被解包为 #post-body 的直接子元素，
+   因此这里的 :nth-of-type 能正确按顺序取奇偶。 */
+.post-body picture:nth-of-type(odd) img.jirai-photo { transform: rotate(-.5deg); }
+.post-body picture:nth-of-type(even) img.jirai-photo { transform: rotate(.6deg); }
+/* 行内小图标/表情：图片后加 {.inline-ico} 即可取消相框与居中 */
+.post-body img.jirai-photo.inline-ico {
+  display: inline-block;
+  width: auto;
+  max-height: 1.35em;
+  margin: 0 .25em;
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  transform: none;
+  vertical-align: -.28em;
+}
 .post-body img.jirai-photo:hover {
   transform: rotate(0deg) scale(1.012);
   box-shadow:
