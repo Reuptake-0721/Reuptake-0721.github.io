@@ -149,8 +149,10 @@
     });
   }
 
-  /* ---------------------------------------------- 卡片四角十字标记 */
-  if (!reduce) {
+  /* ---------------------------------------------- 卡片四角十字标记
+     與蕾絲畫框、卡片左側霓虹條、懸停星屑功能重疊，預設關閉；
+     需要時把 window.__JIRAI__.cornerMarks 設為 true 再開。 */
+  if (cfg.cornerMarks && !reduce) {
     var marks = ['tl', 'tr', 'bl', 'br'];
     doc.querySelectorAll('.card, .widget, .term').forEach(function (el) {
       if (el.dataset.cornered) return;

@@ -55,6 +55,9 @@
   
 <link rel="stylesheet" href="/css/jirai-search.css">
 
+  
+<link rel="stylesheet" href="/css/jirai-toolbar.css">
+
 </head>
 <body class=" ">
 
@@ -113,19 +116,6 @@
 
 
 
-
-<button class="ambient" id="jirai-ambient" type="button"
-        aria-pressed="false"
-        data-volume="0.16"
-        data-style="music-box"
-        data-bpm="52"
-        data-autoplay="false"
-        title="氛围音（Web Audio 合成）">
-  <span class="amb-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-  <span class="amb-label">AMBIENT</span>
-</button>
-
-
   
 
 
@@ -141,8 +131,6 @@
 </div>
 
 
-
-<div class="sidetab" aria-hidden="true">地雷注意 · 取り扱い注意 · 触らないで</div>
 
 
 
@@ -229,11 +217,6 @@
   
 
 
-<button class="search-btn" id="jirai-search-btn" type="button" aria-label="檢索">
-  <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6.5h12M8 12h12M8 17.5h12"/><circle cx="4.4" cy="6.5" r="1.1"/><circle cx="4.4" cy="12" r="1.1"/><circle cx="4.4" cy="17.5" r="1.1"/></svg>
-  <span>檢索</span>
-  <kbd>Ctrl K</kbd>
-</button>
 
 <div class="search-mask" id="jirai-search" role="dialog" aria-modal="true" aria-label="檢索台">
   <div class="search-panel">
@@ -267,10 +250,38 @@
 </div>
 
 
+  
 
-<button class="type-btn" id="jirai-type" type="button" title="切換字級">
-  字級 <b>標準</b>
-</button>
+
+<div class="dock" id="jirai-dock">
+
+  
+  <button class="search-btn" id="jirai-search-btn" type="button" aria-label="檢索">
+    <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6.5h12M8 12h12M8 17.5h12"/><circle cx="4.4" cy="6.5" r="1.1"/><circle cx="4.4" cy="12" r="1.1"/><circle cx="4.4" cy="17.5" r="1.1"/></svg>
+    <span>檢索</span>
+  </button>
+  
+
+  
+  <button class="type-btn" id="jirai-type" type="button" title="切換字級">
+    字級 <b>標準</b>
+  </button>
+  
+
+  
+  <button class="ambient" id="jirai-ambient" type="button"
+          aria-pressed="false"
+          data-volume="0.16"
+          data-style="music-box"
+          data-bpm="52"
+          data-autoplay="false"
+          title="氛圍音（Web Audio 合成）">
+    <span class="amb-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="amb-label">AMBIENT</span>
+  </button>
+  
+
+</div>
 
 
 
@@ -285,140 +296,123 @@
     
 
     
-
-
-  <div class="layout">
-    <div class="main-col">
-      <div class="cabinet-head">
-        <h1 class="ch-title">随笔 <span>†</span></h1>
-        <div class="ch-meta">
-          診斷碼<br>
-          3 紙
-        </div>
+<div class="layout">
+  <div class="main-col">
+    <div class="cabinet-head">
+      <h1 class="ch-title">随笔 <span>†</span></h1>
+      <div class="ch-meta">
+        診斷碼<br>
+        3 紙
       </div>
+    </div>
 
-      <div class="cabinet">
+    <div class="cabinet">
+      
         
-          
-            <a class="cab-row" href="/2026/05/10/%E7%A5%9E%E7%BB%8F%E9%80%92%E8%B4%A8%E7%9B%91%E6%B5%8B%E6%97%A5%E5%B8%B8_03/">
-              <span class="cab-no">A-004</span>
-              <span class="cab-date">2026.05.09</span>
-              <span class="cab-title">日常切片_03</span>
-              <span class="cab-type">碎片</span>
-            </a>
-          
-            <a class="cab-row" href="/2026/05/02/%E7%A5%9E%E7%BB%8F%E9%80%92%E8%B4%A8%E7%9B%91%E6%B5%8B%E6%97%A5%E5%B8%B8_02/">
-              <span class="cab-no">A-003</span>
-              <span class="cab-date">2026.05.02</span>
-              <span class="cab-title">日常切片_02</span>
-              <span class="cab-type">碎片</span>
-            </a>
-          
-            <a class="cab-row" href="/2026/02/27/%E7%A5%9E%E7%BB%8F%E9%80%92%E8%B4%A8%E7%9B%91%E6%B5%8B%E6%97%A5%E5%B8%B8_01/">
-              <span class="cab-no">A-002</span>
-              <span class="cab-date">2026.02.27</span>
-              <span class="cab-title">日常切片_01</span>
-              <span class="cab-type">碎片</span>
-            </a>
-          
+          <a class="cab-row" href="/2026/05/10/%E7%A5%9E%E7%BB%8F%E9%80%92%E8%B4%A8%E7%9B%91%E6%B5%8B%E6%97%A5%E5%B8%B8_03/">
+            <span class="cab-no">A-004</span>
+            <span class="cab-date">2026.05.09</span>
+            <span class="cab-title">日常切片_03</span>
+            <span class="cab-type">碎片</span>
+          </a>
         
-      </div>
-
+          <a class="cab-row" href="/2026/05/02/%E7%A5%9E%E7%BB%8F%E9%80%92%E8%B4%A8%E7%9B%91%E6%B5%8B%E6%97%A5%E5%B8%B8_02/">
+            <span class="cab-no">A-003</span>
+            <span class="cab-date">2026.05.02</span>
+            <span class="cab-title">日常切片_02</span>
+            <span class="cab-type">碎片</span>
+          </a>
+        
+          <a class="cab-row" href="/2026/02/27/%E7%A5%9E%E7%BB%8F%E9%80%92%E8%B4%A8%E7%9B%91%E6%B5%8B%E6%97%A5%E5%B8%B8_01/">
+            <span class="cab-no">A-002</span>
+            <span class="cab-date">2026.02.27</span>
+            <span class="cab-title">日常切片_01</span>
+            <span class="cab-type">碎片</span>
+          </a>
+        
       
     </div>
 
-    <aside class="side">
-      <div class="widget">
-        <div class="widget-title"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.8 3.4 20.6 9.2M17.9 6.5 8.7 15.7l-3.4.9.9-3.4 9.2-9.2zM4.4 19.6l2.4-2.4"/></svg><span>全部代碼</span></div>
-        <div class="tag-cloud">
-          
-            <a href="/tags/Meta/">
-              Meta<span class="count"> · 1</span>
-            </a>
-          
-            <a href="/tags/ai%E5%AF%B9%E8%AF%9D/">
-              ai对话<span class="count"> · 2</span>
-            </a>
-          
-            <a href="/tags/%E5%93%B2%E5%AD%A6/">
-              哲学<span class="count"> · 2</span>
-            </a>
-          
-            <a href="/tags/%E6%84%9F%E6%83%85/">
-              感情<span class="count"> · 1</span>
-            </a>
-          
-            <a href="/tags/%E6%88%98%E4%B9%A6/">
-              战书<span class="count"> · 1</span>
-            </a>
-          
-            <a href="/tags/%E6%97%A5%E5%B8%B8/">
-              日常<span class="count"> · 1</span>
-            </a>
-          
-            <a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">
-              游戏开发<span class="count"> · 1</span>
-            </a>
-          
-            <a href="/tags/%E7%95%99%E5%BF%B5/">
-              留念<span class="count"> · 1</span>
-            </a>
-          
-            <a href="/tags/%E8%84%91%E7%A7%91%E5%AD%A6/">
-              脑科学<span class="count"> · 2</span>
-            </a>
-          
-            <a href="/tags/%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/">
-              视觉小说<span class="count"> · 1</span>
-            </a>
-          
-            <a href="/tags/%E9%9A%8F%E7%AC%94/" style=&#34;border-color:var(--seal);color:#fff;background:rgba(192,57,43,.18)&#34;>
-              随笔<span class="count"> · 3</span>
-            </a>
-          
-        </div>
-      </div>
-      <div class="widget">
-        <div class="widget-title"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9z"/><path d="M18.6 3.2l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg><span>近期收錄</span></div>
-        <ul class="widget-list">
-          
-            <li>
-              <a href="/2026/08/19/%E7%8E%B0%E5%AE%9E%E7%B2%89%E7%A2%8E%E7%97%87%E5%80%99%E7%BE%A4%EF%BC%9A%E7%BA%AA%E5%BF%B5%E6%88%91%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%AC%AC%E4%B8%80%E4%BD%8D%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C%E4%BC%99%E4%BC%B4/">现实粉碎症候群：纪念我真正的第一位游戏制作伙伴</a>
-              <span class="n">A-009</span>
-            </li>
-          
-            <li>
-              <a href="/2026/08/17/%E9%80%80%E5%87%BA%E8%B5%9B%E5%8D%9A%E8%A7%92%E6%96%97%E5%9C%BA/">退出赛博角斗场</a>
-              <span class="n">A-008</span>
-            </li>
-          
-            <li>
-              <a href="/2026/08/04/%E5%AF%B9%E6%B7%B1%E5%BA%A6%E6%B2%9F%E9%80%9A%E7%9A%84%E6%8E%A2%E7%B4%A2%EF%BC%88ai%E5%AF%B9%E8%AF%9D%E6%97%A5%E5%B8%B82)/">对深度沟通的探索（ai对话日常2）</a>
-              <span class="n">A-007</span>
-            </li>
-          
-            <li>
-              <a href="/2026/07/25/%E5%85%AC%E5%BC%80%E6%88%98%E4%B9%A6/">公开战书</a>
-              <span class="n">A-006</span>
-            </li>
-          
-            <li>
-              <a href="/2026/07/23/%E5%AF%B9%E6%97%A0%E6%84%8F%E8%AF%86%E7%9A%84%E6%8E%A2%E7%B4%A2%EF%BC%88ai%E5%AF%B9%E8%AF%9D%E6%97%A5%E5%B8%B81%EF%BC%89/">对无意识的探索（ai对话日常1）</a>
-              <span class="n">A-005</span>
-            </li>
-          
-            <li>
-              <a href="/2026/05/10/%E7%A5%9E%E7%BB%8F%E9%80%92%E8%B4%A8%E7%9B%91%E6%B5%8B%E6%97%A5%E5%B8%B8_03/">日常切片_03</a>
-              <span class="n">A-004</span>
-            </li>
-          
-        </ul>
-      </div>
-    </aside>
+    
   </div>
 
+  
+<aside class="side">
 
+  <div class="widget profile">
+    <div class="widget-title"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5c1.4-3.8 4-5.6 7.5-5.6s6.1 1.8 7.5 5.6"/></svg><span>病歷 / PROFILE</span></div>
+    <span class="room-tag">一号室</span>
+    
+      <div class="avatar-fallback">お</div>
+    
+    <div class="name">お尼酱~</div>
+    <p class="motto">不要靠近，会炸的。</p>
 
+    <div class="pulse-line" aria-hidden="true">
+      <svg viewBox="0 0 200 26" preserveAspectRatio="none">
+        <path d="M0 13h34l4-8 5 16 5-20 5 24 4-12h22l4-7 5 14 5-16 5 18 4-9h94"/>
+      </svg>
+    </div>
+
+    <div class="profile-stats">
+      <div><span class="n">9</span><span class="l">紙</span></div>
+      <div><span class="n">3</span><span class="l">部位</span></div>
+      <div><span class="n">11</span><span class="l">診斷</span></div>
+    </div>
+
+    <div class="profile-foot">
+      <span>SINCE 2026-02-26</span>
+      <span class="pf-sep">/</span>
+      <span>217 DAYS</span>
+    </div>
+    
+      <div class="profile-updated">LAST UPDATE · 2026-08-19</div>
+    
+    <div class="barcode" aria-hidden="true"></div>
+  </div>
+
+  
+
+  <div class="widget">
+    <div class="widget-title"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9z"/><path d="M18.6 3.2l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg><span>近期收錄</span></div>
+    <ul class="widget-list">
+      
+        <li>
+          <a href="/2026/08/19/%E7%8E%B0%E5%AE%9E%E7%B2%89%E7%A2%8E%E7%97%87%E5%80%99%E7%BE%A4%EF%BC%9A%E7%BA%AA%E5%BF%B5%E6%88%91%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%AC%AC%E4%B8%80%E4%BD%8D%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C%E4%BC%99%E4%BC%B4/">现实粉碎症候群：纪念我真正的第一位游戏制作伙伴</a>
+          <span class="n">A-009</span>
+        </li>
+      
+        <li>
+          <a href="/2026/08/17/%E9%80%80%E5%87%BA%E8%B5%9B%E5%8D%9A%E8%A7%92%E6%96%97%E5%9C%BA/">退出赛博角斗场</a>
+          <span class="n">A-008</span>
+        </li>
+      
+        <li>
+          <a href="/2026/08/04/%E5%AF%B9%E6%B7%B1%E5%BA%A6%E6%B2%9F%E9%80%9A%E7%9A%84%E6%8E%A2%E7%B4%A2%EF%BC%88ai%E5%AF%B9%E8%AF%9D%E6%97%A5%E5%B8%B82)/">对深度沟通的探索（ai对话日常2）</a>
+          <span class="n">A-007</span>
+        </li>
+      
+        <li>
+          <a href="/2026/07/25/%E5%85%AC%E5%BC%80%E6%88%98%E4%B9%A6/">公开战书</a>
+          <span class="n">A-006</span>
+        </li>
+      
+        <li>
+          <a href="/2026/07/23/%E5%AF%B9%E6%97%A0%E6%84%8F%E8%AF%86%E7%9A%84%E6%8E%A2%E7%B4%A2%EF%BC%88ai%E5%AF%B9%E8%AF%9D%E6%97%A5%E5%B8%B81%EF%BC%89/">对无意识的探索（ai对话日常1）</a>
+          <span class="n">A-005</span>
+        </li>
+      
+        <li>
+          <a href="/2026/05/10/%E7%A5%9E%E7%BB%8F%E9%80%92%E8%B4%A8%E7%9B%91%E6%B5%8B%E6%97%A5%E5%B8%B8_03/">日常切片_03</a>
+          <span class="n">A-004</span>
+        </li>
+      
+    </ul>
+  </div>
+
+</aside>
+
+</div>
 
     
     <div class="heart-beat" aria-hidden="true">
@@ -450,16 +444,21 @@
 
 <div class="progress" id="read-progress"></div>
 
-<button class="to-top" id="to-top" aria-label="歸位">
-  <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19.5V5.2"/><path d="M6 11.2 12 5.2l6 6"/></svg>
-</button>
+
+<div class="toolbar" id="jirai-toolbar">
+  <button class="tb-btn" id="to-top" type="button" aria-label="歸位" title="歸位">
+    <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19.5V5.2"/><path d="M6 11.2 12 5.2l6 6"/></svg>
+  </button>
+  
+  <button class="tb-btn tb-variant" id="jirai-variant" type="button" aria-pressed="false"
+          title="切換簡體 / 繁體（Alt+V）">
+    <span>繁體</span>
+  </button>
+  
+</div>
 
 
-<button class="variant-btn" id="jirai-variant" type="button" aria-pressed="false"
-        title="切換簡體 / 繁體（Alt+V）">
-  <span>繁體</span><small>ALT+V</small>
-</button>
-<script type="application/json" id="jirai-variant-map">{"p":{},"c":{"对":"對","沟":"溝","话":"話","问":"問","双":"雙","开":"開","场":"場","个":"個","观":"觀","点":"點","题":"題","时":"時","发":"發","冲":"衝","议":"議","为":"為","确":"確","认":"認","谁":"誰","错":"錯","论":"論","质":"質","称":"稱","现":"現","实":"實","际":"際","达":"達","这":"這","来":"來","属":"屬","范":"範","说":"說","经":"經","离":"離","断":"斷","并":"並","准":"準","诉":"訴","触":"觸","学":"學","逻":"邏","谈":"談","机":"機","制":"製","几":"幾","觉":"覺","锐":"銳","细":"細","节":"節","轻":"輕","绝":"絕","误":"誤","区":"區","进":"進","证":"證","过":"過","层":"層","据":"據","够":"夠","齐":"齊","从":"從","种":"種","设":"設","计":"計","数":"數","况":"況","复":"複","杂":"雜","条":"條","罗":"羅","马":"馬","径":"徑","风":"風","险":"險","难":"難","统":"統","后":"後","将":"將","补":"補","构":"構","会":"會","变":"變","单":"單","纯":"純","绪":"緒","权":"權","夺":"奪","随":"隨","见":"見","隐":"隱","动":"動","锋":"鋒","决":"決","须":"須","赢":"贏","满":"滿","链":"鏈","关":"關","系":"係","当":"當","无":"無","识":"識","转":"轉","换":"換","弃":"棄","体":"體","华":"華","让":"讓","术":"術","语":"語","终":"終","极":"極","标":"標","谓":"謂","讨":"討","抛":"拋","垒":"壘","态":"態","虽":"雖","执":"執","词":"詞","着":"著","仅":"僅","筛":"篩","选":"選","优":"優","脱":"脫","们":"們","应":"應","务":"務","继":"繼","续":"續","驳":"駁","吗":"嗎","别":"別","总":"總","结":"結","给":"給","许":"許","记":"記","没":"沒","伤":"傷","维":"維","护":"護","击":"擊","恶":"惡","脑":"腦","读":"讀","还":"還","该":"該","闲":"閒","线":"線","间":"間","领":"領","图":"圖","审":"審","视":"視","监":"監","战":"戰","预":"預","剑":"劍","气":"氣","带":"帶","强":"強","汇":"匯","释":"釋","长":"長","评":"評","旧":"舊","里":"裡","汉":"漢","则":"則","测":"測","顾":"顧","贯":"貫","暂":"暫","键":"鍵","刚":"剛","闪":"閃","坏":"壞","滤":"濾","彻":"徹","写":"寫","边":"邊","缓":"緩","择":"擇","静":"靜","处":"處","样":"樣","响":"響","损":"損","头":"頭","愤":"憤","状":"狀","办":"辦","诚":"誠","类":"類","压":"壓","旷":"曠","担":"擔","忧":"憂","启":"啟","志":"誌","虚":"虛","规":"規","闭":"閉","负":"負","责":"責","额":"額","叶":"葉","远":"遠","赖":"賴","忆":"憶","车":"車","温":"溫","脸":"臉","剧":"劇","试":"試","电":"電","听":"聽","声":"聲","简":"簡","顶":"頂","雾":"霧","导":"導","恋":"戀","资":"資","紧":"緊","欢":"歡","娱":"娛","乐":"樂","爱":"愛","习":"習","惯":"慣","义":"義","帮":"幫","叹":"嘆","秘":"祕","潜":"潛","疗":"療","输":"輸","码":"碼","灾":"災","凭":"憑","画":"畫","调":"調","东":"東","贝":"貝","验":"驗","纪":"紀","录":"錄","显":"顯","钟":"鐘","辅":"輔","运":"運","备":"備","号":"號","级":"級","碍":"礙","传":"傳","参":"參","环":"環","镜":"鏡","拟":"擬","骤":"驟","报":"報","迟":"遲","频":"頻","装":"裝","惧":"懼","检":"檢","跃":"躍","递":"遞","浓":"濃","门":"門","连":"連","讲":"講","适":"適","陈":"陳","货":"貨","灵":"靈","费":"費","师":"師","尽":"盡","独":"獨","脉":"脈","络":"絡","纱":"紗","众":"眾","残":"殘","获":"獲","盘":"盤","阶":"階","厅":"廳","尔":"爾","禅":"禪","懒":"懶","奋":"奮","锁":"鎖","顺":"順","诱":"誘","牵":"牽","敌":"敵","团":"團","队":"隊","游":"遊","戏":"戲","员":"員","虑":"慮","坚":"堅","练":"練","鸣":"鳴","烂":"爛","骂":"罵","载":"載","艺":"藝","畅":"暢","钱":"錢","课":"課","组":"組","织":"織","围":"圍","毁":"毀","缝":"縫","济":"濟","顿":"頓","辈":"輩","驱":"驅","贵":"貴","训":"訓","项":"項","雇":"僱","书":"書","势":"勢","愿":"願","壳":"殼","干":"幹","迹":"跡","杀":"殺","脚":"腳","迈":"邁","侧":"側","赞":"讚","赏":"賞","热":"熱","撑":"撐","劳":"勞","创":"創","馈":"饋","饰":"飾","怀":"懷","钢":"鋼","铁":"鐵","躯":"軀","洁":"潔","础":"礎","谋":"謀","聪":"聰","稳":"穩","腻":"膩","奖":"獎","锻":"鍛","摆":"擺","网":"網","厌":"厭","劲":"勁","软":"軟","荣":"榮","挂":"掛","笔":"筆","译":"譯","积":"積","缘":"緣","销":"銷","赚":"賺","寻":"尋","绕":"繞","墙":"牆","乱":"亂","阐":"闡","银":"銀","润":"潤","舍":"捨","综":"綜","梦":"夢","块":"塊","渐":"漸","针":"針","泪":"淚","诸":"諸","户":"戶","窥":"窺","笼":"籠","采":"採","蓝":"藍","约":"約","协":"協","营":"營","胜":"勝","赌":"賭","败":"敗","历":"歷","毕":"畢","联":"聯","尘":"塵","鸡":"雞","闹":"鬧","赛":"賽","弹":"彈","轨":"軌","兴":"興","谢":"謝","儿":"兒","请":"請","郁":"鬱","药":"藥","郑":"鄭","麦":"麥","摇":"搖","纠":"糾","缠":"纏","烦":"煩","缩":"縮","诞":"誕","浅":"淺","韩":"韓","欲":"慾","灭":"滅","谅":"諒","阳":"陽","废":"廢","扫":"掃","悦":"悅","骄":"驕","纵":"縱","叙":"敘","怜":"憐","扩":"擴","医":"醫","编":"編"}}</script>
+<script type="application/json" id="jirai-variant-map">{"p":{},"c":{"开":"開","战":"戰","书":"書","寻":"尋","级":"級","来":"來","场":"場","时":"時","个":"個","从":"從","发":"發","游":"遊","戏":"戲","并":"並","过":"過","审":"審","后":"後","给":"給","数":"數","据":"據","间":"間","凭":"憑","绝":"絕","对":"對","规":"規","则":"則","纯":"純","协":"協","运":"運","营":"營","听":"聽","论":"論","怀":"懷","终":"終","关":"關","胜":"勝","赌":"賭","愿":"願","输":"輸","败":"敗","无":"無","条":"條","帮":"幫","项":"項","没":"沒","资":"資","历":"歷","视":"視","链":"鏈","实":"實","说":"說","话":"話","吗":"嗎","独":"獨","制":"製","觉":"覺","断":"斷","线":"線","综":"綜","简":"簡","读":"讀","这":"這","构":"構","剧":"劇","围":"圍","绕":"繞","着":"著","残":"殘","识":"識","体":"體","梦":"夢","系":"係","统":"統","复":"複","将":"將","师":"師","干":"幹","预":"預","试":"試","损":"損","坏":"壞","记":"記","忆":"憶","语":"語","块":"塊","随":"隨","电":"電","渐":"漸","状":"狀","态":"態","讨":"討","点":"點","虚":"虛","疗":"療","处":"處","针":"針","锐":"銳","单":"單","码":"碼","错":"錯","误":"誤","为":"為","泪":"淚","导":"導","诸":"諸","彻":"徹","学":"學","户":"戶","墙":"牆","区":"區","阶":"階","拟":"擬","现":"現","极":"極","隐":"隱","义":"義","风":"風","窥":"窺","会":"會","图":"圖","装":"裝","继":"繼","续":"續","环":"環","夺":"奪","击":"擊","标":"標","进":"進","权":"權","强":"強","里":"裡","逻":"邏","笼":"籠","团":"團","雾":"霧","领":"領","选":"選","择":"擇","动":"動","频":"頻","采":"採","样":"樣","蓝":"藍","机":"機","脱":"脫","离":"離","参":"參","约":"約","结":"結","仅":"僅","险":"險","验":"驗","当":"當","沟":"溝","问":"問","双":"雙","观":"觀","题":"題","冲":"衝","议":"議","确":"確","认":"認","谁":"誰","质":"質","称":"稱","际":"際","达":"達","属":"屬","范":"範","经":"經","准":"準","诉":"訴","触":"觸","谈":"談","几":"幾","细":"細","节":"節","轻":"輕","证":"證","层":"層","够":"夠","齐":"齊","种":"種","设":"設","计":"計","况":"況","杂":"雜","罗":"羅","马":"馬","径":"徑","难":"難","补":"補","变":"變","绪":"緒","见":"見","锋":"鋒","决":"決","须":"須","赢":"贏","满":"滿","转":"轉","换":"換","弃":"棄","华":"華","让":"讓","术":"術","谓":"謂","抛":"拋","垒":"壘","虽":"雖","执":"執","词":"詞","筛":"篩","优":"優","们":"們","应":"應","务":"務","驳":"駁","别":"別","总":"總","许":"許","伤":"傷","维":"維","护":"護","恶":"惡","脑":"腦","还":"還","该":"該","闲":"閒","监":"監","剑":"劍","气":"氣","带":"帶","汇":"匯","释":"釋","长":"長","评":"評","旧":"舊","汉":"漢","测":"測","顾":"顧","贯":"貫","暂":"暫","键":"鍵","刚":"剛","闪":"閃","滤":"濾","写":"寫","边":"邊","缓":"緩","静":"靜","响":"響","头":"頭","愤":"憤","办":"辦","诚":"誠","类":"類","压":"壓","旷":"曠","担":"擔","忧":"憂","启":"啟","志":"誌","闭":"閉","负":"負","责":"責","额":"額","叶":"葉","远":"遠","赖":"賴","车":"車","温":"溫","脸":"臉","声":"聲","顶":"頂","恋":"戀","紧":"緊","欢":"歡","娱":"娛","乐":"樂","爱":"愛","习":"習","惯":"慣","叹":"嘆","秘":"祕","潜":"潛","灾":"災","画":"畫","调":"調","东":"東","贝":"貝","纪":"紀","录":"錄","显":"顯","钟":"鐘","辅":"輔","备":"備","号":"號","碍":"礙","传":"傳","镜":"鏡","骤":"驟","报":"報","迟":"遲","惧":"懼","检":"檢","跃":"躍","递":"遞","浓":"濃","门":"門","连":"連","讲":"講","适":"適","陈":"陳","货":"貨","灵":"靈","费":"費","尽":"盡","脉":"脈","络":"絡","纱":"紗","众":"眾","获":"獲","盘":"盤","厅":"廳","尔":"爾","禅":"禪","懒":"懶","奋":"奮","锁":"鎖","顺":"順","诱":"誘","牵":"牽","敌":"敵","队":"隊","员":"員","虑":"慮","坚":"堅","练":"練","鸣":"鳴","烂":"爛","骂":"罵","载":"載","艺":"藝","畅":"暢","钱":"錢","课":"課","组":"組","织":"織","毁":"毀","缝":"縫","济":"濟","顿":"頓","辈":"輩","驱":"驅","贵":"貴","训":"訓","雇":"僱","势":"勢","壳":"殼","迹":"跡","杀":"殺","脚":"腳","迈":"邁","侧":"側","赞":"讚","赏":"賞","热":"熱","撑":"撐","劳":"勞","创":"創","馈":"饋","饰":"飾","钢":"鋼","铁":"鐵","躯":"軀","洁":"潔","础":"礎","谋":"謀","聪":"聰","稳":"穩","腻":"膩","奖":"獎","锻":"鍛","摆":"擺","网":"網","厌":"厭","劲":"勁","软":"軟","荣":"榮","挂":"掛","笔":"筆","译":"譯","积":"積","缘":"緣","销":"銷","赚":"賺","乱":"亂","阐":"闡","银":"銀","润":"潤","舍":"捨","毕":"畢","联":"聯","尘":"塵","鸡":"雞","闹":"鬧","赛":"賽","弹":"彈","轨":"軌","兴":"興","谢":"謝","儿":"兒","请":"請","郁":"鬱","药":"藥","郑":"鄭","废":"廢","扫":"掃","麦":"麥","摇":"搖","纠":"糾","缠":"纏","烦":"煩","缩":"縮","诞":"誕","浅":"淺","韩":"韓","欲":"慾","灭":"滅","谅":"諒","阳":"陽","悦":"悅","骄":"驕","纵":"縱","叙":"敘","怜":"憐","扩":"擴","医":"醫","编":"編"}}</script>
 <script src="/js/jirai-variant.js" defer></script>
 
 
@@ -483,7 +482,7 @@
     ambient: true,
     danger: true,
     ecg: true,
-    crosshatch: true,
+    crosshatch: false,
     bandageHr: true,
     seal: true,
     search: true,

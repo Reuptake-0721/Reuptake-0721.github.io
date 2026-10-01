@@ -383,13 +383,17 @@ body.no-paper::after { display: none; }
   100% { filter: none; }
 }
 
-/* ---------------------------------------------- 窄欄與留白（不對稱） */
+/* ---------------------------------------------- 重排：主欄放寬 / 側欄收窄
+   實測舊版主欄只有 660px（佔視口 54%），正文 602px，
+   右側留白卻有 593px 完全浪費。以下重新分配版面。 */
 @media (min-width: 1100px) {
-  .layout { grid-template-columns: minmax(0, 1fr) 276px; }
-  /* 目錄欄刻意偏左，右側留出大片空白，並讓批註有地方浮出去 */
-  .main-col { max-width: 660px; }
+  .layout { grid-template-columns: minmax(0, 1fr) 266px; gap: 34px; }
+  .main-col { max-width: 780px; }   /* 正文約 720px，約 42 漢字/行 */
   .cabinet .cab-row { grid-template-columns: 88px 80px 1fr auto; }
 }
+
+/* 列表頁（檔案庫 / 病歷庫）不放側欄：一行一條本來就不需要 */
+.layout.no-side { max-width: 900px; }
 
 /* ---------------------------------------------- 響應式 */
 @media (max-width: 720px) {
