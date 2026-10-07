@@ -4190,8 +4190,19 @@ summary:focus-visible,
    审计发现全站 :hover 有 27 个选择器、:active 有 0 个 ——
    点击时没有任何物理反馈，鼠标与触屏都觉得「按了个寂寞」。
    这里统一补一套：位移用 transform（不触发重排，长文页面也不会抖动），
-   表面变化用 --bg-raise，颜色变化用高亮。 */
+   表面变化用 --bg-raise，颜色变化用高亮。
 
+   ⚠ 绝不可让这些规则命中 <html> 或 <body>：
+   根元素一旦有了 transform，就会成为所有 position:fixed 元素的包含块，
+   于是固定定位全部失效（工具栏、左下按钮组、位置提示会瞬间跳到文档流位置）。
+   本站有两处同名冲突要特别小心：
+     - .boot-skip 既是开屏按钮的类名，也是加在 <html> 上的状态类
+       （jirai-boom.js:26 / layout.ejs:10），故这里用 #boot-skip 指定按钮。
+     - .card-more / .rail-item 等若日后被加到根元素上，同样会引发此问题。
+   判断方法：按下鼠标后检查 getComputedStyle(document.documentElement).transform
+   是否变成非 none —— 若是，说明某条 :active 命中了根元素。 */
+
+#boot-skip:active,
 .dock .search-btn:active,
 .dock .type-btn:active,
 .dock .ambient:active,
@@ -4199,7 +4210,6 @@ summary:focus-visible,
 .nav-toggle:active,
 .search-close:active,
 .toast-x:active,
-.boot-skip:active,
 .pager a:active,
 .toc-inner .toc-link:active,
 .tag-chip:active,
