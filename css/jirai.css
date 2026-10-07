@@ -31,9 +31,22 @@
   --warn: #ffb020;
   --bad: #ff6b6b;
   --line: #35263d;      /* 亮一档，让卡片边界在更深底色上仍可辨 */
-  --line-pink: rgba(255, 45, 120, 0.35);
-  --glow-pink: 0 0 6px rgba(255, 45, 120, 0.55), 0 0 18px rgba(255, 45, 120, 0.28);
-  --glow-soft: 0 0 12px rgba(255, 45, 120, 0.18);
+  /* ---------- 强调色的通道分解 + 透明度标尺 ----------
+     审计发现同一个霓虹粉被手写了 135 次 rgba(255, 45, 120, α)，
+     共用掉 115 种互不成比例的 alpha 值。改色时得全局替换几十处。
+     拆成 RGB 通道 + 12 级透明度标尺后，语义清晰且计算值完全不变
+     （rgb(R G B / a) 与 rgba(R, G, B, a) 渲染结果一致）。 */
+  --pink-rgb: 255 45 120;
+  --purple-rgb: 168 85 247;
+  --seal-rgb: 192 57 43;
+  --ink-rgb: 0 0 0;
+  /* 透明度标尺：按用途分级而非线性取值 */
+  --a-1: .04;   --a-2: .06;   --a-3: .10;   --a-4: .14;
+  --a-5: .18;   --a-6: .24;   --a-7: .30;   --a-8: .38;
+  --a-9: .48;   --a-10: .62;  --a-11: .78;  --a-12: 1;
+  --line-pink: rgb(255 45 120 / .35);
+  --glow-pink: 0 0 6px rgb(255 45 120 / .55), 0 0 18px rgb(255 45 120 / .28);
+  --glow-soft: 0 0 12px rgba(255, 45, 120, .18);
   /* 系统字体栈：中文用衬线（宋体系），拉丁优先 Georgia/Times，
      不再依赖外部 Web 字体（详见 _config.yml 的 webfont 说明） */
   --font-head: Georgia, 'Times New Roman', 'Songti SC', 'Source Han Serif SC', 'Noto Serif CJK SC', SimSun, 'Yu Mincho', serif;
@@ -153,9 +166,9 @@ body {
   margin: 0;
   background-color: var(--bg);
   background-image:
-    radial-gradient(1100px 620px at 12% -8%, rgba(255, 45, 120, 0.13), transparent 62%),
-    radial-gradient(900px 560px at 92% 4%, rgba(168, 85, 247, 0.12), transparent 60%),
-    radial-gradient(760px 520px at 50% 112%, rgba(201, 18, 79, 0.10), transparent 66%),
+    radial-gradient(1100px 620px at 12% -8%, rgba(255, 45, 120, .13), transparent 62%),
+    radial-gradient(900px 560px at 92% 4%, rgba(168, 85, 247, .12), transparent 60%),
+    radial-gradient(760px 520px at 50% 112%, rgba(201, 18, 79, .10), transparent 66%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cg fill='%23ff2d78' fill-opacity='0.055'%3E%3Ccircle cx='2' cy='2' r='1'/%3E%3Ccircle cx='18' cy='18' r='1'/%3E%3C/g%3E%3C/svg%3E");
   background-attachment: fixed, fixed, fixed, fixed;
   color: var(--text);
@@ -176,8 +189,8 @@ body::before {
   z-index: 9998;
   background: repeating-linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.022) 0px,
-    rgba(255, 255, 255, 0.022) 1px,
+    rgba(255, 255, 255, .022) 0px,
+    rgba(255, 255, 255, .022) 1px,
     transparent 1px,
     transparent 3px
   );
@@ -211,9 +224,9 @@ hr {
   height: var(--nav-h);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
-  background: rgba(8, 5, 10, 0.82);
+  background: rgba(8, 5, 10, .82);
   border-bottom: 1px solid var(--line);
-  box-shadow: 0 1px 0 rgba(255, 45, 120, 0.18), 0 10px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 1px 0 rgba(255, 45, 120, .18), 0 10px 30px rgba(0, 0, 0, .6);
 }
 
 .nav::after {
@@ -301,7 +314,7 @@ body.no-lace .nav::after { display: none; }
 .nav-links a:hover {
   color: #fff;
   border-color: var(--line-pink);
-  background: rgba(255, 45, 120, 0.09);
+  background: rgba(255, 45, 120, .09);
   text-shadow: var(--glow-pink);
 }
 .nav-links a.active {

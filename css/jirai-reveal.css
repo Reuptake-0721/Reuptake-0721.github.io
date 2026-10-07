@@ -1,0 +1,91 @@
+/* ============================================================
+   jirai-reveal — 入场编排
+   现状：页面所有块级内容瞬间出现，缺少「被逐份取出」的节奏。
+   檔案館的隐喻适合有节制的错落入场：不是弹跳，是像翻到下一张卡片。
+
+   ── 实现演进（两次失败都记录在此，避免后人重走）──
+   方案 A（失败）：JS 加 .rv 隐藏 → 下帧加 .rv-in 触发 transition。
+     实测无过渡：.rv 由 defer 脚本在文档解析后（实测 ~295ms）才加上，
+     此时元素已以 opacity:1 渲染过，浏览器认为计算样式未变，过渡被跳过。
+     受控实验证实：立即加类 → 无过渡；先强制布局再加类 → 保留起始值。
+   方案 B（成功）：CSS @keyframes + animation-delay 做错落。
+     动画从类被加上即执行，不依赖 transition 的状态变更。
+   方案 C（本版）：再加 @starting-style，消除方案 B 残留的闪动 ——
+     类在 295ms 才加上，之前元素已渲染为不透明，会出现「显示→隐藏→淡入」。
+     @starting-style 让「元素首次渲染」本身成为过渡起点，与类何时加上无关。
+
+   ── 一个必须记住的坑 ──
+   CSS.supports('opacity','starting-style') 返回 false（特性检测写法本身是错的），
+   但 CSSStartingStyleRule 已被正常解析。我一度据此写了
+   @supports not (opacity: starting-style) 保护块 —— 结果它在支持的浏览器上
+   命中，把元素强制设为 opacity:1，静默禁用了动画。已删除。
+   @starting-style 只影响动画起点，特性不支持时最坏情况是退化为直接显现，
+   不需要额外保护。
+
+   ── 动效约束 ──
+     - 只编排首屏可见元素（JS 判定），滚动后的内容直接呈现
+     - 错落 40ms、上限 6 级
+     - prefers-reduced-motion 下完全关闭
+     - 只做 opacity + 6/10px 位移，不缩放，避免长文页面抖动
+   ============================================================ */
+
+/* 首屏元素从第一帧就是隐藏的 —— 配合 @starting-style 平滑进入。
+   这条规则消除了「已渲染为可见、稍后才被隐藏」的闪动。 */
+html.reveal-on .cabinet-head,
+html.reveal-on .cabinet .cab-row,
+html.reveal-on .dossier,
+html.reveal-on .side .widget,
+html.reveal-on .page-title {
+  opacity: 0;
+}
+
+/* 淡入 + 上移：@starting-style 提供起始值 */
+html.reveal-on .cabinet-head,
+html.reveal-on .cabinet .cab-row,
+html.reveal-on .dossier,
+html.reveal-on .side .widget,
+html.reveal-on .page-title {
+  transition:
+    opacity var(--dur-3) var(--ease-out),
+    transform var(--dur-3) var(--ease-out);
+  transition-delay: calc(var(--rv-i, 0) * 40ms);
+  opacity: 1;
+  transform: translateY(0);
+}
+@starting-style {
+  html.reveal-on .cabinet-head,
+  html.reveal-on .cabinet .cab-row,
+  html.reveal-on .dossier,
+  html.reveal-on .side .widget,
+  html.reveal-on .page-title {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* 侧栏 widget 从右侧靠入，与主栏的向上入场形成方向差 */
+@media (min-width: 1100px) {
+  @starting-style {
+    html.reveal-on .side .widget { transform: translateX(8px); }
+  }
+}
+
+/* 幕布：整页淡入，避免入场时先闪一帧 */
+html.reveal-on .wrap { animation: rv-curtain var(--dur-4) var(--ease-std) both; }
+@keyframes rv-curtain {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.reveal-on .cabinet-head,
+  html.reveal-on .cabinet .cab-row,
+  html.reveal-on .dossier,
+  html.reveal-on .side .widget,
+  html.reveal-on .page-title {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  html.reveal-on .wrap { animation: none !important; }
+}
