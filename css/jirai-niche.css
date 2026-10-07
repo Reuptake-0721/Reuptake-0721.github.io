@@ -31,7 +31,7 @@ body.no-paper::after { display: none; }
 /* 正文墨色壓低、行距收緊 */
 .post-body {
   color: var(--ink);
-  line-height: 1.98;
+  line-height: var(--lh-body);
 }
 .post-body strong { color: #ded4e4; text-shadow: none; }
 .post-body h1, .post-body h2, .post-body h3, .post-body h4 { color: #e6dcec; }
@@ -57,11 +57,11 @@ body.no-paper::after { display: none; }
 .cabinet-head .ch-meta {
   margin-left: auto;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .18em;
   color: var(--ink-dim);
   text-align: right;
-  line-height: 1.9;
+  line-height: var(--lh-body);
 }
 
 .cabinet {
@@ -95,7 +95,7 @@ body.no-paper::after { display: none; }
 
 .cab-no {
   font-family: var(--font-mono);
-  font-size: 12.5px;
+  font-size: var(--fs-sm);
   letter-spacing: .1em;
   color: var(--seal);
   opacity: .85;
@@ -103,23 +103,23 @@ body.no-paper::after { display: none; }
 }
 .cab-date {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: .06em;
   color: var(--ink-dim);
   white-space: nowrap;
 }
 .cab-title {
   font-family: var(--font-head);
-  font-size: 15.5px;
+  font-size: var(--fs-base);
   letter-spacing: .04em;
   color: #ddd3e3;
-  line-height: 1.5;
+  line-height: var(--lh-tight);
   transition: color .18s ease, letter-spacing .18s ease;
 }
 .cab-row:hover .cab-title { color: #fff; letter-spacing: .06em; }
 .cab-type {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .12em;
   color: var(--ink-dim);
   white-space: nowrap;
@@ -136,7 +136,7 @@ body.no-paper::after { display: none; }
   flex-wrap: wrap;
   margin-top: 18px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .16em;
   color: var(--ink-dim);
 }
@@ -146,52 +146,77 @@ body.no-paper::after { display: none; }
   padding: 46px 10px;
   text-align: center;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: var(--fs-xs);
   letter-spacing: .2em;
   color: var(--ink-dim);
   border-bottom: 1px solid var(--line);
 }
 
-/* ---------------------------------------------- 卷宗頭（文章頁） */
+/* ---------------------------------------------- 卷宗頭（文章頁）
+   結構：flex 兩欄 —— 直排書脊 | 卷宗內容。
+   舊寫法用絕對定位 + min-height:96px 硬湊，書脊高度與標題高度各自為政，
+   直排檔號會侵到下面的元資料列。改成 flex 後書脊自動撐滿 header 高度。 */
 .dossier {
-  position: relative;
-  padding-left: 56px;   /* 給直排檔號書脊留位置 */
-  min-height: 96px;     /* 保證書脊不會溢出到正文 */
   border-bottom: 1px dashed rgba(46, 32, 51, .9);
-  margin-bottom: 26px;
-  padding-bottom: 20px;
+  margin-bottom: var(--sp-6);
+  padding-bottom: var(--sp-4);
+}
+/* 上排：書脊 + 標題（+ 絕對定位的朱印） */
+.dossier-top {
+  display: flex;
+  align-items: stretch;
+  gap: var(--sp-5);
+}
+/* 下排：元資料獨占整行，不再與朱印搶右側空間 */
+.dossier .meta-row {
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-3);
+  border-top: 1px solid rgba(46, 32, 51, .7);
+  padding-right: 0;
 }
 .dossier-spine {
-  position: absolute;
-  left: 0; top: 4px;
-  height: 96px;
-  width: 34px;
+  flex: none;
+  width: 30px;
+  padding-top: 4px;
   writing-mode: vertical-rl;
   text-orientation: upright;
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: var(--sp-2);
+  position: relative;
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: .22em;
+  font-size: var(--fs-3xs);
+  /* 只放档号（6 字符），高度约 76px，略高于单行标题 —— 相称。
+     直排下 letter-spacing 会直接转成纵向长度，故设为 0，
+     并降透明度让它退到背景层：书脊是装订标记，不是内容。 */
+  letter-spacing: 0;
   color: var(--seal);
-  opacity: .9;
+  opacity: .5;
 }
-.dossier-spine .sp-no { font-size: 12px; letter-spacing: .1em; }
-.dossier-spine .sp-date { color: var(--ink-dim); letter-spacing: .18em; }
+.dossier-body {
+  flex: 1;
+  min-width: 0;      /* 让长标题能正常换行而不是撑破网格 */
+  position: relative; /* 朱印以此为定位基准 */
+}
+/* 书脊底部的渐隐竖线：占满剩余高度，像档案夹的装订线 */
 .dossier-spine::after {
   content: '';
   position: absolute;
   left: 50%; bottom: 0;
-  width: 1px; height: 42px;
+  width: 1px;
+  height: 30px;
   background: linear-gradient(180deg, var(--seal-soft), transparent);
 }
+.dossier-spine .sp-no { font-size: var(--fs-xs); letter-spacing: 0; opacity: 1; }
+
+/* 朱印固定在 header 右上角，标题让出这一带（已用 Range 行盒验证无重叠）。 */
+.dossier-body h1 { padding-right: 104px; }
 
 .dossier h1 {
   margin: 0 0 10px;
   font-family: var(--font-head);
   font-size: clamp(21px, 3.2vw, 29px);
-  line-height: 1.5;
+  line-height: var(--lh-tight);
   letter-spacing: .05em;
   color: #eae1ef;
   text-shadow: none;
@@ -221,8 +246,8 @@ body.no-paper::after { display: none; }
   color: var(--seal);
   opacity: .72;
   font-family: var(--font-head);
-  font-size: 11px;
-  line-height: 1.25;
+  font-size: var(--fs-xs);
+  line-height: var(--lh-tight);
   letter-spacing: .1em;
   text-align: center;
   padding: 5px;
@@ -244,7 +269,7 @@ body.no-paper::after { display: none; }
   flex-wrap: wrap;
   gap: 6px 16px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: var(--fs-xs);
   letter-spacing: .1em;
   color: var(--ink-dim);
 }
@@ -259,8 +284,8 @@ body.no-paper::after { display: none; }
   margin: 22px 0;
   padding: 12px 16px 12px 30px;
   font-family: var(--font-body);
-  font-size: 13.5px;
-  line-height: 1.9;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
   color: #9c8fa8;
   background: linear-gradient(90deg, rgba(192, 57, 43, .06), transparent 70%);
   border-left: 2px solid var(--seal-soft);
@@ -271,7 +296,7 @@ body.no-paper::after { display: none; }
   position: absolute;
   left: 8px; top: 10px;
   color: var(--seal);
-  font-size: 12px;
+  font-size: var(--fs-xs);
   opacity: .8;
 }
 .memo-body p { margin: 0 0 8px; }
@@ -286,8 +311,8 @@ body.no-paper::after { display: none; }
     float: right;
     clear: right;
     padding: 10px 12px 10px 26px;
-    font-size: 12px;
-    line-height: 1.85;
+    font-size: var(--fs-xs);
+    line-height: var(--lh-snug);
     background: none;
     border-left: 1px solid var(--seal-soft);
     transform: rotate(-.6deg);
@@ -317,8 +342,8 @@ body.no-paper::after { display: none; }
 }
 .uf-body {
   color: #8d8199;
-  font-size: 14.5px;
-  line-height: 1.95;
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
 }
 .uf-body::after {
   content: '';
@@ -332,7 +357,7 @@ body.no-paper::after { display: none; }
   display: block;
   margin-top: 8px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .28em;
   color: var(--seal);
   opacity: .7;
@@ -341,7 +366,7 @@ body.no-paper::after { display: none; }
 /* ---------------------------------------------- 民國／西元紀年標記 */
 .era {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .16em;
   color: var(--ink-dim);
 }
@@ -357,7 +382,7 @@ body.no-paper::after { display: none; }
   gap: 7px;
   padding: 7px 11px;
   font-family: var(--font-head);
-  font-size: 13px;
+  font-size: var(--fs-sm);
   letter-spacing: .1em;
   color: var(--seal);
   background: rgba(11, 7, 13, .88);
@@ -370,7 +395,7 @@ body.no-paper::after { display: none; }
 .variant-btn:hover { color: #fff; border-color: var(--seal); box-shadow: 0 0 16px rgba(192, 57, 43, .35); }
 .variant-btn small {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: var(--fs-2xs);
   letter-spacing: .14em;
   color: var(--ink-dim);
 }
@@ -383,17 +408,25 @@ body.no-paper::after { display: none; }
   100% { filter: none; }
 }
 
-/* ---------------------------------------------- 重排：主欄放寬 / 側欄收窄
-   實測舊版主欄只有 660px（佔視口 54%），正文 602px，
-   右側留白卻有 593px 完全浪費。以下重新分配版面。 */
+/* ---------------------------------------------- 版面分配
+   实测（1920 视口）：内容块占 65%，左右边距各 340px，完全对称（asymmetry 0）。
+   旧写法把主栏锁死在 820px，而列表页放宽到 960px，宽屏下两者不连贯。
+   改为流式：正文页与列表页各有一条平滑曲线，列表页宽一档（表格化内容更需横向空间）。 */
 @media (min-width: 1100px) {
-  .layout { grid-template-columns: minmax(0, 1fr) 266px; gap: 34px; }
-  .main-col { max-width: 780px; }   /* 正文約 720px，約 42 漢字/行 */
+  .layout { grid-template-columns: minmax(0, 1fr) 280px; gap: var(--sp-7); }
+  .main-col { max-width: clamp(780px, 58vw, 900px); }
   .cabinet .cab-row { grid-template-columns: 88px 80px 1fr auto; }
 }
 
-/* 列表頁（檔案庫 / 病歷庫）不放側欄：一行一條本來就不需要 */
-.layout.no-side { max-width: 900px; }
+/* 列表页（档案库 / 病历库）不放侧栏：一行一条本来就不需要 */
+@media (min-width: 1100px) {
+  .layout.no-side { max-width: clamp(860px, 64vw, 1020px); }
+}
+
+/* 超宽屏：编号列与日期列再放宽，避免与标题挤在一起 */
+@media (min-width: 1500px) {
+  .cabinet .cab-row { grid-template-columns: 96px 92px 1fr auto; gap: var(--sp-5); }
+}
 
 /* ---------------------------------------------- 響應式 */
 @media (max-width: 720px) {
@@ -408,7 +441,7 @@ body.no-paper::after { display: none; }
   }
   .cab-no { grid-area: no; }
   .cab-type { grid-area: type; justify-self: end; }
-  .cab-title { grid-area: ttl; font-size: 15px; }
+  .cab-title { grid-area: ttl; font-size: var(--fs-base); }
   .cab-date { grid-area: date; }
   .cab-row:hover { padding-left: 8px; }
 
@@ -426,10 +459,10 @@ body.no-paper::after { display: none; }
     position: static;
     width: 60px; height: 60px;
     margin: 10px 0 4px;
-    font-size: 9.5px;
+    font-size: var(--fs-2xs);
     transform: rotate(-6deg);
   }
-  .variant-btn { right: 12px; bottom: 66px; padding: 6px 9px; font-size: 12px; }
+  .variant-btn { right: 12px; bottom: 66px; padding: 6px 9px; font-size: var(--fs-xs); }
   .variant-btn small { display: none; }
 }
 

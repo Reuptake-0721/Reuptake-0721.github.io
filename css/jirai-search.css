@@ -14,7 +14,7 @@
   gap: 8px;
   padding: 8px 13px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: var(--fs-xs);
   letter-spacing: .16em;
   color: var(--pink);
   background: rgba(14, 8, 17, .88);
@@ -30,7 +30,7 @@
 }
 .search-btn kbd {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: var(--fs-2xs);
   letter-spacing: .06em;
   padding: 1px 5px;
   color: var(--text-faint);
@@ -82,7 +82,7 @@
 }
 .search-head .sh-title {
   font-family: var(--font-head);
-  font-size: 14px;
+  font-size: var(--fs-sm);
   letter-spacing: .18em;
   color: #e6dcec;
 }
@@ -90,7 +90,7 @@
 .search-head .sh-hint {
   margin-left: auto;
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .14em;
   color: var(--text-faint);
 }
@@ -117,7 +117,7 @@
 }
 .search-input-row .si-prompt {
   font-family: var(--font-mono);
-  font-size: 15px;
+  font-size: var(--fs-base);
   color: var(--pink);
   text-shadow: 0 0 10px rgba(255, 45, 120, .7);
 }
@@ -128,7 +128,7 @@
   border: 0;
   outline: 0;
   font-family: var(--font-mono);
-  font-size: 15px;
+  font-size: var(--fs-base);
   letter-spacing: .04em;
   color: var(--text);
   caret-color: var(--pink);
@@ -164,19 +164,19 @@
 }
 .sr-no {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: .1em;
   color: #c0392b;
   opacity: .9;
 }
 .sr-date {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   color: var(--text-faint);
 }
 .sr-type {
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .1em;
   color: var(--text-faint);
   padding: 1px 6px;
@@ -186,17 +186,17 @@
 .sr-title {
   margin: 5px 0 0;
   font-family: var(--font-head);
-  font-size: 15px;
+  font-size: var(--fs-base);
   letter-spacing: .04em;
   color: #ddd3e3;
-  line-height: 1.5;
+  line-height: var(--lh-tight);
 }
 .sr-item:hover .sr-title,
 .sr-item.active .sr-title { color: #fff; }
 .sr-snippet {
   margin: 6px 0 0;
-  font-size: 12.5px;
-  line-height: 1.8;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
   color: #8d8199;
   word-break: break-word;
 }
@@ -211,7 +211,7 @@
 .sr-meta {
   margin-top: 6px;
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .1em;
   color: var(--text-faint);
 }
@@ -222,7 +222,7 @@
   padding: 40px 20px;
   text-align: center;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: var(--fs-xs);
   letter-spacing: .18em;
   color: var(--text-faint);
   line-height: 2;
@@ -231,7 +231,7 @@
   display: block;
   margin-bottom: 10px;
   font-family: var(--font-head);
-  font-size: 15px;
+  font-size: var(--fs-base);
   letter-spacing: .22em;
   color: rgba(255, 122, 184, .75);
 }
@@ -243,7 +243,7 @@
   padding: 9px 16px;
   border-top: 1px solid var(--line);
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .14em;
   color: var(--text-faint);
 }
@@ -257,7 +257,7 @@
   z-index: 951;
   padding: 8px 12px;
   font-family: var(--font-head);
-  font-size: 12px;
+  font-size: var(--fs-xs);
   letter-spacing: .12em;
   color: var(--text-dim);
   background: rgba(14, 8, 17, .88);
@@ -277,20 +277,19 @@ html[data-type="l"] { --reading-scale: 1.1; }
 html[data-type="xl"] { --reading-scale: 1.22; }
 
 .post-body {
-  font-size: calc(16px * var(--reading-scale, 1));
-  line-height: calc(1.98 + (var(--reading-scale, 1) - 1) * .35);
+  font-size: calc(var(--fs-md) * var(--reading-scale, 1));
+  /* 放大字級時行高同步放寬，否則大字配小行距會太擠 */
+  line-height: calc(var(--lh-body) + (var(--reading-scale, 1) - 1) * .35);
 }
-.cab-title { font-size: calc(15.5px * var(--reading-scale, 1)); }
+.cab-title { font-size: calc(var(--fs-base) * var(--reading-scale, 1)); }
 
 /* ---------------------------------------------- 響應式 */
 @media (max-width: 720px) {
   .search-mask { padding: 4vh 12px 20px; }
   .search-panel { max-height: 84vh; }
-  .search-btn { left: 12px; bottom: 50px; padding: 7px 10px; }
-  .search-btn kbd { display: none; }
-  .type-btn { left: 12px; bottom: 88px; padding: 7px 10px; }
+  .search-btn kbd { display: none; }   /* 小螢幕不提示快捷键 */
   .sr-item { padding: 11px 14px; }
-  .sr-title { font-size: 14.5px; }
+  .sr-title { font-size: var(--fs-base); }
 }
 
 @media (prefers-reduced-motion: reduce) {

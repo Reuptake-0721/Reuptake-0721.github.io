@@ -61,7 +61,7 @@
 }
 .boot-mark {
   color: var(--pink);
-  font-size: 19px;
+  font-size: var(--fs-lg);
   line-height: 1;
   text-shadow: 0 0 12px rgba(255, 45, 120, .9);
   animation: heartbeat 2s ease-in-out infinite;
@@ -69,7 +69,7 @@
 .boot-title {
   position: relative;
   font-family: var(--font-head);
-  font-size: 27px;
+  font-size: var(--fs-2xl);
   font-weight: 700;
   letter-spacing: .14em;
   color: #fff;
@@ -96,14 +96,14 @@
 }
 .boot-ver {
   margin-left: auto;
-  font-size: 10.5px;
+  font-size: var(--fs-xs);
   letter-spacing: .16em;
   color: var(--text-faint);
 }
 .boot-sub {
   margin: 8px 0 20px;
   padding-bottom: 14px;
-  font-size: 11.5px;
+  font-size: var(--fs-xs);
   letter-spacing: .16em;
   color: var(--text-dim);
   border-bottom: 1px dashed var(--line);
@@ -111,8 +111,8 @@
 
 .boot-log {
   min-height: 132px;
-  font-size: 12px;
-  line-height: 1.95;
+  font-size: var(--fs-xs);
+  line-height: var(--lh-body);
   color: var(--pink-soft);
 }
 .boot-line {
@@ -163,15 +163,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--text-faint);
   letter-spacing: .14em;
 }
-.boot-pct b { color: var(--pink); font-size: 14px; text-shadow: var(--glow-pink); }
+.boot-pct b { color: var(--pink); font-size: var(--fs-sm); text-shadow: var(--glow-pink); }
 .boot-skip {
   padding: 3px 11px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: var(--fs-xs);
   letter-spacing: .12em;
   color: var(--text-dim);
   background: transparent;
@@ -184,7 +184,7 @@
 
 .boot-finish {
   margin: 14px 0 0;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   letter-spacing: .3em;
   text-align: center;
   color: var(--pink);
@@ -280,7 +280,7 @@ body.has-rail .hud { display: none; }
   max-width: 0;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 11.5px;
+  font-size: var(--fs-xs);
   letter-spacing: .04em;
   color: var(--text-faint);
   opacity: 0;
@@ -311,7 +311,7 @@ body.has-rail .hud { display: none; }
 }
 .rail-item.active .rail-txt { color: var(--pink-soft); }
 .rail-item.lvl-3 .rail-dot { width: 6px; height: 6px; }
-.rail-item.lvl-3 .rail-txt { font-size: 10.5px; }
+.rail-item.lvl-3 .rail-txt { font-size: var(--fs-xs); }
 .rail-item.lvl-4 { display: none; }
 .rail::before {
   content: '';
@@ -333,7 +333,7 @@ body.has-rail .hud { display: none; }
   gap: 8px;
   padding: 8px 13px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: var(--fs-xs);
   letter-spacing: .16em;
   color: var(--text-dim);
   background: rgba(14, 8, 17, .88);
@@ -482,9 +482,9 @@ body.has-rail .hud { display: none; }
 }
 @media (max-width: 720px) {
   .boot-panel { padding: 22px 18px 18px; width: min(94vw, 520px); }
-  .boot-title { font-size: 21px; }
+  .boot-title { font-size: var(--fs-xl); }
   .boot-ver { display: none; }
-  .boot-log { font-size: 11px; min-height: 112px; }
+  .boot-log { font-size: var(--fs-xs); min-height: 112px; }
   .ambient { left: 12px; bottom: 14px; padding: 7px 10px; }
   .amb-label { display: none; }
   .grain { opacity: .04; }

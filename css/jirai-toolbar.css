@@ -29,7 +29,7 @@
   min-width: 38px;
   padding: 9px 11px;
   font-family: var(--font-head);
-  font-size: 12px;
+  font-size: var(--fs-xs);
   letter-spacing: .1em;
   color: var(--text-dim);
   background: transparent;
@@ -86,7 +86,7 @@
   align-items: center;
   gap: 7px;
   padding: 9px 12px;
-  font-size: 10.5px;
+  font-size: var(--fs-xs);
   letter-spacing: .14em;
   color: var(--text-dim);
   transition: color .18s ease, background .18s ease;
@@ -123,7 +123,7 @@
   .toolbar, .dock { right: 12px; left: auto; bottom: 14px; }
   .dock { left: 12px; right: auto; bottom: 14px; }
   .dock .search-btn,
-  .dock .type-btn { padding: 8px 10px; font-size: 10px; }
+  .dock .type-btn { padding: 8px 10px; font-size: var(--fs-2xs); }
   .dock .search-btn span { display: none; }   /* 只留圖示，省寬度 */
   .dock .search-btn .ico { width: 14px; height: 14px; }
   .tb-btn { min-width: 34px; padding: 8px 9px; }

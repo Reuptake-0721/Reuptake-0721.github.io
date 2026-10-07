@@ -30,7 +30,7 @@
   flex: none;
   padding-right: 0;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: .22em;
   color: var(--pink-soft);
   text-shadow: 0 0 8px rgba(255, 45, 120, .55);
@@ -74,7 +74,7 @@
   gap: 14px;
   margin: 4px 0 26px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: var(--fs-xs);
   letter-spacing: .42em;
   color: rgba(255, 122, 184, .75);
   text-transform: uppercase;
@@ -130,15 +130,15 @@
 }
 .hud-pct {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   color: var(--pink);
   text-shadow: var(--glow-pink);
   letter-spacing: 0;
 }
-.hud-pct em { font-style: normal; font-size: 8px; opacity: .7; }
+.hud-pct em { font-style: normal; font-size: var(--fs-3xs); opacity: .7; }
 .hud-vert {
   writing-mode: vertical-rl;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .3em;
   color: var(--text-faint);
 }
@@ -178,14 +178,14 @@
   border: 1px solid var(--line-pink);
   border-radius: 12px;
   box-shadow: 0 14px 40px rgba(0, 0, 0, .7), 0 0 26px rgba(255, 45, 120, .22);
-  font-size: 13.5px;
+  font-size: var(--fs-sm);
   color: var(--text);
   overflow: hidden;
   transition: opacity .35s ease, transform .35s cubic-bezier(.2, .8, .3, 1.1), visibility .35s;
 }
 .toast.show { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
 .toast .ico { width: 15px; height: 15px; color: var(--pink); flex: none; }
-.toast-text { line-height: 1.6; }
+.toast-text { line-height: var(--lh-snug); }
 .toast-x {
   flex: none;
   margin-left: 2px;
@@ -243,7 +243,7 @@
   left: 0; top: .30em;
   width: 34px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: var(--fs-xs);
   font-weight: 500;
   letter-spacing: 0;
   text-align: center;
@@ -272,7 +272,7 @@
   position: absolute;
   left: 0; top: .18em;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: var(--fs-xs);
   color: var(--pink-soft);
   letter-spacing: .04em;
   text-shadow: 0 0 8px rgba(255, 45, 120, .5);
@@ -283,7 +283,7 @@
   position: absolute;
   left: 0; top: .2em;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   color: var(--text-faint);
 }
 
@@ -318,12 +318,12 @@
   margin: 0 0 0 -3px;
   padding: 7px 16px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: .2em;
   color: #fff;
   background: linear-gradient(90deg, rgba(255, 45, 120, .55), rgba(255, 45, 120, .12));
 }
-.jn-head::before { content: '†'; font-size: 13px; }
+.jn-head::before { content: '†'; font-size: var(--fs-sm); }
 .jn-body { padding: 14px 20px 4px; }
 .jn-body p:last-child { margin-bottom: 10px; }
 .jirai-note-warn { border-left-color: #ffb020; }
@@ -365,7 +365,7 @@
 .post-body figure.jirai-term .term-bar i:nth-child(2),
 .post-body pre.jirai-term .term-bar i:nth-child(2) { background: var(--purple); }
 /* highlight.js 的行号表适配 */
-.post-body figure.jirai-term table { margin: 0; font-size: 13px; }
+.post-body figure.jirai-term table { margin: 0; font-size: var(--fs-sm); }
 .post-body figure.jirai-term td { border: 0; padding: 0; background: none !important; }
 .post-body figure.jirai-term td.gutter {
   width: 1%;
@@ -490,7 +490,7 @@
 .widget::after {
   color: rgba(255, 45, 120, .5);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   line-height: 1;
   pointer-events: none;
 }
@@ -514,7 +514,7 @@
   top: 17px;
   padding: 2px 8px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .1em;
   color: var(--pink-soft);
   background: rgba(255, 45, 120, .1);
@@ -553,7 +553,7 @@
   padding-top: 11px;
   border-top: 1px dashed var(--line);
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .12em;
   color: var(--text-faint);
 }
@@ -561,7 +561,7 @@
 .profile-updated {
   margin-top: 5px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .1em;
   color: rgba(255, 122, 184, .65);
 }
@@ -616,7 +616,7 @@
   gap: 12px;
   margin: 30px 0 4px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .48em;
   color: rgba(255, 122, 184, .7);
 }
@@ -636,7 +636,7 @@
 .footer-warn span {
   padding: 4px 16px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: .34em;
   color: rgba(255, 122, 184, .85);
   border: 1px dashed var(--line-pink);
@@ -660,7 +660,7 @@
 .name-heart {
   position: fixed;
   z-index: 9997;
-  font-size: 15px;
+  font-size: var(--fs-base);
   color: var(--pink);
   pointer-events: none;
   text-shadow: 0 0 10px rgba(255, 45, 120, .9);
@@ -678,13 +678,13 @@
 
 @media (max-width: 720px) {
   .ribbon { height: 21px; }
-  .ribbon-run { font-size: 10px; letter-spacing: .16em; }
-  .curtain { font-size: 9px; letter-spacing: .3em; gap: 9px; }
+  .ribbon-run { font-size: var(--fs-2xs); letter-spacing: .16em; }
+  .curtain { font-size: var(--fs-2xs); letter-spacing: .3em; gap: 9px; }
   .post-body h2.has-num { padding-left: 40px; }
-  .post-body h2.has-num::before { width: 28px; font-size: 11px; }
+  .post-body h2.has-num::before { width: 28px; font-size: var(--fs-xs); }
   .post-body h2.has-num::after { left: 33px; }
   .post-body img.jirai-photo { padding: 7px; transform: none; }
-  .toast { bottom: 16px; font-size: 12.5px; }
+  .toast { bottom: 16px; font-size: var(--fs-sm); }
 }
 
 @media (prefers-reduced-motion: reduce) {

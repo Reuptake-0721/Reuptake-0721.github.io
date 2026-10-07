@@ -41,7 +41,7 @@
   transform: translateY(-50%) rotate(-7deg);
   padding: 1px 6px;
   font-family: var(--font-head);
-  font-size: 9.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: .12em;
   color: var(--seal);
   border: 1px solid var(--seal-soft);
@@ -86,7 +86,7 @@
   display: block;
   margin-top: 14px;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: var(--fs-2xs);
   letter-spacing: .34em;
   color: rgba(125, 113, 137, .55);
 }

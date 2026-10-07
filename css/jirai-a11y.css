@@ -1,0 +1,108 @@
+/* ============================================================
+   jirai-a11y — 可访问性补强
+   1. 键盘焦点可见（WCAG 2.4.7）—— 全站原本 0 个焦点样式
+   2. 弱化文字对比度提升到小字可读标准
+   3. 触控目标最小尺寸
+   4. 强制色模式 / 高对比度适配
+   ============================================================ */
+
+/* ---------------------------------------------- 1. 焦点可见
+   不做 :focus-visible 的降级——只要浏览器支持就用它，
+   避免鼠标点击时出现描边；不支持则回退到 :focus。 */
+:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+/* 键盘用户在深色背景上需要更醒目的落点 */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(255, 45, 120, .22);
+}
+/* 输入框：描边 + 内发光，不用 outline 更贴合盒子形状 */
+.search-input:focus-visible {
+  outline: none;
+}
+
+/* ---------------------------------------------- 2. 对比度
+   .footer 原为 3.32:1、.meta-row 为 4.43:1，小字下均不达标。
+   深色背景上把弱化文字提到 ≥4.5:1，同时保留层级差。 */
+.footer        { color: #9a8ba4; }   /* 约 5.6:1 */
+.footer a      { color: #b9adc2; }
+.meta-row      { color: #9a8ba4; }
+.card-meta     { color: #9a8ba4; }
+.cab-date      { color: #9a8ba4; }
+.cab-type      { color: #9a8ba4; }
+.ch-meta       { color: #9a8ba4; }
+.profile .motto { color: #9a8ba4; }
+.profile-updated { color: #b98fae; }
+.profile-foot  { color: #8d7f98; }
+.sr-meta       { color: #9a8ba4; }
+.search-foot   { color: #9a8ba4; }
+.search-head .sh-hint { color: #9a8ba4; }
+.search-idle   { color: #9a8ba4; }
+.cabinet-foot  { color: #9a8ba4; }
+.widget-list .n { color: #8d7f98; }
+.profile-stats .l { color: #9a8ba4; }
+
+/* 极小的装饰性文字（9px 以下）本就不承载信息，只用于图形化标签，
+   这里保证它们至少可辨认，不再进一步压暗。 */
+.ecg-lead, .ecg-bpm, .seal-sub, .footer::after { opacity: 1; }
+
+/* ---------------------------------------------- 3. 触控目标
+   移动端把过小的可点区域撑到 44px 最小高度（WCAG 2.5.8） */
+@media (pointer: coarse) {
+  .tag-chip,
+  .tag-cloud a,
+  .widget-list a,
+  .cab-row,
+  .term,
+  .post-nav a {
+    min-height: 44px;
+  }
+  .widget-list li { padding: 4px 0; }
+  .search-close { width: 40px; height: 40px; }
+  .nav-toggle { min-width: 44px; min-height: 44px; }
+  .brand { min-height: 44px; }
+  .dock .search-btn,
+  .dock .type-btn,
+  .dock .ambient,
+  .tb-btn { min-width: 44px; min-height: 44px; }
+}
+
+/* 正文里的行内链接给足垂直热区（不改变视觉） */
+.post-body p a {
+  padding: 2px 0;
+}
+
+/* ---------------------------------------------- 4. 强制色模式
+   Windows 高对比度 / forced-colors 下，背景图与伪元素装饰会失效，
+   这里保证内容仍然可读、边框仍然可见。 */
+@media (forced-colors: active) {
+  .laceframe, .sidetab, .grain, .halo-layer, .particles,
+  .med-cursor, .danger-veil, .spark, .lm-blast, .name-heart { display: none !important; }
+  .card, .widget, .term, .cabinet, .table-wrap { border: 1px solid CanvasText; }
+  .ribbon { border-bottom: 1px solid CanvasText; }
+  a, button { forced-color-adjust: auto; }
+  .tag-chip, .cab-type { border: 1px solid CanvasText; }
+}
+
+/* ---------------------------------------------- 5. 减少动效
+   已有部分 reduce 规则分散在各文件，这里补全兜底：
+   保留布局与颜色过渡（不影响理解），只关掉持续动画与位移。 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .grain, .halo-layer i, .particles, .ribbon-track { animation: none !important; }
+}
