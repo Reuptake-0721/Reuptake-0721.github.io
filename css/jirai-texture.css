@@ -99,7 +99,7 @@ body.no-laceframe .laceframe { display: none; }
   font-size: var(--fs-xs);
   writing-mode: horizontal-tb;
   text-shadow: 0 0 10px rgba(255, 45, 120, .8);
-  animation: heartbeat 2.6s ease-in-out infinite;
+  animation: heartbeat 2.6s var(--ease-std) infinite;
 }
 .sidetab::after {
   content: '';
@@ -126,7 +126,7 @@ body.no-laceframe .laceframe { display: none; }
   left: 0; top: 14px;
   width: 200%;
   height: 100%;
-  animation: ecg-run 7s linear infinite;
+  animation: ecg-run 7s var(--ease-loop) infinite;
 }
 .ecg-strip svg path {
   fill: none;
@@ -199,7 +199,7 @@ body.bandage-hr .post-body hr {
   filter: blur(1.4px);
   transform-origin: left;
   transform: scaleX(0);
-  transition: transform .5s cubic-bezier(.16, 1, .3, 1);
+  transition: transform var(--dur-3) var(--ease-out);
 }
 .ink.show::after { transform: scaleX(1); }
 
@@ -212,16 +212,18 @@ body.bandage-hr .post-body hr {
   width: 0; height: 2px;
   background: linear-gradient(90deg, var(--pink), rgba(255, 45, 120, 0));
   filter: blur(.6px);
-  transition: width .55s cubic-bezier(.16, 1, .3, 1);
+  transition: width var(--dur-4) var(--ease-out);
 }
 .dossier:hover h1::before { width: 62%; }
 
 /* ---------------------------------------------- 朱印多態 */
 /* 朱印內容固定三行：狀態 / 檔號 / 附註，避免長文案撐破方框 */
 .seal-mark {
-  width: 86px;
-  height: 86px;
-  font-size: var(--fs-2xs);
+  /* 原是 86px：实测为标题行高(38px)的 2.5 倍，视觉重心压过标题。
+     收到 68px 后约为标题行高的 1.8 倍，主次关系正常。 */
+  width: 68px;
+  height: 68px;
+  font-size: var(--fs-3xs);
   line-height: var(--lh-tight);
   letter-spacing: .04em;
   flex-direction: column;
@@ -258,7 +260,7 @@ body.bandage-hr .post-body hr {
 
 /* ---------------------------------------------- 卡片四角蕾絲角標 */
 body.crosshatch .card::before,
-.widget::before { transition: color .25s ease; }
+.widget::before { transition: color var(--dur-2) var(--ease-std); }
 
 /* 分類列的小十字 */
 .term .term-count::before {

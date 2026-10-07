@@ -30,7 +30,7 @@
   border-color: var(--seal-soft);
   transform: rotate(-1.5deg);
 }
-.cab-type { transition: transform .18s ease, color .18s ease, border-color .18s ease; }
+.cab-type { transition: transform var(--dur-1) var(--ease-std), color var(--dur-1) var(--ease-std), border-color var(--dur-1) var(--ease-std); }
 
 /* 最新一份：蓋上「最新入庫」斜戳 */
 .cab-row.is-new::after {
