@@ -96,7 +96,10 @@
 }
 .search-close {
   flex: none;
-  width: 24px; height: 24px;
+  /* 原为 24px：触屏媒体查询只在 pointer:coarse 下放大到 40px，桌面端偏小。
+     它是模态框里唯一的关闭控件，统一提到 34px
+     （桌面足够点中；触屏仍由 jirai-a11y.css 的 40px 规则接管）。 */
+  width: 34px; height: 34px;
   display: flex; align-items: center; justify-content: center;
   background: transparent;
   border: 1px solid var(--line);
