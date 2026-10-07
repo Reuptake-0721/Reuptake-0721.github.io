@@ -39,7 +39,7 @@
   right: 76px;
   top: 50%;
   transform: translateY(-50%) rotate(-7deg);
-  padding: 1px 6px;
+  padding: 1px var(--sp-1-5);
   font-family: var(--font-head);
   font-size: var(--fs-2xs);
   letter-spacing: .12em;
@@ -84,7 +84,7 @@
 .footer::after {
   content: 'COLLECTION OF FRAGMENTS · 館藏 · NO SIGNAL';
   display: block;
-  margin-top: 14px;
+  margin-top: var(--sp-3-5);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
   letter-spacing: .34em;

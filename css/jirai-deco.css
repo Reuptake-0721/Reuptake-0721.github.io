@@ -71,8 +71,8 @@
 .curtain {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin: 4px 0 26px;
+  gap: var(--sp-3-5);
+  margin: var(--sp-1) 0 var(--sp-6-5);
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   letter-spacing: .42em;
@@ -111,11 +111,11 @@
   transform: translateY(-50%);
   z-index: 900;
   width: 34px;
-  padding: 10px 0;
+  padding: var(--sp-2-5) 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 9px;
+  gap: var(--sp-h3);
   background: rgba(14, 8, 17, .72);
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -168,9 +168,9 @@
   z-index: 1000;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--sp-2-5);
   max-width: min(90vw, 460px);
-  padding: 13px 16px 15px;
+  padding: var(--sp-h5) var(--sp-4) var(--sp-h6);
   transform: translate(-50%, 18px);
   opacity: 0;
   visibility: hidden;
@@ -188,7 +188,7 @@
 .toast-text { line-height: var(--lh-snug); }
 .toast-x {
   flex: none;
-  margin-left: 2px;
+  margin-left: var(--sp-0-5);
   width: 22px; height: 22px;
   display: flex;
   align-items: center;
@@ -218,7 +218,7 @@
   left: 0; top: 0;
   z-index: 9996;
   width: 34px; height: 34px;
-  margin: -17px 0 0 -17px;
+  margin: var(--offset-deco-sm) 0 0 var(--offset-deco-sm);
   color: var(--pink);
   opacity: 0;
   pointer-events: none;
@@ -236,7 +236,7 @@
 .post-body h3.has-num,
 .post-body h4.has-num { position: relative; }
 
-.post-body h2.has-num { padding-left: 52px; }
+.post-body h2.has-num { padding-left: var(--sp-x7); }
 .post-body h2.has-num::before {
   content: attr(data-num);
   position: absolute;
@@ -251,7 +251,7 @@
   background: rgba(255, 45, 120, .10);
   border: 1px solid var(--line-pink);
   border-radius: 6px;
-  padding: 2px 0;
+  padding: var(--sp-0-5) 0;
   transform: none;
   box-shadow: 0 0 12px rgba(255, 45, 120, .18);
   text-shadow: var(--glow-pink);
@@ -277,7 +277,7 @@
   letter-spacing: .04em;
   text-shadow: 0 0 8px rgba(255, 45, 120, .5);
 }
-.post-body h4.has-num { padding-left: 30px; }
+.post-body h4.has-num { padding-left: var(--sp-x1); }
 .post-body h4.has-num::after {
   content: attr(data-num);
   position: absolute;
@@ -290,7 +290,7 @@
 /* ---------------------------------------------- 正文：引用框 */
 .jirai-note {
   position: relative;
-  margin: 24px 0;
+  margin: var(--sp-6) 0;
   padding: 0;
   background: linear-gradient(135deg, rgba(255, 45, 120, .10), rgba(168, 85, 247, .06));
   border: 1px solid var(--line);
@@ -314,9 +314,9 @@
 .jn-head {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--sp-1-5);
   margin: 0 0 0 -3px;
-  padding: 7px 16px;
+  padding: var(--sp-h2) var(--sp-4);
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   letter-spacing: .2em;
@@ -324,8 +324,8 @@
   background: linear-gradient(90deg, rgba(255, 45, 120, .55), rgba(255, 45, 120, .12));
 }
 .jn-head::before { content: '†'; font-size: var(--fs-sm); }
-.jn-body { padding: 14px 20px 4px; }
-.jn-body p:last-child { margin-bottom: 10px; }
+.jn-body { padding: var(--sp-3-5) var(--sp-5) var(--sp-1); }
+.jn-body p:last-child { margin-bottom: var(--sp-2-5); }
 .jirai-note-warn { border-left-color: var(--warn); }
 .jirai-note-warn .jn-head { background: linear-gradient(90deg, rgba(255, 176, 32, .55), rgba(255, 176, 32, .10)); }
 .jirai-note-warn::after { color: rgba(255, 176, 32, .35); }
@@ -338,7 +338,7 @@
 
 /* ---------------------------------------------- 正文：终端代码块 */
 .post-body figure.jirai-term {
-  margin: 24px 0;
+  margin: var(--sp-6) 0;
   background: linear-gradient(180deg, #120b16, #09060b);
   border: 1px solid var(--line);
   border-radius: 12px;
@@ -349,8 +349,8 @@
 .post-body pre.jirai-term .term-bar {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 9px 14px;
+  gap: var(--sp-1-5);
+  padding: var(--sp-h3) var(--sp-3-5);
   background: rgba(255, 45, 120, .07);
   border-bottom: 1px solid var(--line);
 }
@@ -369,32 +369,32 @@
 .post-body figure.jirai-term td { border: 0; padding: 0; background: none !important; }
 .post-body figure.jirai-term td.gutter {
   width: 1%;
-  padding: 14px 12px 16px 16px;
+  padding: var(--sp-3-5) var(--sp-3) var(--sp-4) var(--sp-4);
   color: var(--text-faint);
   border-right: 1px solid var(--line);
   user-select: none;
   text-align: right;
   opacity: .6;
 }
-.post-body figure.jirai-term td.code { padding: 14px 16px 16px; }
+.post-body figure.jirai-term td.code { padding: var(--sp-3-5) var(--sp-4) var(--sp-4); }
 .post-body figure.jirai-term pre { margin: 0; border: 0; background: none; box-shadow: none; border-radius: 0; }
 
 .post-body pre.jirai-term {
-  padding: 0 0 16px;
+  padding: 0 0 var(--sp-4);
   background: linear-gradient(180deg, #120b16, #09060b);
   border: 1px solid var(--line);
   border-left: 1px solid var(--line);
   border-radius: 12px;
 }
 .post-body pre.jirai-term .term-bar {
-  margin-bottom: 14px;
-  padding: 9px 14px;
+  margin-bottom: var(--sp-3-5);
+  padding: var(--sp-h3) var(--sp-3-5);
 }
-.post-body pre.jirai-term code { display: block; padding: 0 18px; }
+.post-body pre.jirai-term code { display: block; padding: 0 var(--sp-4-5); }
 
 /* ---------------------------------------------- 正文：拍立得相框 */
 .post-body img.jirai-photo {
-  padding: 9px;
+  padding: var(--sp-h3);
   background: linear-gradient(180deg, #fdf7fa, #efe2ea);
   border: 0;
   border-radius: 3px 3px 3px 3px;
@@ -460,7 +460,7 @@
 .heart-beat {
   display: flex;
   justify-content: center;
-  margin: 34px 0 6px;
+  margin: var(--sp-x2) 0 var(--sp-1-5);
   color: var(--pink);
   opacity: .55;
 }
@@ -512,7 +512,7 @@
   position: absolute;
   right: 12px;
   top: 17px;
-  padding: 2px 8px;
+  padding: var(--sp-0-5) var(--sp-2);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
   letter-spacing: .1em;
@@ -523,11 +523,11 @@
   z-index: 2;
   box-shadow: 0 0 10px rgba(255, 45, 120, .14);
 }
-.profile .widget-title { padding-right: 64px; }
+.profile .widget-title { padding-right: var(--sp-x9); }
 
 /* 心电线条 */
 .pulse-line {
-  margin: 15px 0 3px;
+  margin: var(--sp-h6) 0 3px;
   height: 26px;
   opacity: .75;
 }
@@ -549,17 +549,17 @@
 }
 
 .profile-foot {
-  margin-top: 13px;
-  padding-top: 11px;
+  margin-top: var(--sp-h5);
+  padding-top: var(--sp-h4);
   border-top: 1px dashed var(--line);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
   letter-spacing: .12em;
   color: var(--text-faint);
 }
-.profile-foot .pf-sep { margin: 0 7px; color: var(--line-pink); }
+.profile-foot .pf-sep { margin: 0 var(--sp-h2); color: var(--line-pink); }
 .profile-updated {
-  margin-top: 5px;
+  margin-top: var(--sp-h1);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
   letter-spacing: .1em;
@@ -569,7 +569,7 @@
 /* 条形码 */
 .barcode {
   height: 22px;
-  margin: 14px auto 0;
+  margin: var(--sp-3-5) auto 0;
   width: 88%;
   opacity: .42;
   background-image: repeating-linear-gradient(
@@ -613,8 +613,8 @@
 .post-end {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin: 30px 0 4px;
+  gap: var(--sp-3);
+  margin: var(--sp-x1) 0 var(--sp-1);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
   letter-spacing: .48em;
@@ -631,10 +631,10 @@
 .footer-warn {
   display: flex;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: var(--sp-4);
 }
 .footer-warn span {
-  padding: 4px 16px;
+  padding: var(--sp-1) var(--sp-4);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
   letter-spacing: .34em;
@@ -679,11 +679,11 @@
 @media (max-width: 720px) {
   .ribbon { height: 21px; }
   .ribbon-run { font-size: var(--fs-2xs); letter-spacing: .16em; }
-  .curtain { font-size: var(--fs-2xs); letter-spacing: .3em; gap: 9px; }
-  .post-body h2.has-num { padding-left: 40px; }
+  .curtain { font-size: var(--fs-2xs); letter-spacing: .3em; gap: var(--sp-h3); }
+  .post-body h2.has-num { padding-left: var(--sp-8); }
   .post-body h2.has-num::before { width: 28px; font-size: var(--fs-xs); }
   .post-body h2.has-num::after { left: 33px; }
-  .post-body img.jirai-photo { padding: 7px; transform: none; }
+  .post-body img.jirai-photo { padding: var(--sp-h2); transform: none; }
   .toast { bottom: 16px; font-size: var(--fs-sm); }
 }
 

@@ -80,8 +80,8 @@ body.no-laceframe .laceframe { display: none; }
   z-index: 898;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 16px 5px 16px 3px;
+  gap: var(--sp-2-5);
+  padding: var(--sp-4) var(--sp-h1) var(--sp-4) 3px;
   writing-mode: vertical-rl;
   text-orientation: upright;
   font-family: var(--font-mono);
@@ -112,7 +112,7 @@ body.no-laceframe .laceframe { display: none; }
 /* ---------------------------------------------- 心電監護條 */
 .ecg-strip {
   position: relative;
-  margin: 34px 0;
+  margin: var(--sp-x2) 0;
   height: 56px;
   overflow: hidden;
   border-top: 1px solid rgba(255, 45, 120, .16);
@@ -276,7 +276,7 @@ body.crosshatch .card::before,
 @media (max-width: 900px) {
   .laceframe b { width: 52px; height: 52px; }
   .laceframe i { opacity: .34; }
-  .ecg-strip { height: 50px; margin: 26px 0; }
+  .ecg-strip { height: 50px; margin: var(--sp-6-5) 0; }
   .ecg-strip svg { top: 12px; }
 }
 @media (max-width: 720px) {

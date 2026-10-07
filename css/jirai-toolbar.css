@@ -25,9 +25,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: var(--sp-h1);
   min-width: 38px;
-  padding: 9px 11px;
+  padding: var(--sp-h3) var(--sp-h4);
   font-family: var(--font-head);
   font-size: var(--fs-xs);
   letter-spacing: .1em;
@@ -48,7 +48,7 @@
 
 /* 「歸位」只在滚过一屏后出现，初始不占视觉 */
 #to-top { opacity: 0; visibility: hidden; max-width: 0; min-width: 0; padding-left: 0; padding-right: 0; }
-#to-top.show { opacity: 1; visibility: visible; max-width: 60px; min-width: 38px; padding-left: 11px; padding-right: 11px; }
+#to-top.show { opacity: 1; visibility: visible; max-width: 60px; min-width: 38px; padding-left: var(--sp-h4); padding-right: var(--sp-h4); }
 
 /* ---------------------------------------------- 左下按鈕組 */
 /* 檢索 / 字級 / 氛圍音 由各自的 partial 產出，這裡統一外觀與位置 */
@@ -84,8 +84,8 @@
 .dock .ambient {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 9px 12px;
+  gap: var(--sp-h2);
+  padding: var(--sp-h3) var(--sp-3);
   font-size: var(--fs-xs);
   letter-spacing: .14em;
   color: var(--text-dim);
@@ -123,8 +123,8 @@
   .toolbar, .dock { right: 12px; left: auto; bottom: 14px; }
   .dock { left: 12px; right: auto; bottom: 14px; }
   .dock .search-btn,
-  .dock .type-btn { padding: 8px 10px; font-size: var(--fs-2xs); }
+  .dock .type-btn { padding: var(--sp-2) var(--sp-2-5); font-size: var(--fs-2xs); }
   .dock .search-btn span { display: none; }   /* 只留圖示，省寬度 */
   .dock .search-btn .ico { width: 14px; height: 14px; }
-  .tb-btn { min-width: 34px; padding: 8px 9px; }
+  .tb-btn { min-width: 34px; padding: var(--sp-2) var(--sp-h3); }
 }

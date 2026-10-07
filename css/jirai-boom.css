@@ -44,7 +44,7 @@
   position: relative;
   z-index: 4;
   width: min(92vw, 640px);
-  padding: 30px 30px 24px;
+  padding: var(--sp-x1) var(--sp-x1) var(--sp-6);
   background: linear-gradient(180deg, rgba(20, 13, 23, .92), rgba(8, 5, 10, .92));
   border: 1px solid var(--line-pink);
   border-radius: 14px;
@@ -56,7 +56,7 @@
 .boot-brand {
   display: flex;
   align-items: baseline;
-  gap: 9px;
+  gap: var(--sp-h3);
   flex-wrap: wrap;
 }
 .boot-mark {
@@ -101,8 +101,8 @@
   color: var(--text-faint);
 }
 .boot-sub {
-  margin: 8px 0 20px;
-  padding-bottom: 14px;
+  margin: var(--sp-2) 0 var(--sp-5);
+  padding-bottom: var(--sp-3-5);
   font-size: var(--fs-xs);
   letter-spacing: .16em;
   color: var(--text-dim);
@@ -137,7 +137,7 @@
 .boot-bar {
   position: relative;
   height: 4px;
-  margin: 20px 0 12px;
+  margin: var(--sp-5) 0 var(--sp-3);
   border-radius: 3px;
   background: rgba(255, 255, 255, .07);
   overflow: hidden;
@@ -169,7 +169,7 @@
 }
 .boot-pct b { color: var(--pink); font-size: var(--fs-sm); text-shadow: var(--glow-pink); }
 .boot-skip {
-  padding: 3px 11px;
+  padding: 3px var(--sp-h4);
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   letter-spacing: .12em;
@@ -183,7 +183,7 @@
 .boot-skip:hover { color: #fff; border-color: var(--pink); box-shadow: var(--glow-soft); }
 
 .boot-finish {
-  margin: 14px 0 0;
+  margin: var(--sp-3-5) 0 0;
   font-size: var(--fs-sm);
   letter-spacing: .3em;
   text-align: center;
@@ -272,10 +272,10 @@ body.has-rail .hud { display: none; }
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: var(--sp-h3);
   align-items: flex-end;
 }
-.rail-item { position: relative; display: flex; align-items: center; gap: 8px; }
+.rail-item { position: relative; display: flex; align-items: center; gap: var(--sp-2); }
 .rail-item .rail-txt {
   max-width: 0;
   overflow: hidden;
@@ -289,7 +289,7 @@ body.has-rail .hud { display: none; }
 .rail-item a {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--sp-2);
   text-decoration: none;
 }
 .rail-item .rail-dot {
@@ -330,8 +330,8 @@ body.has-rail .hud { display: none; }
   z-index: 950;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 13px;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-h5);
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   letter-spacing: .16em;
@@ -349,7 +349,7 @@ body.has-rail .hud { display: none; }
   border-color: var(--pink);
   box-shadow: 0 0 22px rgba(255, 45, 120, .4), inset 0 0 14px rgba(255, 45, 120, .14);
 }
-.amb-bars { display: flex; align-items: flex-end; gap: 2px; height: 12px; }
+.amb-bars { display: flex; align-items: flex-end; gap: var(--sp-0-5); height: 12px; }
 .amb-bars i {
   width: 2px;
   height: 4px;
@@ -369,7 +369,7 @@ body.has-rail .hud { display: none; }
 /* ---------------------------------------------- 胶片颗粒 */
 .grain {
   position: fixed;
-  inset: -120px;
+  inset: var(--offset-deco-md);
   z-index: 9995;
   pointer-events: none;
   opacity: .05;
@@ -390,7 +390,7 @@ body.has-rail .hud { display: none; }
   top: 42%;
   z-index: 9994;
   transform: translate(-50%, -50%) scale(.7);
-  padding: 14px 30px;
+  padding: var(--sp-3-5) var(--sp-x1);
   font-family: var(--font-head);
   font-size: clamp(22px, 5vw, 46px);
   font-weight: 700;
@@ -481,11 +481,11 @@ body.has-rail .hud { display: none; }
   .rail { display: none; }
 }
 @media (max-width: 720px) {
-  .boot-panel { padding: 22px 18px 18px; width: min(94vw, 520px); }
+  .boot-panel { padding: var(--sp-5-5) var(--sp-4-5) var(--sp-4-5); width: min(94vw, 520px); }
   .boot-title { font-size: var(--fs-xl); }
   .boot-ver { display: none; }
   .boot-log { font-size: var(--fs-xs); min-height: 112px; }
-  .ambient { left: 12px; bottom: 14px; padding: 7px 10px; }
+  .ambient { left: 12px; bottom: 14px; padding: var(--sp-h2) var(--sp-2-5); }
   .amb-label { display: none; }
   .grain { opacity: .04; }
 }

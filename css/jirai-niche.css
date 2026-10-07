@@ -40,10 +40,10 @@ body.no-paper::after { display: none; }
 .cabinet-head {
   display: flex;
   align-items: flex-end;
-  gap: 14px;
+  gap: var(--sp-3-5);
   flex-wrap: wrap;
-  margin: 2px 0 22px;
-  padding-bottom: 14px;
+  margin: var(--sp-0-5) 0 var(--sp-5-5);
+  padding-bottom: var(--sp-3-5);
   border-bottom: 1px solid var(--line);
 }
 .cabinet-head .ch-title {
@@ -71,8 +71,8 @@ body.no-paper::after { display: none; }
   display: grid;
   grid-template-columns: 96px 88px 1fr auto;
   align-items: baseline;
-  gap: 14px;
-  padding: 13px 6px 13px 2px;
+  gap: var(--sp-3-5);
+  padding: var(--sp-h5) var(--sp-1-5) var(--sp-h5) var(--sp-0-5);
   border-bottom: 1px solid rgba(46, 32, 51, .85);
   text-decoration: none;
   position: relative;
@@ -89,7 +89,7 @@ body.no-paper::after { display: none; }
 }
 .cab-row:hover {
   background: linear-gradient(90deg, rgba(192, 57, 43, .07), transparent 55%);
-  padding-left: 12px;
+  padding-left: var(--sp-3);
 }
 .cab-row:hover::before { opacity: 1; }
 
@@ -123,7 +123,7 @@ body.no-paper::after { display: none; }
   letter-spacing: .12em;
   color: var(--ink-dim);
   white-space: nowrap;
-  padding: 2px 7px;
+  padding: var(--sp-0-5) var(--sp-h2);
   border: 1px solid rgba(46, 32, 51, .9);
   border-radius: 2px;
 }
@@ -132,9 +132,9 @@ body.no-paper::after { display: none; }
 .cabinet-foot {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--sp-3);
   flex-wrap: wrap;
-  margin-top: 18px;
+  margin-top: var(--sp-4-5);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
   letter-spacing: .16em;
@@ -143,7 +143,7 @@ body.no-paper::after { display: none; }
 
 /* 空櫃 */
 .cabinet-empty {
-  padding: 46px 10px;
+  padding: var(--sp-x5) var(--sp-2-5);
   text-align: center;
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
@@ -177,7 +177,7 @@ body.no-paper::after { display: none; }
 .dossier-spine {
   flex: none;
   width: 30px;
-  padding-top: 4px;
+  padding-top: var(--sp-1);
   writing-mode: vertical-rl;
   text-orientation: upright;
   display: flex;
@@ -210,10 +210,14 @@ body.no-paper::after { display: none; }
 .dossier-spine .sp-no { font-size: var(--fs-xs); letter-spacing: 0; opacity: 1; }
 
 /* 朱印固定在 header 右上角，标题让出这一带（已用 Range 行盒验证无重叠）。 */
-.dossier-body h1 { padding-right: 86px; }   /* 68px 印章 + 旋转外溢 ~10px + 呼吸 8px */
+.dossier-body h1 {
+  /* 86px 不是版面节奏，而是「68px 印章 + 旋转外溢 ~10px + 呼吸 8px」推导出的
+     避让尺寸，属组件内部几何，故保持字面值而非间距 token。 */
+  padding-right: 86px;
+}
 
 .dossier h1 {
-  margin: 0 0 10px;
+  margin: 0 0 var(--sp-2-5);
   font-family: var(--font-head);
   font-size: clamp(21px, 3.2vw, 29px);
   line-height: var(--lh-tight);
@@ -223,7 +227,7 @@ body.no-paper::after { display: none; }
 }
 .dossier h1::after {
   content: '▌';
-  margin-left: 4px;
+  margin-left: var(--sp-1);
   color: var(--seal);
   animation: caret-blink 1.1s steps(1) infinite;
   font-size: .8em;
@@ -250,7 +254,7 @@ body.no-paper::after { display: none; }
   line-height: var(--lh-tight);
   letter-spacing: .1em;
   text-align: center;
-  padding: 5px;
+  padding: var(--sp-h1);
   box-shadow: inset 0 0 0 3px rgba(192, 57, 43, .12);
   pointer-events: none;
 }
@@ -267,7 +271,7 @@ body.no-paper::after { display: none; }
 .meta-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 16px;
+  gap: var(--sp-1-5) var(--sp-4);
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   letter-spacing: .1em;
@@ -281,8 +285,8 @@ body.no-paper::after { display: none; }
 .memo {
   position: relative;
   display: block;
-  margin: 22px 0;
-  padding: 12px 16px 12px 30px;
+  margin: var(--sp-5-5) 0;
+  padding: var(--sp-3) var(--sp-4) var(--sp-3) var(--sp-x1);
   font-family: var(--font-body);
   font-size: var(--fs-sm);
   line-height: var(--lh-body);
@@ -299,7 +303,7 @@ body.no-paper::after { display: none; }
   font-size: var(--fs-xs);
   opacity: .8;
 }
-.memo-body p { margin: 0 0 8px; }
+.memo-body p { margin: 0 0 var(--sp-2); }
 .memo-body p:last-child { margin-bottom: 0; }
 
 /* 寬螢幕時浮到正文右側留白，像頁邊手寫 */
@@ -307,10 +311,10 @@ body.no-paper::after { display: none; }
   .post-body { position: relative; }
   .memo {
     width: 190px;
-    margin: 6px -206px 20px 0;
+    margin: var(--sp-1-5) var(--offset-deco-lg) var(--sp-5) 0;
     float: right;
     clear: right;
-    padding: 10px 12px 10px 26px;
+    padding: var(--sp-2-5) var(--sp-3) var(--sp-2-5) var(--sp-6-5);
     font-size: var(--fs-xs);
     line-height: var(--lh-snug);
     background: none;
@@ -329,8 +333,8 @@ body.no-paper::after { display: none; }
 /* ---------------------------------------------- 未完句 */
 .unfinished {
   position: relative;
-  margin: 26px 0;
-  padding-left: 18px;
+  margin: var(--sp-6-5) 0;
+  padding-left: var(--sp-4-5);
 }
 .uf-line {
   position: absolute;
@@ -355,7 +359,7 @@ body.no-paper::after { display: none; }
 }
 .uf-mark {
   display: block;
-  margin-top: 8px;
+  margin-top: var(--sp-2);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
   letter-spacing: .28em;
@@ -379,8 +383,8 @@ body.no-paper::after { display: none; }
   z-index: 951;
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 7px 11px;
+  gap: var(--sp-h2);
+  padding: var(--sp-h2) var(--sp-h4);
   font-family: var(--font-head);
   font-size: var(--fs-sm);
   letter-spacing: .1em;
@@ -436,33 +440,33 @@ body.no-paper::after { display: none; }
       "no   type"
       "ttl  ttl"
       "date date";
-    gap: 5px 10px;
-    padding: 12px 4px;
+    gap: var(--sp-h1) var(--sp-2-5);
+    padding: var(--sp-3) var(--sp-1);
   }
   .cab-no { grid-area: no; }
   .cab-type { grid-area: type; justify-self: end; }
   .cab-title { grid-area: ttl; font-size: var(--fs-base); }
   .cab-date { grid-area: date; }
-  .cab-row:hover { padding-left: 8px; }
+  .cab-row:hover { padding-left: var(--sp-2); }
 
-  .dossier { padding-left: 0; padding-top: 4px; }
+  .dossier { padding-left: 0; padding-top: var(--sp-1); }
   .dossier-spine {
     position: static;
     writing-mode: horizontal-tb;
     flex-direction: row;
     width: auto;
-    margin-bottom: 10px;
-    gap: 12px;
+    margin-bottom: var(--sp-2-5);
+    gap: var(--sp-3);
   }
   .dossier-spine::after { display: none; }
   .seal-mark {
     position: static;
     width: 60px; height: 60px;
-    margin: 10px 0 4px;
+    margin: var(--sp-2-5) 0 var(--sp-1);
     font-size: var(--fs-2xs);
     transform: rotate(-6deg);
   }
-  .variant-btn { right: 12px; bottom: 66px; padding: 6px 9px; font-size: var(--fs-xs); }
+  .variant-btn { right: 12px; bottom: 66px; padding: var(--sp-1-5) var(--sp-h3); font-size: var(--fs-xs); }
   .variant-btn small { display: none; }
 }
 
