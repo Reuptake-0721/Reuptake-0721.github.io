@@ -34,7 +34,7 @@ body.no-paper::after { display: none; }
   line-height: var(--lh-body);
 }
 .post-body strong { color: #ded4e4; text-shadow: none; }
-.post-body h1, .post-body h2, .post-body h3, .post-body h4 { color: #e6dcec; }
+.post-body h1, .post-body h2, .post-body h3, .post-body h4 { color: var(--text-head); }
 
 /* ---------------------------------------------- 檔案目錄（首頁） */
 .cabinet-head {
@@ -51,7 +51,7 @@ body.no-paper::after { display: none; }
   font-family: var(--font-head);
   font-size: clamp(20px, 3vw, 27px);
   letter-spacing: .18em;
-  color: #e6dcec;
+  color: var(--text-head);
 }
 .cabinet-head .ch-title span { color: var(--seal); }
 .cabinet-head .ch-meta {

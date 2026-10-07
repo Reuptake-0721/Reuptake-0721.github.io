@@ -34,23 +34,23 @@ summary:focus-visible,
 /* ---------------------------------------------- 2. 对比度
    .footer 原为 3.32:1、.meta-row 为 4.43:1，小字下均不达标。
    深色背景上把弱化文字提到 ≥4.5:1，同时保留层级差。 */
-.footer        { color: #9a8ba4; }   /* 约 5.6:1 */
+.footer        { color: var(--text-mute); }   /* 约 5.6:1 */
 .footer a      { color: #b9adc2; }
-.meta-row      { color: #9a8ba4; }
-.card-meta     { color: #9a8ba4; }
-.cab-date      { color: #9a8ba4; }
-.cab-type      { color: #9a8ba4; }
-.ch-meta       { color: #9a8ba4; }
-.profile .motto { color: #9a8ba4; }
+.meta-row      { color: var(--text-mute); }
+.card-meta     { color: var(--text-mute); }
+.cab-date      { color: var(--text-mute); }
+.cab-type      { color: var(--text-mute); }
+.ch-meta       { color: var(--text-mute); }
+.profile .motto { color: var(--text-mute); }
 .profile-updated { color: #b98fae; }
-.profile-foot  { color: #8d7f98; }
-.sr-meta       { color: #9a8ba4; }
-.search-foot   { color: #9a8ba4; }
-.search-head .sh-hint { color: #9a8ba4; }
-.search-idle   { color: #9a8ba4; }
-.cabinet-foot  { color: #9a8ba4; }
-.widget-list .n { color: #8d7f98; }
-.profile-stats .l { color: #9a8ba4; }
+.profile-foot  { color: var(--text-mute-2); }
+.sr-meta       { color: var(--text-mute); }
+.search-foot   { color: var(--text-mute); }
+.search-head .sh-hint { color: var(--text-mute); }
+.search-idle   { color: var(--text-mute); }
+.cabinet-foot  { color: var(--text-mute); }
+.widget-list .n { color: var(--text-mute-2); }
+.profile-stats .l { color: var(--text-mute); }
 
 /* 极小的装饰性文字（9px 以下）本就不承载信息，只用于图形化标签，
    这里保证它们至少可辨认，不再进一步压暗。 */

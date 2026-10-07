@@ -125,10 +125,10 @@
 }
 .boot-line.show { animation: boot-line-in var(--dur-2) var(--ease-std) forwards; }
 .boot-line::before { content: '› '; color: var(--pink); }
-.boot-line.bad { color: #ff6b6b; }
+.boot-line.bad { color: var(--bad); }
 .boot-line.bad::before { content: '✕ '; color: #ff3b3b; }
 .boot-line.warn { color: #ffc26b; }
-.boot-line.warn::before { content: '! '; color: #ffb020; }
+.boot-line.warn::before { content: '! '; color: var(--warn); }
 @keyframes boot-line-in {
   from { opacity: 0; transform: translateX(-10px); }
   to   { opacity: 1; transform: translateX(0); }

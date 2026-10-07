@@ -43,7 +43,7 @@
   font-family: var(--font-head);
   font-size: var(--fs-sm);
   letter-spacing: .18em;
-  color: #e6dcec;
+  color: var(--text-head);
 }
 .kn-jump__x {
   margin-left: auto;
@@ -103,10 +103,10 @@
   font-size: var(--fs-xs);
   letter-spacing: .1em;
   line-height: 1.6;
-  color: #9a8ba4;
+  color: var(--text-mute);
 }
 .kn-jump__hint.is-ok { color: var(--pink-soft); }
-.kn-jump__hint.is-bad { color: #ff6b6b; }
+.kn-jump__hint.is-bad { color: var(--bad); }
 
 /* ---------------------------------------------- 快捷键一览（?） */
 .kn-help {
@@ -146,7 +146,7 @@
   font-family: var(--font-head);
   font-size: var(--fs-sm);
   letter-spacing: .2em;
-  color: #e6dcec;
+  color: var(--text-head);
 }
 .kn-help__x {
   margin-left: auto;
@@ -193,7 +193,7 @@
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
   letter-spacing: .16em;
-  color: #9a8ba4;
+  color: var(--text-mute);
 }
 
 /* ---------------------------------------------- 底部位置提示 */
@@ -236,7 +236,7 @@
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
   letter-spacing: .12em;
-  color: #9a8ba4;
+  color: var(--text-mute);
 }
 
 /* ---------------------------------------------- 响应式

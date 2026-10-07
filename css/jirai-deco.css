@@ -326,7 +326,7 @@
 .jn-head::before { content: '†'; font-size: var(--fs-sm); }
 .jn-body { padding: 14px 20px 4px; }
 .jn-body p:last-child { margin-bottom: 10px; }
-.jirai-note-warn { border-left-color: #ffb020; }
+.jirai-note-warn { border-left-color: var(--warn); }
 .jirai-note-warn .jn-head { background: linear-gradient(90deg, rgba(255, 176, 32, .55), rgba(255, 176, 32, .10)); }
 .jirai-note-warn::after { color: rgba(255, 176, 32, .35); }
 .jirai-note-danger { border-left-color: #ff2d2d; }

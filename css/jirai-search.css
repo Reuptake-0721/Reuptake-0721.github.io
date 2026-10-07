@@ -84,7 +84,7 @@
   font-family: var(--font-head);
   font-size: var(--fs-sm);
   letter-spacing: .18em;
-  color: #e6dcec;
+  color: var(--text-head);
 }
 .search-head .sh-title span { color: var(--seal, #c0392b); }
 .search-head .sh-hint {
