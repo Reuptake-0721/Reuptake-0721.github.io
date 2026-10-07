@@ -229,17 +229,33 @@
   function open() {
     mask.classList.add('open');
     document.body.style.overflow = 'hidden';
-    lastFocus = doc.activeElement;
+    /* 记住来源焦点，关闭时归还 */
+    if (!mask.contains(doc.activeElement)) lastFocus = doc.activeElement;
+    /* 立即把焦点移入输入框 —— 原先写在 loadIndex().then() 里，
+       索引加载完成前用户会先 Tab 过整条导航才够到对话框。
+       但必须延到下一帧：遮罩初始为 visibility:hidden，在 hidden 元素上
+       focus() 会被浏览器静默忽略；同任务内刚加的 .open 尚未参与样式解析
+       （实测聚焦失败，activeElement 仍是 body）。 */
+    focusInputNextFrame();
     loadIndex().then(function () {
       if (input && !input.value && countEl && INDEX) countEl.textContent = String(INDEX.items.length);
-      if (input) input.focus();
       if (input && input.value) render(input.value.trim());
+    });
+  }
+  /* 两次 rAF：确保 .open 生效、visibility 已转为 visible 再聚焦 */
+  function focusInputNextFrame() {
+    if (!input) return;
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        if (mask.classList.contains('open') && doc.activeElement !== input) input.focus();
+      });
     });
   }
   function close() {
     mask.classList.remove('open');
     document.body.style.overflow = '';
     if (lastFocus && lastFocus.focus) lastFocus.focus();
+    lastFocus = null;
   }
   function toggle() {
     mask.classList.contains('open') ? close() : open();
@@ -251,6 +267,27 @@
 
   mask.addEventListener('click', function (e) {
     if (e.target === mask) close();
+  });
+
+  /* ---------------------------------------------- 焦点陷阱
+     对话框标了 aria-modal="true"，就必须把 Tab 关在里面 ——
+     否则键盘用户会 Tab 到背后的页面内容上，屏读器也会读到那些内容，
+     与「模态」的语义不符。 */
+  mask.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    var focusables = [].slice.call(
+      mask.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])')
+    ).filter(function (el) { return el.offsetParent !== null; });
+    if (!focusables.length) return;
+    var first = focusables[0];
+    var last = focusables[focusables.length - 1];
+    if (e.shiftKey && doc.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && doc.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   });
 
   /* 输入（防抖 90ms，索引很小所以很快） */
