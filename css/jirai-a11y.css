@@ -94,9 +94,77 @@ summary:focus-visible,
   .tag-chip, .cab-type { border: 1px solid CanvasText; }
 }
 
-/* ---------------------------------------------- 5. 减少动效
+/* ---------------------------------------------- 5. 按下反馈（:active）
+   审计发现全站 :hover 有 27 个选择器、:active 有 0 个 ——
+   点击时没有任何物理反馈，鼠标与触屏都觉得「按了个寂寞」。
+   这里统一补一套：位移用 transform（不触发重排，长文页面也不会抖动），
+   表面变化用 --bg-raise，颜色变化用高亮。 */
+
+.dock .search-btn:active,
+.dock .type-btn:active,
+.dock .ambient:active,
+.tb-btn:active,
+.nav-toggle:active,
+.search-close:active,
+.toast-x:active,
+.boot-skip:active,
+.pager a:active,
+.toc-inner .toc-link:active,
+.tag-chip:active,
+.tag-cloud a:active,
+.card-more:active,
+.post-nav a:active,
+.widget-list a:active,
+.rail-item a:active {
+  transform: translateY(1px) scale(.985);
+  transition-duration: var(--dur-1);
+}
+
+/* 表面型控件：按下时加深底色，比缩放更贴合物件感 */
+.tb-btn:active,
+.dock .search-btn:active,
+.dock .type-btn:active,
+.dock .ambient:active,
+.pager a:active,
+.post-nav a:active,
+.widget-list a:active {
+  background-color: var(--bg-raise);
+}
+
+/* 档案行、条目卡、检索结果：按下时整行下沉并提亮 */
+.cab-row:active,
+.term:active,
+.sr-item:active {
+  transform: translateY(1px);
+  background: rgba(255, 45, 120, .10);
+}
+.cab-row:active::before,
+.term:active::before { opacity: 1; }
+
+/* 卡片：只用表面变化，不做缩放（卡片面积大，缩放会显得整页在抖） */
+.card:active {
+  border-color: var(--line-pink);
+  background: linear-gradient(180deg, var(--bg-card-2), var(--bg-card));
+}
+
+/* 正文链接：按下时虚线变实线，像被按进去 */
+.post-body p a:active {
+  border-bottom-style: solid;
+  color: #fff;
+}
+
+/* 触屏没有 hover，但必须保留 active —— 否则手机点击毫无反馈 */
+@media (hover: none) {
+  .dock .search-btn:active,
+  .dock .type-btn:active,
+  .tb-btn:active,
+  .tag-chip:active,
+  .cab-row:active { background-color: var(--bg-raise); }
+}
+
+/* ---------------------------------------------- 6. 减少动效
    已有部分 reduce 规则分散在各文件，这里补全兜底：
-   保留布局与颜色过渡（不影响理解），只关掉持续动画与位移。 */
+   保留颜色/表面变化（不影响理解），去掉持续动画与位移。 */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
@@ -105,4 +173,5 @@ summary:focus-visible,
     scroll-behavior: auto !important;
   }
   .grain, .halo-layer i, .particles, .ribbon-track { animation: none !important; }
+  *:active { transform: none !important; }   /* 按下位移也去掉，只留颜色变化 */
 }
