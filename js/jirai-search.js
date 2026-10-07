@@ -242,14 +242,36 @@
       if (input && input.value) render(input.value.trim());
     });
   }
-  /* 两次 rAF：确保 .open 生效、visibility 已转为 visible 再聚焦 */
+  /* 把焦点移入输入框。
+     踩过的两个坑：
+       1) 遮罩初始 visibility:hidden，对 hidden 元素调用 focus() 会被
+          浏览器静默忽略（不报错、activeElement 不变）。
+       2) visibility 是随 .open 过渡的，实测约 60–70ms 才转为 visible。
+          因此不能用固定延时 —— 60ms 时仍可能早几毫秒而失败。
+     做法：轮询「计算样式确实可聚焦」再聚焦，rAF 与 setTimeout 双通道
+     （后台标签页会节流 rAF，此时靠 setTimeout 推进），并设次数上限与兜底。 */
   function focusInputNextFrame() {
     if (!input) return;
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        if (mask.classList.contains('open') && doc.activeElement !== input) input.focus();
-      });
-    });
+    var tries = 0;
+
+    function ready() {
+      if (!mask.classList.contains('open')) return false;
+      var cs = getComputedStyle(input);
+      return cs.visibility !== 'hidden' && cs.display !== 'none';
+    }
+
+    function attempt() {
+      tries++;
+      if (doc.activeElement === input) return;
+      if (ready()) { input.focus(); return; }
+      if (tries < 40) step();
+    }
+
+    function step() {
+      if (window.requestAnimationFrame) requestAnimationFrame(attempt);
+      setTimeout(attempt, 16);
+    }
+    step();
   }
   function close() {
     mask.classList.remove('open');
