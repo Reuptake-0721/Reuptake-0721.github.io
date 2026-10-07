@@ -1,0 +1,258 @@
+/* ============================================================
+   jirai-keys — 檔案館键盘導覽样式
+   跳檔号对话框 / 快捷键一览 / 底部位置提示
+   全部沿用檔案館语言：等宽字、斜纹抽屉头、朱印色强调
+   ============================================================ */
+
+/* ---------------------------------------------- 跳檔号（G） */
+.kn-jump {
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 18vh 20px 40px;
+  background: rgba(4, 2, 5, .82);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-2) var(--ease-std), visibility var(--dur-2) var(--ease-std);
+}
+.kn-jump.open { opacity: 1; visibility: visible; }
+
+.kn-jump__panel {
+  width: min(92vw, 420px);
+  background: linear-gradient(180deg, rgba(34, 23, 42, .99), rgba(14, 8, 18, .99));
+  border: 1px solid var(--line-pink);
+  border-radius: 3px;
+  box-shadow: 0 0 60px rgba(255, 45, 120, .22), 0 20px 50px rgba(0, 0, 0, .6);
+  transform: translateY(-10px) scale(.985);
+  transition: transform var(--dur-3) var(--ease-out);
+  overflow: hidden;
+}
+.kn-jump.open .kn-jump__panel { transform: translateY(0) scale(1); }
+
+.kn-jump__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--line);
+  background: repeating-linear-gradient(45deg, rgba(255, 45, 120, .07) 0 8px, transparent 8px 16px);
+  font-family: var(--font-head);
+  font-size: var(--fs-sm);
+  letter-spacing: .18em;
+  color: #e6dcec;
+}
+.kn-jump__x {
+  margin-left: auto;
+  width: 26px; height: 26px;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--text-dim);
+  font-size: var(--fs-xs);
+  cursor: pointer;
+  transition: color var(--dur-1) var(--ease-std), border-color var(--dur-1) var(--ease-std);
+}
+.kn-jump__x:hover { color: #fff; border-color: var(--pink); }
+.kn-jump__x:active { transform: scale(.92); }
+
+.kn-jump__row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-4) var(--sp-4) var(--sp-3);
+}
+.kn-jump__prompt {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xl);
+  color: var(--seal, #c0392b);
+  letter-spacing: .04em;
+}
+.kn-jump__input {
+  flex: 1;
+  min-width: 0;
+  padding: var(--sp-2) 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line-pink);
+  outline: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xl);
+  letter-spacing: .18em;
+  color: var(--text);
+  caret-color: var(--pink);
+}
+.kn-jump__input::placeholder { color: var(--text-faint); letter-spacing: .12em; font-size: var(--fs-base); }
+.kn-jump__input.shake-soft { animation: kn-shake var(--dur-3) var(--ease-shake); }
+@keyframes kn-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+}
+
+.kn-jump__hint {
+  padding: 0 var(--sp-4) var(--sp-4);
+  min-height: 2.4em;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: .1em;
+  line-height: 1.6;
+  color: #9a8ba4;
+}
+.kn-jump__hint.is-ok { color: var(--pink-soft); }
+.kn-jump__hint.is-bad { color: #ff6b6b; }
+
+/* ---------------------------------------------- 快捷键一览（?） */
+.kn-help {
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6vh 20px;
+  background: rgba(4, 2, 5, .86);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-2) var(--ease-std), visibility var(--dur-2) var(--ease-std);
+}
+.kn-help.open { opacity: 1; visibility: visible; }
+
+.kn-help__panel {
+  width: min(92vw, 460px);
+  background: linear-gradient(180deg, rgba(23, 16, 28, .99), rgba(14, 8, 18, .99));
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  box-shadow: 0 0 60px rgba(255, 45, 120, .18), 0 20px 50px rgba(0, 0, 0, .6);
+  transform: scale(.985);
+  transition: transform var(--dur-3) var(--ease-out);
+  overflow: hidden;
+}
+.kn-help.open .kn-help__panel { transform: scale(1); }
+
+.kn-help__head {
+  display: flex;
+  align-items: center;
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--line);
+  background: repeating-linear-gradient(45deg, rgba(255, 45, 120, .06) 0 8px, transparent 8px 16px);
+  font-family: var(--font-head);
+  font-size: var(--fs-sm);
+  letter-spacing: .2em;
+  color: #e6dcec;
+}
+.kn-help__x {
+  margin-left: auto;
+  width: 26px; height: 26px;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--text-dim);
+  font-size: var(--fs-xs);
+  cursor: pointer;
+}
+.kn-help__x:hover { color: #fff; border-color: var(--pink); }
+
+.kn-help__list { margin: 0; padding: var(--sp-4); }
+.kn-help__item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-4);
+  padding: var(--sp-2) 0;
+  border-bottom: 1px dashed rgba(53, 38, 61, .8);
+}
+.kn-help__item:last-child { border-bottom: 0; }
+.kn-help__item dt { flex: none; min-width: 74px; margin: 0; }
+.kn-help__item dd {
+  margin: 0;
+  font-size: var(--fs-sm);
+  letter-spacing: .04em;
+  color: var(--text-dim);
+}
+.kn-help__item kbd {
+  display: inline-block;
+  padding: 2px 8px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--pink-soft);
+  background: rgba(255, 45, 120, .10);
+  border: 1px solid rgba(255, 45, 120, .30);
+  border-radius: 2px;
+}
+.kn-help__foot {
+  padding: var(--sp-3) var(--sp-4);
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  letter-spacing: .16em;
+  color: #9a8ba4;
+}
+
+/* ---------------------------------------------- 底部位置提示 */
+.kn-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  z-index: 950;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  transform: translate(-50%, 10px);
+  opacity: 0;
+  visibility: hidden;
+  background: rgba(14, 8, 18, .92);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .5);
+  transition: opacity var(--dur-3) var(--ease-out),
+              transform var(--dur-3) var(--ease-out),
+              visibility var(--dur-3) var(--ease-std);
+  pointer-events: none;
+}
+.kn-hint.is-on { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.kn-hint.is-gone { display: none; }
+.kn-hint.is-edge { border-color: var(--line-pink); }
+.kn-hint kbd {
+  padding: 2px 6px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  color: var(--pink-soft);
+  background: rgba(255, 45, 120, .10);
+  border: 1px solid rgba(255, 45, 120, .28);
+  border-radius: 2px;
+}
+.kn-hint__t {
+  margin-right: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  letter-spacing: .12em;
+  color: #9a8ba4;
+}
+
+/* ---------------------------------------------- 响应式
+   触屏没有物理键盘，隐藏提示；对话框本身仍可用（通过检索台入口）。 */
+@media (hover: none), (max-width: 720px) {
+  .kn-hint { display: none; }
+}
+@media (max-width: 720px) {
+  .kn-jump { padding: 12vh 16px 30px; }
+  .kn-jump__prompt, .kn-jump__input { font-size: var(--fs-lg); }
+  .kn-help { padding: 4vh 16px; }
+  .kn-help__item { gap: var(--sp-3); }
+  .kn-help__item dt { min-width: 62px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kn-jump, .kn-help, .kn-jump__panel, .kn-help__panel, .kn-hint { transition: none; }
+  .kn-jump__input.shake-soft { animation: none; }
+}
