@@ -26,7 +26,7 @@
       doc.documentElement.classList.add('boot-skip');
       setTimeout(function () {
         if (el.parentNode) el.parentNode.removeChild(el);
-      }, 620);
+      }, 240);
     }
 
     /* 已播过（同会话）→ 直接移除，不做任何动画 */
@@ -82,20 +82,22 @@
       setTimeout(function () {
         el.classList.add('flash');
         el.classList.add('open');
-        setTimeout(hideNow, 900);
-      }, 380);
+        setTimeout(hideNow, 280);
+      }, 120);
     }
 
     if (skipBtn) {
       skipBtn.addEventListener('click', function (e) {
         e.stopPropagation();
-        start = Date.now() - minMs;
-        complete();
+        finished = true;
+        if (raf) cancelAnimationFrame(raf);
+        hideNow();
       });
     }
     el.addEventListener('click', function () {
-      start = Date.now() - minMs;
-      complete();
+      finished = true;
+      if (raf) cancelAnimationFrame(raf);
+      hideNow();
     });
 
     if (reduce) { hideNow(); return; }

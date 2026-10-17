@@ -10,7 +10,7 @@
 .toolbar {
   position: fixed;
   right: 18px;
-  bottom: 22px;
+  bottom: calc(22px + env(safe-area-inset-bottom, 0px));
   z-index: 952;
   display: flex;
   align-items: stretch;
@@ -36,7 +36,7 @@
   border: 0;
   border-left: 1px solid var(--line);
   cursor: pointer;
-  transition: color var(--dur-1) var(--ease-std), background var(--dur-1) var(--ease-std), opacity var(--dur-2) var(--ease-std);
+  transition: color .16s ease, background-color .16s ease, transform .1s ease, opacity .18s ease;
 }
 .tb-btn:first-child { border-left: 0; }
 .tb-btn:hover { color: #fff; background: rgba(255, 45, 120, .12); }
@@ -68,7 +68,7 @@
 .dock {
   position: fixed;
   left: 18px;
-  bottom: 22px;
+  bottom: calc(22px + env(safe-area-inset-bottom, 0px));
   z-index: 952;
   display: flex;
   align-items: stretch;
@@ -89,7 +89,7 @@
   font-size: var(--fs-xs);
   letter-spacing: .14em;
   color: var(--text-dim);
-  transition: color var(--dur-1) var(--ease-std), background var(--dur-1) var(--ease-std);
+  transition: color .16s ease, background-color .16s ease, transform .1s ease;
 }
 .dock .search-btn:hover,
 .dock .type-btn:hover,
@@ -120,8 +120,8 @@
 }
 
 @media (max-width: 720px) {
-  .toolbar, .dock { right: 12px; left: auto; bottom: 14px; }
-  .dock { left: 12px; right: auto; bottom: 14px; }
+  .toolbar, .dock { right: 12px; left: auto; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+  .dock { left: 12px; right: auto; }
   .dock .search-btn,
   .dock .type-btn { padding: var(--sp-2) var(--sp-2-5); font-size: var(--fs-2xs); }
   .dock .search-btn span { display: none; }   /* 只留圖示，省寬度 */

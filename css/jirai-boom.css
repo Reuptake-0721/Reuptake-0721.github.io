@@ -14,7 +14,7 @@
   background: #050308;
   font-family: var(--font-mono);
   overflow: hidden;
-  transition: opacity var(--dur-4) var(--ease-std), visibility var(--dur-4) var(--ease-std);
+  transition: opacity .22s ease, visibility 0s .22s;
 }
 .boot::before {
   content: '';

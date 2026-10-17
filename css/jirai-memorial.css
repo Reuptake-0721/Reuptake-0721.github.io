@@ -76,9 +76,22 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .memorial-progress { position: fixed; z-index: 30; left: 0; top: 0; width: 0; height: 1px; background: #9e89ae; pointer-events: none; }
 .memorial-top { position: fixed; z-index: 20; right: 26px; bottom: 24px; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; color: #b4a4c3; border: 1px solid #3c3046; border-radius: 2px; background: rgba(15, 12, 21, .92); opacity: 0; visibility: hidden; cursor: pointer; transition: opacity .2s ease; }
 .memorial-top.show { opacity: 1; visibility: visible; }
-.lb-mask { position: fixed; z-index: 100; inset: 0; display: grid; place-items: center; padding: 64px 24px 24px; background: rgba(5, 5, 9, .96); cursor: zoom-out; }
-.lb-mask img { display: block; max-width: 100%; max-height: calc(100dvh - 100px); object-fit: contain; }
-.lb-close { position: absolute; right: 20px; top: 16px; min-width: 44px; min-height: 44px; padding: 0; background: none; border: 0; color: #ded6e5; font-size: 28px; cursor: pointer; }
+/* 留念页只使用轻淡入与阅读交互。 */
+html { scrollbar-gutter: stable; scroll-behavior: auto; }
+@view-transition { navigation: auto; }
+::view-transition { pointer-events: none; }
+::view-transition-old(root) { animation: memorial-fade-out .16s ease both; }
+::view-transition-new(root) { animation: memorial-fade-in .2s ease both; }
+@keyframes memorial-fade-out { to { opacity: 0; } }
+@keyframes memorial-fade-in { from { opacity: 0; } }
+.lb-mask { position: fixed; z-index: 100; inset: 0; width: 100%; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 64px 24px 44px; border: 0; background: rgba(5, 5, 9, .96); color: #ded6e5; overflow: hidden; }
+.lb-mask[open] { display: grid; place-items: center; animation: memorial-fade-in .2s ease both; }
+.lb-mask::backdrop { background: rgba(5, 5, 9, .6); }
+.lb-mask img { display: block; max-width: 100%; max-height: calc(100dvh - 120px); width: auto; height: auto; object-fit: contain; }
+.lb-close { position: absolute; right: 20px; top: max(16px, env(safe-area-inset-top, 0px)); width: 44px; height: 44px; padding: 0; background: rgba(20, 16, 28, .9); border: 1px solid #3c3046; border-radius: 2px; color: #ded6e5; font: 28px/1 sans-serif; cursor: pointer; transition: background-color .16s ease; }
+.lb-close:hover { background-color: #292030; }
+.lb-hint { position: absolute; bottom: max(16px, env(safe-area-inset-bottom, 0px)); left: 20px; right: 20px; color: #a99ab7; text-align: center; font-size: 11px; letter-spacing: .06em; pointer-events: none; }
+.lb-mask.is-closing { animation: memorial-fade-out .14s ease both; }
 @media (max-width: 760px) {
   .memorial-nav { min-height: 70px; padding: 0 24px; }
   .memorial-brand { font-size: 9px; letter-spacing: .16em; }
@@ -108,6 +121,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .memorial-brand { letter-spacing: .08em; font-size: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }

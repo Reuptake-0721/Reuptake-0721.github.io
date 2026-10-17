@@ -117,28 +117,35 @@
 
   var cfg = window.__JIRAI__ || {};
   var doc = document;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   /* ---------- 移动端菜单 ---------- */
   var toggle = doc.getElementById('nav-toggle');
   var links = doc.getElementById('nav-links');
   if (toggle && links) {
+    function setMenu(open, focus) {
+      links.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+      if (focus) toggle.focus({preventScroll: true});
+    }
     toggle.addEventListener('click', function () {
-      var open = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      setMenu(!links.classList.contains('open'));
     });
     links.addEventListener('click', function (e) {
       if (e.target.closest('a')) {
-        links.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
+        setMenu(false);
       }
     });
     doc.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && links.classList.contains('open')) {
-        links.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.focus();
+        setMenu(false, true);
       }
     });
+    doc.addEventListener('click', function (e) {
+      if (links.classList.contains('open') && !e.target.closest('#site-nav')) setMenu(false);
+    });
+    window.matchMedia('(max-width: 980px)').addEventListener('change', function () { setMenu(false); });
   }
 
   /* ---------- 回到顶部 + 阅读进度 ---------- */
@@ -161,7 +168,7 @@
 
   if (toTop) {
     toTop.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: reduce.matches ? 'instant' : 'smooth' });
     });
   }
 
@@ -171,37 +178,63 @@
     ticking = true;
     window.requestAnimationFrame(function () { onScroll(); ticking = false; });
   }, { passive: true });
+  window.addEventListener('resize', onScroll, {passive: true});
   onScroll();
 
   /* ---------- 图片灯箱 ---------- */
   if (postBody) {
-    postBody.addEventListener('click', function (e) {
-      var img = e.target.closest('img');
-      if (!img) return;
-      var mask = doc.createElement('div');
+    function preview(img) {
+      if (!img || img.closest('a') || img.classList.contains('inline-ico') || doc.querySelector('.lb-mask')) return;
+      var readingX = window.scrollX, readingY = window.scrollY;
+      var mask = doc.createElement('dialog');
       mask.className = 'lb-mask';
+      mask.setAttribute('aria-label', '图片预览');
       var big = doc.createElement('img');
       big.src = img.getAttribute('data-src') || img.src;
       big.alt = img.alt || '';
-      mask.appendChild(big);
+      var button = doc.createElement('button');
+      button.type = 'button'; button.className = 'lb-close'; button.textContent = '×';
+      button.setAttribute('aria-label', '关闭图片预览');
+      var hint = doc.createElement('span');
+      hint.className = 'lb-hint'; hint.textContent = '点击空白处或按 Esc 关闭';
+      mask.append(button, big, hint);
+      var overflow = doc.body.style.overflow;
       doc.body.appendChild(mask);
+      mask.showModal();
       doc.body.style.overflow = 'hidden';
-      var close = function () {
-        mask.remove();
-        doc.body.style.overflow = '';
-        doc.removeEventListener('keydown', onKey);
-      };
-      var onKey = function (ev) { if (ev.key === 'Escape') close(); };
-      mask.addEventListener('click', close);
-      doc.addEventListener('keydown', onKey);
+      var closing = false;
+      function close() {
+        if (closing) return;
+        closing = true; mask.classList.add('is-closing');
+        setTimeout(function () {
+          mask.close(); mask.remove(); doc.body.style.overflow = overflow;
+          img.focus({preventScroll: true});
+          window.scrollTo({left: readingX, top: readingY, behavior: 'instant'});
+        }, reduce.matches ? 0 : 140);
+      }
+      mask.addEventListener('cancel', function (e) { e.preventDefault(); close(); });
+      mask.addEventListener('keydown', function (e) { e.stopPropagation(); });
+      mask.addEventListener('click', function (e) { if (e.target !== big) close(); });
+      button.focus({preventScroll: true});
+    }
+    postBody.querySelectorAll('img').forEach(function (img) {
+      if (img.closest('a') || img.classList.contains('inline-ico')) return;
+      img.tabIndex = 0; img.setAttribute('role', 'button');
+      img.setAttribute('aria-label', '放大图片' + (img.alt ? '：' + img.alt : ''));
+    });
+    postBody.addEventListener('click', function (e) { preview(e.target.closest('img')); });
+    postBody.addEventListener('keydown', function (e) {
+      if (e.target.tagName === 'IMG' && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault(); e.stopPropagation(); preview(e.target);
+      }
     });
   }
 
   /* ---------- 鼠标粉色星屑 ---------- */
   if (cfg.cursorGlitter) {
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var glitterReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var last = 0;
-    if (!reduce && window.matchMedia && window.matchMedia('(hover: hover)').matches) {
+    if (!glitterReduce && window.matchMedia && window.matchMedia('(hover: hover)').matches) {
       window.addEventListener('mousemove', function (e) {
         var now = Date.now();
         if (now - last < 90) return;
@@ -222,11 +255,16 @@
   doc.addEventListener('click', function (e) {
     var a = e.target.closest('a[href^="#"]');
     if (!a || a.getAttribute('href') === '#') return;
-    var target = doc.getElementById(a.getAttribute('href').slice(1));
+    var id = a.getAttribute('href').slice(1);
+    try { id = decodeURIComponent(id); } catch (err) { /* 保留原始锚点 */ }
+    var target = doc.getElementById(id);
     if (!target) return;
     e.preventDefault();
-    var top = target.getBoundingClientRect().top + window.pageYOffset - 80;
-    window.scrollTo({ top: top, behavior: 'smooth' });
+    var nav = doc.getElementById('site-nav');
+    var top = target.getBoundingClientRect().top + window.pageYOffset - (nav ? nav.offsetHeight + 24 : 24);
+    window.scrollTo({ top: top, behavior: reduce.matches ? 'instant' : 'smooth' });
+    if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+    target.focus({preventScroll: true});
     history.replaceState(null, '', a.getAttribute('href'));
   });
 })();
@@ -464,7 +502,7 @@
       doc.documentElement.classList.add('boot-skip');
       setTimeout(function () {
         if (el.parentNode) el.parentNode.removeChild(el);
-      }, 620);
+      }, 240);
     }
 
     /* 已播过（同会话）→ 直接移除，不做任何动画 */
@@ -520,20 +558,22 @@
       setTimeout(function () {
         el.classList.add('flash');
         el.classList.add('open');
-        setTimeout(hideNow, 900);
-      }, 380);
+        setTimeout(hideNow, 280);
+      }, 120);
     }
 
     if (skipBtn) {
       skipBtn.addEventListener('click', function (e) {
         e.stopPropagation();
-        start = Date.now() - minMs;
-        complete();
+        finished = true;
+        if (raf) cancelAnimationFrame(raf);
+        hideNow();
       });
     }
     el.addEventListener('click', function () {
-      start = Date.now() - minMs;
-      complete();
+      finished = true;
+      if (raf) cancelAnimationFrame(raf);
+      hideNow();
     });
 
     if (reduce) { hideNow(); return; }
@@ -1228,7 +1268,13 @@
   var input = doc.getElementById('search-input');
   var body = doc.getElementById('search-body');
   var countEl = doc.getElementById('search-count');
+  var countLabel = doc.getElementById('search-count-label');
+  var statusEl = doc.getElementById('search-status');
+  var clearBtn = doc.getElementById('search-clear');
   var idleTpl = body ? body.innerHTML : '';
+  if (!input || !body) return;
+  openBtn.setAttribute('aria-controls', mask.id);
+  openBtn.setAttribute('aria-expanded', 'false');
 
   var INDEX = null;
   var loading = false;
@@ -1255,6 +1301,9 @@
       .catch(function () {
         INDEX = { items: [], ready: true, failed: true };
         return INDEX;
+      }).then(function (index) {
+        loading = false;
+        return index;
       });
     return loading;
   }
@@ -1312,22 +1361,22 @@
     });
   }
 
-  /* 高亮：先转义，再在「归一化后的文本」上定位。
+  /* 高亮：在原文的归一化副本上定位，每个输出片段单独转义。
      归一化是逐字等长替换，所以位置能直接映射回原字符，
      即使读者打的是繁体，也能高亮出正文里的简体原字。 */
   function mark(text, q) {
-    var safe = esc(text);
-    if (!q) return safe;
-    var hay = normalize(safe).toLowerCase();
+    text = String(text);
+    if (!q) return esc(text);
+    var hay = normalize(text).toLowerCase();
     var ql = normalize(q).toLowerCase();
-    if (!ql || hay.length !== safe.length) return safe;
+    if (!ql || hay.length !== text.length) return esc(text);
     var out = '';
     var i = 0, at;
     while ((at = hay.indexOf(ql, i)) > -1) {
-      out += safe.slice(i, at) + '<mark>' + safe.slice(at, at + ql.length) + '</mark>';
+      out += esc(text.slice(i, at)) + '<mark>' + esc(text.slice(at, at + ql.length)) + '</mark>';
       i = at + ql.length;
     }
-    return out + safe.slice(i);
+    return out + esc(text.slice(i));
   }
   /* 取命中位置周围的片段（简体坐标），而不是正文开头 */
   function snippet(text, q, span) {
@@ -1388,6 +1437,22 @@
 
   /* ---------------------------------------------- 渲染 */
   function render(q) {
+    if (clearBtn) clearBtn.hidden = !input.value;
+    if (countLabel) countLabel.textContent = q ? '命中' : '館藏';
+    body.setAttribute('aria-busy', !INDEX || !INDEX.ready ? 'true' : 'false');
+    if (statusEl) statusEl.textContent = '';
+    if (!INDEX || !INDEX.ready || INDEX.failed) {
+      results = []; active = -1;
+      if (countEl) countEl.textContent = '—';
+      if (INDEX && INDEX.failed) {
+        if (statusEl) statusEl.textContent = '暂未载入';
+        body.innerHTML = '<div class="search-empty"><strong>暂时无法读取档案</strong>请检查网络后再试一次。<br><button class="search-retry" type="button">重新加载</button></div>';
+      } else {
+        if (statusEl) statusEl.textContent = '载入中';
+        body.innerHTML = '<div class="search-empty"><strong>正在读取档案…</strong>马上就好。</div>';
+      }
+      return;
+    }
     if (!q) {
       results = [];
       active = -1;
@@ -1401,7 +1466,7 @@
     if (countEl) countEl.textContent = String(results.length);
 
     if (!results.length) {
-      body.innerHTML = '<div class="search-empty">查無此件<br>NO MATCHING RECORD</div>';
+      body.innerHTML = '<div class="search-empty"><strong>未找到「' + esc(q) + '」</strong>试试更短的关键词，或输入档号。</div>';
       return;
     }
 
@@ -1429,65 +1494,38 @@
     for (var k = 0; k < nodes.length; k++) nodes[k].classList.toggle('active', k === active);
     if (nodes[active]) {
       var n = nodes[active];
-      var top = n.offsetTop, h = n.offsetHeight;
-      if (top < body.scrollTop) body.scrollTop = top - 8;
-      else if (top + h > body.scrollTop + body.clientHeight) body.scrollTop = top + h - body.clientHeight + 8;
+      var nr = n.getBoundingClientRect(), br = body.getBoundingClientRect();
+      if (nr.top < br.top) body.scrollTop -= br.top - nr.top + 8;
+      else if (nr.bottom > br.bottom) body.scrollTop += nr.bottom - br.bottom + 8;
     }
   }
 
   /* ---------------------------------------------- 开关 */
   var lastFocus = null;
+  var previousOverflow = '';
   function open() {
+    if (mask.classList.contains('open')) return;
+    lastFocus = doc.activeElement;
+    previousOverflow = doc.body.style.overflow;
     mask.classList.add('open');
+    mask.setAttribute('aria-hidden', 'false');
+    openBtn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
-    /* 记住来源焦点，关闭时归还 */
-    if (!mask.contains(doc.activeElement)) lastFocus = doc.activeElement;
-    /* 立即把焦点移入输入框 —— 原先写在 loadIndex().then() 里，
-       索引加载完成前用户会先 Tab 过整条导航才够到对话框。
-       但必须延到下一帧：遮罩初始为 visibility:hidden，在 hidden 元素上
-       focus() 会被浏览器静默忽略；同任务内刚加的 .open 尚未参与样式解析
-       （实测聚焦失败，activeElement 仍是 body）。 */
-    focusInputNextFrame();
+    /* .open 的 visibility 立即生效，后台标签页也能同步获得输入焦点。 */
+    input.focus({preventScroll: true});
+    render(input.value.trim());
     loadIndex().then(function () {
-      if (input && !input.value && countEl && INDEX) countEl.textContent = String(INDEX.items.length);
-      if (input && input.value) render(input.value.trim());
+      if (mask.classList.contains('open')) render(input.value.trim());
     });
   }
-  /* 把焦点移入输入框。
-     踩过的两个坑：
-       1) 遮罩初始 visibility:hidden，对 hidden 元素调用 focus() 会被
-          浏览器静默忽略（不报错、activeElement 不变）。
-       2) visibility 是随 .open 过渡的，实测约 60–70ms 才转为 visible。
-          因此不能用固定延时 —— 60ms 时仍可能早几毫秒而失败。
-     做法：轮询「计算样式确实可聚焦」再聚焦，rAF 与 setTimeout 双通道
-     （后台标签页会节流 rAF，此时靠 setTimeout 推进），并设次数上限与兜底。 */
-  function focusInputNextFrame() {
-    if (!input) return;
-    var tries = 0;
-
-    function ready() {
-      if (!mask.classList.contains('open')) return false;
-      var cs = getComputedStyle(input);
-      return cs.visibility !== 'hidden' && cs.display !== 'none';
-    }
-
-    function attempt() {
-      tries++;
-      if (doc.activeElement === input) return;
-      if (ready()) { input.focus(); return; }
-      if (tries < 40) step();
-    }
-
-    function step() {
-      if (window.requestAnimationFrame) requestAnimationFrame(attempt);
-      setTimeout(attempt, 16);
-    }
-    step();
-  }
   function close() {
+    if (!mask.classList.contains('open')) return;
+    clearTimeout(timer);
     mask.classList.remove('open');
-    document.body.style.overflow = '';
+    openBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = previousOverflow;
     if (lastFocus && lastFocus.focus) lastFocus.focus();
+    mask.setAttribute('aria-hidden', 'true');
     lastFocus = null;
   }
   function toggle() {
@@ -1525,19 +1563,27 @@
 
   /* 输入（防抖 90ms，索引很小所以很快） */
   var timer = null;
+  var composing = false;
+  function queueSearch() {
+    if (clearBtn) clearBtn.hidden = !input.value;
+    clearTimeout(timer);
+    if (!composing) timer = setTimeout(function () { render(input.value.trim()); }, 90);
+  }
+  if (clearBtn) clearBtn.addEventListener('click', function () {
+    clearTimeout(timer); input.value = ''; render(''); input.focus({preventScroll: true});
+  });
   if (input) {
-    input.addEventListener('input', function () {
-      clearTimeout(timer);
-      timer = setTimeout(function () {
-        render(input.value.trim());
-      }, 90);
-    });
+    input.addEventListener('compositionstart', function () { composing = true; clearTimeout(timer); });
+    input.addEventListener('compositionend', function () { composing = false; queueSearch(); });
+    input.addEventListener('input', queueSearch);
 
     input.addEventListener('keydown', function (e) {
+      if (e.isComposing || composing || e.keyCode === 229) return;
       if (e.key === 'ArrowDown') { e.preventDefault(); setActive(active + 1); }
       else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(active - 1); }
       else if (e.key === 'Enter') {
         e.preventDefault();
+        if (timer) { clearTimeout(timer); render(input.value.trim()); timer = null; }
         var node = body.querySelector('.sr-item.active');
         if (node) window.location.href = node.getAttribute('href');
       } else if (e.key === 'Escape') { e.preventDefault(); close(); }
@@ -1546,12 +1592,20 @@
 
   /* 点结果（阻止默认以便统一处理） */
   body.addEventListener('click', function (e) {
+    if (e.target.closest('.search-retry')) {
+      INDEX = null;
+      render(input.value.trim());
+      loadIndex().then(function () { if (mask.classList.contains('open')) render(input.value.trim()); });
+      input.focus({preventScroll: true});
+      return;
+    }
     var a = e.target.closest('.sr-item');
     if (a) close();
   });
 
   /* 全局快捷键：Ctrl/Cmd+K 或 '/' */
   doc.addEventListener('keydown', function (e) {
+    if (doc.querySelector('dialog[open]')) return;
     if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
       e.preventDefault();
       toggle();
@@ -1822,6 +1876,7 @@
   }
 
   doc.addEventListener('keydown', function (e) {
+    if (doc.querySelector('dialog[open], .search-mask.open')) return;
     /* 修饰键组合交还给浏览器与检索台 */
     if (e.ctrlKey || e.metaKey || e.altKey) return;
     if (typingInField(doc.activeElement)) return;

@@ -25,25 +25,40 @@
     scrollTo({top: 0, behavior: reduce.matches ? 'instant' : 'smooth'});
   });
   update();
-  if (body) body.addEventListener('click', function (e) {
-    var img = e.target.closest('img');
-    if (!img || img.closest('a')) return;
-    var mask = doc.createElement('div'), full = doc.createElement('img'), button = doc.createElement('button');
+  function preview(img) {
+    if (!img || img.closest('a') || doc.querySelector('.lb-mask')) return;
+    var readingX = scrollX, readingY = scrollY;
+    var mask = doc.createElement('dialog'), full = doc.createElement('img'), button = doc.createElement('button');
     mask.className = 'lb-mask';
-    mask.setAttribute('role', 'dialog'); mask.setAttribute('aria-modal', 'true'); mask.setAttribute('aria-label', '图片预览');
+    mask.setAttribute('aria-label', '图片预览');
     full.src = img.getAttribute('data-src') || img.src; full.alt = img.alt || '文章中的聊天记录';
     button.type = 'button'; button.className = 'lb-close'; button.textContent = '×'; button.setAttribute('aria-label', '关闭图片预览');
-    mask.append(button, full);
-    var previousFocus = doc.activeElement, previousOverflow = doc.body.style.overflow;
-    doc.body.appendChild(mask); doc.body.style.overflow = 'hidden'; button.focus();
+    var hint = doc.createElement('span'); hint.className = 'lb-hint'; hint.textContent = '点击空白处或按 Esc 关闭';
+    mask.append(button, full, hint);
+    var previousOverflow = doc.body.style.overflow, closing = false;
+    doc.body.appendChild(mask); mask.showModal(); doc.body.style.overflow = 'hidden'; button.focus({preventScroll: true});
     function close() {
-      mask.remove(); doc.body.style.overflow = previousOverflow;
-      if (previousFocus && previousFocus.focus) previousFocus.focus();
+      if (closing) return;
+      closing = true; mask.classList.add('is-closing');
+      setTimeout(function () {
+        mask.close(); mask.remove(); doc.body.style.overflow = previousOverflow; img.focus({preventScroll: true});
+        scrollTo({left: readingX, top: readingY, behavior: 'instant'});
+      }, reduce.matches ? 0 : 140);
     }
-    mask.addEventListener('click', close);
-    mask.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') { event.preventDefault(); close(); }
-      if (event.key === 'Tab') { event.preventDefault(); button.focus(); }
+    mask.addEventListener('click', function (e) { if (e.target !== full) close(); });
+    mask.addEventListener('cancel', function (e) { e.preventDefault(); close(); });
+    mask.addEventListener('keydown', function (e) { e.stopPropagation(); });
+  }
+  if (body) {
+    body.querySelectorAll('img').forEach(function (img) {
+      if (img.closest('a')) return;
+      img.tabIndex = 0; img.setAttribute('role', 'button'); img.setAttribute('aria-label', '放大图片' + (img.alt ? '：' + img.alt : ''));
     });
-  });
+    body.addEventListener('click', function (e) { preview(e.target.closest('img')); });
+    body.addEventListener('keydown', function (e) {
+      if (e.target.tagName === 'IMG' && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault(); e.stopPropagation(); preview(e.target);
+      }
+    });
+  }
 })();

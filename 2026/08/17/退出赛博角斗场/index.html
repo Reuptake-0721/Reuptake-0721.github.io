@@ -12,6 +12,10 @@
   
 
   
+  <script>try{var _t=localStorage.getItem('jirai-type');if(['s','m','l','xl'].indexOf(_t)>-1)document.documentElement.setAttribute('data-type',_t);}catch(e){}</script>
+  
+
+  
   
   <script>try{
     if (!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
@@ -151,7 +155,7 @@
       <span class="brand-sub">Reuptake</span>
     </a>
 
-    <button class="nav-toggle" id="nav-toggle" aria-label="菜单" aria-expanded="false">
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="nav-links">
       <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
 
@@ -192,7 +196,7 @@
 
 
 
-<div class="search-mask" id="jirai-search" role="dialog" aria-modal="true" aria-label="檢索台">
+<div class="search-mask" id="jirai-search" role="dialog" aria-modal="true" aria-hidden="true" aria-label="檢索台">
   <div class="search-panel">
     <div class="search-head">
       <span class="sh-title">檢索台 <span>†</span></span>
@@ -206,9 +210,10 @@
       <span class="si-prompt">›</span>
       
       <input class="search-input" id="search-input" type="text" autocomplete="off"
-             spellcheck="false"
+             spellcheck="false" enterkeyhint="search" aria-controls="search-body"
              aria-label="輸入檔號、關鍵詞或診斷碼……"
              placeholder="輸入檔號、關鍵詞或診斷碼……">
+      <button class="search-clear" id="search-clear" type="button" aria-label="清空搜索" hidden><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
 
     <div class="search-body" id="search-body">
@@ -220,7 +225,7 @@
     </div>
 
     <div class="search-foot">
-      <span>命中 <span class="sf-count" id="search-count">—</span> 份</span>
+      <span role="status" aria-live="polite"><span id="search-count-label">館藏</span> <span class="sf-count" id="search-count">—</span> 份<span class="search-status" id="search-status"></span></span>
       <span style="margin-left:auto">本館藏 · jirai 檔案館</span>
     </div>
   </div>

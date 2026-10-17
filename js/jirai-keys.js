@@ -217,6 +217,7 @@
   }
 
   doc.addEventListener('keydown', function (e) {
+    if (doc.querySelector('dialog[open], .search-mask.open')) return;
     /* 修饰键组合交还给浏览器与检索台 */
     if (e.ctrlKey || e.metaKey || e.altKey) return;
     if (typingInField(doc.activeElement)) return;

@@ -24,13 +24,12 @@
 
 /* ---------------------------------------------- 尋檔懸停 */
 .cab-row { cursor: crosshair; }
-.cab-row:hover .cab-no { color: #fff; text-shadow: 0 0 10px rgba(192, 57, 43, .9); }
+.cab-row:hover .cab-no { color: #f0b3c9; text-shadow: 0 0 7px rgba(255, 45, 120, .3); }
 .cab-row:hover .cab-type {
   color: var(--seal);
   border-color: var(--seal-soft);
-  transform: rotate(-1.5deg);
 }
-.cab-type { transition: transform var(--dur-1) var(--ease-std), color var(--dur-1) var(--ease-std), border-color var(--dur-1) var(--ease-std); }
+.cab-no, .cab-type { transition: color .18s ease, border-color .18s ease, text-shadow .18s ease; }
 
 /* ---------------------------------------------- 卷宗內的細節 */
 .dossier h1 { word-break: break-word; }

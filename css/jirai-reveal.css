@@ -24,7 +24,7 @@
 
    ── 动效约束 ──
      - 只编排首屏可见元素（JS 判定），滚动后的内容直接呈现
-     - 错落 40ms、上限 6 级
+     - 错落 24ms、上限 6 级
      - prefers-reduced-motion 下完全关闭
      - 只做 opacity + 6/10px 位移，不缩放，避免长文页面抖动
    ============================================================ */
@@ -46,9 +46,11 @@ html.reveal-on .dossier,
 html.reveal-on .side .widget,
 html.reveal-on .page-title {
   transition:
-    opacity var(--dur-3) var(--ease-out),
-    transform var(--dur-3) var(--ease-out);
-  transition-delay: calc(var(--rv-i, 0) * 40ms);
+    opacity .32s var(--ease-out),
+    transform .32s var(--ease-out),
+    background-color .18s ease,
+    box-shadow .18s ease;
+  transition-delay: calc(var(--rv-i, 0) * 24ms), calc(var(--rv-i, 0) * 24ms), 0s, 0s;
   opacity: 1;
   transform: translateY(0);
 }
@@ -59,7 +61,7 @@ html.reveal-on .page-title {
   html.reveal-on .side .widget,
   html.reveal-on .page-title {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(6px);
   }
 }
 
@@ -71,7 +73,7 @@ html.reveal-on .page-title {
 }
 
 /* 幕布：整页淡入，避免入场时先闪一帧 */
-html.reveal-on .wrap { animation: rv-curtain var(--dur-4) var(--ease-std) both; }
+html.reveal-on .wrap { animation: rv-curtain .32s var(--ease-out) both; }
 @keyframes rv-curtain {
   from { opacity: 0; }
   to   { opacity: 1; }
