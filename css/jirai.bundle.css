@@ -714,6 +714,34 @@ body.no-lace .nav::after { display: none; }
 }
 .post-body tr:nth-child(even) td { background: rgba(255, 255, 255, .015); }
 
+/* 只在有未完成阅读记录时出现，不占用浮动工具栏。 */
+.reading-resume {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin: 0 0 22px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--pink-dim, #a64b75);
+  background: rgba(255, 122, 184, .025);
+  border-radius: 3px;
+}
+.reading-resume[hidden] { display: none; }
+.reading-resume p { margin: 0; color: var(--text-mute); font-size: var(--fs-xs); letter-spacing: .04em; }
+.reading-resume b { color: var(--text-head); font-family: var(--font-mono); font-weight: 400; }
+.reading-resume-actions { display: flex; align-items: center; gap: 6px; }
+.reading-resume button { min-height: 44px; padding: 8px 10px; border: 0; border-radius: 2px; background: transparent; color: var(--pink); font: inherit; font-size: var(--fs-xs); cursor: pointer; transition: background-color .16s ease, color .16s ease; }
+.reading-resume [data-reading-clear] { color: var(--text-mute); }
+.reading-resume button:hover, .reading-resume button:focus-visible { background: rgba(255, 122, 184, .08); color: #fff; }
+.reading-resume button:active { background: rgba(255, 122, 184, .14); }
+@media (max-width: 720px) {
+  .reading-resume { padding: 8px 10px; gap: 0 8px; }
+  .reading-resume-actions { gap: 0; }
+  .reading-resume button { padding: 8px; }
+}
+
 /* 文章目录 */
 .toc-box {
   margin: 0 0 var(--sp-6-5);
