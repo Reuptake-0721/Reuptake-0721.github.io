@@ -164,11 +164,7 @@ svg { overflow: visible; }
 
 html { scroll-behavior: auto; scrollbar-gutter: stable; scroll-padding-top: 96px; }
 
-/* 原生换页淡入：不拦截链接，也不额外等待动画。 */
-@view-transition { navigation: auto; }
-::view-transition { pointer-events: none; }
-::view-transition-old(root) { animation: page-out 160ms ease both; }
-::view-transition-new(root) { animation: page-in 200ms ease both; }
+/* 面板和阅读浮层共用的轻淡入，不接管页面导航。 */
 @keyframes page-out { to { opacity: 0; } }
 @keyframes page-in { from { opacity: 0; } }
 
@@ -1250,8 +1246,6 @@ body.no-lace .footer::before { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  @view-transition { navigation: none; }
-  ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
   * { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }

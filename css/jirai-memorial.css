@@ -78,10 +78,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .memorial-top.show { opacity: 1; visibility: visible; }
 /* 留念页只使用轻淡入与阅读交互。 */
 html { scrollbar-gutter: stable; scroll-behavior: auto; }
-@view-transition { navigation: auto; }
-::view-transition { pointer-events: none; }
-::view-transition-old(root) { animation: memorial-fade-out .16s ease both; }
-::view-transition-new(root) { animation: memorial-fade-in .2s ease both; }
+.memorial-wrap { animation: memorial-fade-in .3s ease both; }
 @keyframes memorial-fade-out { to { opacity: 0; } }
 @keyframes memorial-fade-in { from { opacity: 0; } }
 .lb-mask { position: fixed; z-index: 100; inset: 0; width: 100%; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 64px 24px 44px; border: 0; background: rgba(5, 5, 9, .96); color: #ded6e5; overflow: hidden; }
@@ -121,8 +118,6 @@ html { scrollbar-gutter: stable; scroll-behavior: auto; }
   .memorial-brand { letter-spacing: .08em; font-size: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  @view-transition { navigation: none; }
-  ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
