@@ -434,7 +434,7 @@
 }
 
 /* ---------------------------------------------- 卡片悬停星屑 */
-.card::after {
+.card:not(.post)::after {
   content: '';
   position: absolute;
   right: 14px; top: 14px;
@@ -445,7 +445,7 @@
   transition: all var(--dur-3) var(--ease-std);
   pointer-events: none;
 }
-.card:hover::after {
+.card:not(.post):hover::after {
   width: 14px; height: 14px;
   opacity: .9;
   box-shadow: 0 0 12px rgba(255, 45, 120, .9);
@@ -684,6 +684,7 @@
   .post-body h2.has-num::before { width: 28px; font-size: var(--fs-xs); }
   .post-body h2.has-num::after { left: 33px; }
   .post-body img.jirai-photo { padding: var(--sp-h2); transform: none; }
+  .post-body picture:nth-of-type(n) img.jirai-photo { transform: none; }
   .toast { bottom: 16px; font-size: var(--fs-sm); }
 }
 

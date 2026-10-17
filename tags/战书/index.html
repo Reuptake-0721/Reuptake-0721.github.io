@@ -52,7 +52,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/jirai.bundle.css?v=c7c544fa978d">
+  <link rel="stylesheet" href="/css/jirai.bundle.css?v=953323798703">
   
   
 </head>
@@ -60,6 +60,7 @@
 
   
 
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
   
 
 
@@ -140,7 +141,7 @@
   
 
   
-<header class="nav" id="site-nav">
+<nav class="nav" id="site-nav" aria-label="主导航">
   <div class="nav-inner">
     <a class="brand" href="/">
       <svg class="brand-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -155,10 +156,10 @@
     </button>
 
     <ul class="nav-links" id="nav-links">
-      <li><a class="" href="/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5h6l2 2.2h10V19H3z"/></svg><span>碎片檔案庫</span></a></li><li><a class="" href="/archives/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg><span>病歷庫</span></a></li><li><a class="" href="/categories/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5c1.4-3.8 4-5.6 7.5-5.6s6.1 1.8 7.5 5.6"/></svg><span>部位索引</span></a></li><li><a class="active" href="/tags/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.8 3.4 20.6 9.2M17.9 6.5 8.7 15.7l-3.4.9.9-3.4 9.2-9.2zM4.4 19.6l2.4-2.4"/></svg><span>診斷碼表</span></a></li><li><a class="" href="/about/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11a7 7 0 0 1 14 0v3.2l-1.6 1.2v2.1a1.5 1.5 0 0 1-1.5 1.5H8.1a1.5 1.5 0 0 1-1.5-1.5v-2.1L5 14.2z"/><circle cx="9.2" cy="11.4" r="1.5"/><circle cx="14.8" cy="11.4" r="1.5"/><path d="M11 15.6h2"/></svg><span>施術者</span></a></li>
+      <li><a class="" href="/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5h6l2 2.2h10V19H3z"/></svg><span>碎片檔案庫</span></a></li><li><a class="" href="/archives/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg><span>病歷庫</span></a></li><li><a class="" href="/categories/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5c1.4-3.8 4-5.6 7.5-5.6s6.1 1.8 7.5 5.6"/></svg><span>部位索引</span></a></li><li><a class="active" href="/tags/" aria-current="location"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.8 3.4 20.6 9.2M17.9 6.5 8.7 15.7l-3.4.9.9-3.4 9.2-9.2zM4.4 19.6l2.4-2.4"/></svg><span>診斷碼表</span></a></li><li><a class="" href="/about/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11a7 7 0 0 1 14 0v3.2l-1.6 1.2v2.1a1.5 1.5 0 0 1-1.5 1.5H8.1a1.5 1.5 0 0 1-1.5-1.5v-2.1L5 14.2z"/><circle cx="9.2" cy="11.4" r="1.5"/><circle cx="14.8" cy="11.4" r="1.5"/><path d="M11 15.6h2"/></svg><span>施術者</span></a></li>
     </ul>
   </div>
-</header>
+</nav>
 
   
 
@@ -262,7 +263,7 @@
 
 
 
-  <main class="wrap">
+  <main class="wrap" id="main-content" tabindex="-1">
 
     
     <div class="curtain" aria-hidden="true">
@@ -275,11 +276,12 @@
     
 <div class="layout">
   <div class="main-col">
+    <a class="collection-back" href="/tags/"><span aria-hidden="true">←</span> 返回診斷碼表</a>
     <div class="cabinet-head">
       <h1 class="ch-title">战书 <span>†</span></h1>
       <div class="ch-meta">
         診斷碼<br>
-        1 紙
+        本頁收錄 1 紙
       </div>
     </div>
 
@@ -326,7 +328,7 @@
     <div class="profile-foot">
       <span>SINCE 2026-02-26</span>
       <span class="pf-sep">/</span>
-      <span>233 DAYS</span>
+      <span>234 DAYS</span>
     </div>
     
       <div class="profile-updated">LAST UPDATE · 2026-08-19</div>
@@ -340,6 +342,7 @@
 </aside>
 
 </div>
+
 
     
     <div class="heart-beat" aria-hidden="true">
@@ -391,7 +394,7 @@
 
 
 
-<script src="/js/jirai.bundle.js?v=101f21aaff36" defer></script>
+<script src="/js/jirai.bundle.js?v=a03b283f0309" defer></script>
 
 <script>
   window.__JIRAI__ = {

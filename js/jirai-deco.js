@@ -125,7 +125,7 @@
   if (!reduce) {
     doc.addEventListener('click', function (e) {
       var card = e.target.closest('.card');
-      if (!card || e.target.closest('a, button')) return;
+      if (!card || card.classList.contains('post') || e.target.closest('a, button')) return;
       for (var i = 0; i < 7; i++) {
         (function (i) {
           var s = doc.createElement('span');
