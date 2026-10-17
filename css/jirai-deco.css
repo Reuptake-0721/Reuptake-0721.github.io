@@ -20,10 +20,10 @@
 }
 .ribbon-track {
   display: flex;
-  flex: none;
+  width: 100%;
+  justify-content: center;
   white-space: nowrap;
-  animation: ribbon-run var(--ease-loop) infinite;
-  will-change: transform;
+  animation: none;
 }
 .ribbon:hover .ribbon-track { animation-play-state: paused; }
 .ribbon-run {
@@ -64,7 +64,7 @@
   to   { transform: translateX(6%) scale(1.12); opacity: 1; }
 }
 /* 内容层压在光环之上 */
-.nav, .wrap, .footer, .ribbon { position: relative; z-index: 2; }
+.wrap, .footer, .ribbon { position: relative; z-index: 2; }
 .ribbon { z-index: 880; }
 
 /* ---------------------------------------------- 幕布分隔 */

@@ -32,26 +32,6 @@
 }
 .cab-type { transition: transform var(--dur-1) var(--ease-std), color var(--dur-1) var(--ease-std), border-color var(--dur-1) var(--ease-std); }
 
-/* 最新一份：蓋上「最新入庫」斜戳 */
-.cab-row.is-new::after {
-  content: '最新入庫';
-  position: absolute;
-  right: 76px;
-  top: 50%;
-  transform: translateY(-50%) rotate(-7deg);
-  padding: 1px var(--sp-1-5);
-  font-family: var(--font-head);
-  font-size: var(--fs-2xs);
-  letter-spacing: .12em;
-  color: var(--seal);
-  border: 1px solid var(--seal-soft);
-  border-radius: 2px;
-  opacity: .55;
-  pointer-events: none;
-  white-space: nowrap;
-}
-.cab-row.is-new:hover::after { opacity: .95; }
-
 /* ---------------------------------------------- 卷宗內的細節 */
 .dossier h1 { word-break: break-word; }
 .meta-row .k::after { content: '：'; opacity: .5; }
@@ -80,17 +60,6 @@
   .memo { float: none; width: auto; }
 }
 
-/* ---------------------------------------------- 頁腳：館藏編號 */
-.footer::after {
-  content: 'COLLECTION OF FRAGMENTS · 館藏 · NO SIGNAL';
-  display: block;
-  margin-top: var(--sp-3-5);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  letter-spacing: .34em;
-  color: rgba(125, 113, 137, .55);
-}
-
 /* ---------------------------------------------- 首頁卷宗標題的紅點 */
 .ch-title span { text-shadow: 0 0 12px rgba(192, 57, 43, .8); }
 
@@ -111,3 +80,7 @@
   .dossier { min-height: 0; padding-left: 0; }
   .dossier-spine { height: auto; width: auto; }
 }
+
+/* 留念入口：同一套档案排版，仅用淡紫题签识别。 */
+.cab-row.is-memorial .cab-type { color: #c7bbd1; border-color: #55445f; }
+@media (max-width: 980px) { .side .profile:last-child { grid-column: 1 / -1; } }

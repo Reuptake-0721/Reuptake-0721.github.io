@@ -127,7 +127,17 @@
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
     links.addEventListener('click', function (e) {
-      if (e.target.closest('a')) links.classList.remove('open');
+      if (e.target.closest('a')) {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+    doc.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && links.classList.contains('open')) {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      }
     });
   }
 
@@ -141,7 +151,7 @@
     if (toTop) toTop.classList.toggle('show', y > 420);
 
     if (progress && postBody) {
-      var start = postBody.offsetTop;
+      var start = postBody.getBoundingClientRect().top + y;
       var total = postBody.offsetHeight - window.innerHeight * 0.6;
       var ratio = total > 0 ? (y - start + 120) / total : 0;
       ratio = Math.max(0, Math.min(1, ratio));
