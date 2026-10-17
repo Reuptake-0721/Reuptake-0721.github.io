@@ -1280,6 +1280,7 @@
   var loading = false;
   var results = [];
   var active = -1;
+  var renderedQuery = null;
 
   /* ---------------------------------------------- 索引載入 */
   function loadIndex() {
@@ -1436,7 +1437,14 @@
   }
 
   /* ---------------------------------------------- 渲染 */
-  function render(q) {
+  function replaceBody(html, resetScroll) {
+    body.innerHTML = html;
+    if (resetScroll) body.scrollTop = 0;
+  }
+
+  function render(q, resetScroll) {
+    resetScroll = resetScroll || q !== renderedQuery;
+    renderedQuery = q;
     if (clearBtn) clearBtn.hidden = !input.value;
     if (countLabel) countLabel.textContent = q ? '命中' : '館藏';
     body.setAttribute('aria-busy', !INDEX || !INDEX.ready ? 'true' : 'false');
@@ -1446,17 +1454,17 @@
       if (countEl) countEl.textContent = '—';
       if (INDEX && INDEX.failed) {
         if (statusEl) statusEl.textContent = '暂未载入';
-        body.innerHTML = '<div class="search-empty"><strong>暂时无法读取档案</strong>请检查网络后再试一次。<br><button class="search-retry" type="button">重新加载</button></div>';
+        replaceBody('<div class="search-empty"><strong>暂时无法读取档案</strong>请检查网络后再试一次。<br><button class="search-retry" type="button">重新加载</button></div>', resetScroll);
       } else {
         if (statusEl) statusEl.textContent = '载入中';
-        body.innerHTML = '<div class="search-empty"><strong>正在读取档案…</strong>马上就好。</div>';
+        replaceBody('<div class="search-empty"><strong>正在读取档案…</strong>马上就好。</div>', resetScroll);
       }
       return;
     }
     if (!q) {
       results = [];
       active = -1;
-      body.innerHTML = idleTpl;
+      replaceBody(idleTpl, resetScroll);
       if (countEl) countEl.textContent = INDEX ? String(INDEX.items.length) : '—';
       return;
     }
@@ -1466,11 +1474,11 @@
     if (countEl) countEl.textContent = String(results.length);
 
     if (!results.length) {
-      body.innerHTML = '<div class="search-empty"><strong>未找到「' + esc(q) + '」</strong>试试更短的关键词，或输入档号。</div>';
+      replaceBody('<div class="search-empty"><strong>未找到「' + esc(q) + '」</strong>试试更短的关键词，或输入档号。</div>', resetScroll);
       return;
     }
 
-    body.innerHTML = results.map(function (r, i) {
+    replaceBody(results.map(function (r, i) {
       var it = r.it;
       return '<a class="sr-item' + (i === active ? ' active' : '') + '" href="' + esc(it.u) + '" data-i="' + i + '">'
         + '<div class="sr-top">'
@@ -1484,7 +1492,7 @@
         + (it.g.length ? '<span class="sr-sep">·</span>' + esc(it.g.slice(0, 4).join(' / ')) : '')
         + '</div>'
         + '</a>';
-    }).join('');
+    }).join(''), resetScroll);
   }
 
   function setActive(i) {
@@ -1570,7 +1578,7 @@
     if (!composing) timer = setTimeout(function () { render(input.value.trim()); }, 90);
   }
   if (clearBtn) clearBtn.addEventListener('click', function () {
-    clearTimeout(timer); input.value = ''; render(''); input.focus({preventScroll: true});
+    clearTimeout(timer); input.value = ''; render('', true); input.focus({preventScroll: true});
   });
   if (input) {
     input.addEventListener('compositionstart', function () { composing = true; clearTimeout(timer); });
@@ -1594,7 +1602,7 @@
   body.addEventListener('click', function (e) {
     if (e.target.closest('.search-retry')) {
       INDEX = null;
-      render(input.value.trim());
+      render(input.value.trim(), true);
       loadIndex().then(function () { if (mask.classList.contains('open')) render(input.value.trim()); });
       input.focus({preventScroll: true});
       return;
@@ -1605,7 +1613,8 @@
 
   /* 全局快捷键：Ctrl/Cmd+K 或 '/' */
   doc.addEventListener('keydown', function (e) {
-    if (doc.querySelector('dialog[open]')) return;
+    if (e.isComposing || composing || e.keyCode === 229) return;
+    if (doc.querySelector('dialog[open], .kn-help.open, .kn-jump.open')) return;
     if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
       e.preventDefault();
       toggle();
