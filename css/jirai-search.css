@@ -205,19 +205,23 @@
   font-size: var(--fs-base);
   letter-spacing: .04em;
   color: #ddd3e3;
-  line-height: var(--lh-tight);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 .sr-item:hover .sr-title,
 .sr-item.active .sr-title { color: #fff; }
 .sr-snippet {
   margin: var(--sp-1-5) 0 0;
   font-size: var(--fs-sm);
-  line-height: var(--lh-snug);
-  color: #aa9bb4;
+  line-height: 1.65;
+  color: #b9adc2;
   word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-.sr-snippet mark,
-.sr-title mark {
+.sr-item mark {
   color: #fff;
   background: rgba(255, 45, 120, .34);
   border-radius: 2px;
@@ -228,7 +232,9 @@
   margin-top: var(--sp-1-5);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
-  letter-spacing: .1em;
+  letter-spacing: .04em;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
   color: var(--text-faint);
 }
 .sr-meta .sr-sep { margin: 0 var(--sp-1-5); color: var(--line-pink); }
@@ -255,6 +261,8 @@
   letter-spacing: .22em;
   color: rgba(255, 122, 184, .75);
 }
+.search-query-example { display: block; margin-top: 8px; color: var(--text-head); letter-spacing: .04em; }
+.search-key-hint { display: block; margin-top: 14px; opacity: .7; }
 
 .search-foot {
   flex: none;
@@ -311,7 +319,8 @@ html[data-type="xl"] { --reading-scale: 1.22; }
   .search-input { font-size: 16px; }
   .search-idle, .search-empty { padding: 28px 18px; }
   .search-head .sh-hint { display: none; }
-  .search-close { margin-left: auto; }
+  .search-close { margin-left: auto; width: 44px; height: 44px; }
+  .search-key-hint { display: none; }
   .search-foot > span:last-child { display: none; }
   .search-clear { min-width: 40px; min-height: 40px; }
   .search-btn kbd { display: none; }   /* 小螢幕不提示快捷键 */

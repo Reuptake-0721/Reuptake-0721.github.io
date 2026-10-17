@@ -1,6 +1,6 @@
 /* ============================================================
    jirai-search — 檢索台客戶端
-   拉取 /search.json，做即時子串匹配（中文友好，無需分詞）
+   拉取 /search.json，按空白分隔的關鍵詞組合匹配（中文友好）
    支援 Ctrl/Cmd+K 開啟、↑↓ 選擇、Enter 開啟、Esc 關閉
    ============================================================ */
 (function () {
@@ -37,7 +37,7 @@
     if (loading) return loading;
     var url = (cfg.root || '/') + 'search.json';
     loading = Promise.all([
-      fetch(url, { credentials: 'same-origin' }).then(function (r) {
+      fetch(url, { credentials: 'same-origin', cache: 'no-cache' }).then(function (r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
       }),
@@ -69,7 +69,9 @@
 
   function normalize(s) {
     if (!s) return '';
-    var out = String(s);
+    var out = String(s).replace(/\u3000/g, ' ').replace(/[\uff01-\uff5e]/g, function (ch) {
+      return String.fromCharCode(ch.charCodeAt(0) - 65248);
+    });
     for (var i = 0; i < t2sSorted.length; i++) {
       var k = t2sSorted[i];
       if (out.indexOf(k) > -1) out = out.split(k).join(T2S_P[k]);
@@ -111,6 +113,20 @@
     });
   }
 
+  function queryTerms(q) {
+    var seen = Object.create(null);
+    return normalize(q).toLowerCase().trim().split(/\s+/).filter(function (term) {
+      return !!term;
+    }).map(function (term) {
+      var no = /^a-?(\d{1,3})$/.exec(term);
+      return no ? 'a-' + no[1].padStart(3, '0') : term;
+    }).filter(function (term) {
+      if (seen[term]) return false;
+      seen[term] = true;
+      return true;
+    });
+  }
+
   /* 高亮：在原文的归一化副本上定位，每个输出片段单独转义。
      归一化是逐字等长替换，所以位置能直接映射回原字符，
      即使读者打的是繁体，也能高亮出正文里的简体原字。 */
@@ -118,64 +134,75 @@
     text = String(text);
     if (!q) return esc(text);
     var hay = normalize(text).toLowerCase();
-    var ql = normalize(q).toLowerCase();
-    if (!ql || hay.length !== text.length) return esc(text);
+    var terms = queryTerms(q);
+    if (!terms.length || hay.length !== text.length) return esc(text);
+    var ranges = [];
+    terms.forEach(function (term) {
+      var from = 0, at;
+      while ((at = hay.indexOf(term, from)) > -1) {
+        ranges.push([at, at + term.length]);
+        from = at + 1;
+      }
+    });
+    ranges.sort(function (a, b) { return a[0] - b[0] || b[1] - a[1]; });
+    var merged = [];
+    ranges.forEach(function (range) {
+      var last = merged[merged.length - 1];
+      if (last && range[0] <= last[1]) last[1] = Math.max(last[1], range[1]);
+      else merged.push(range);
+    });
     var out = '';
-    var i = 0, at;
-    while ((at = hay.indexOf(ql, i)) > -1) {
-      out += esc(text.slice(i, at)) + '<mark>' + esc(text.slice(at, at + ql.length)) + '</mark>';
-      i = at + ql.length;
-    }
+    var i = 0;
+    merged.forEach(function (range) {
+      out += esc(text.slice(i, range[0])) + '<mark>' + esc(text.slice(range[0], range[1])) + '</mark>';
+      i = range[1];
+    });
     return out + esc(text.slice(i));
-  }
-  /* 取命中位置周围的片段（简体坐标），而不是正文开头 */
-  function snippet(text, q, span) {
-    span = span || 64;
-    if (!text) return '';
-    var at = q ? text.toLowerCase().indexOf(q.toLowerCase()) : -1;
-    if (at < 0) return text.slice(0, span * 2) + (text.length > span * 2 ? '……' : '');
-    var from = Math.max(0, at - span);
-    var to = Math.min(text.length, at + q.length + span);
-    return (from > 0 ? '……' : '') + text.slice(from, to) + (to < text.length ? '……' : '');
   }
 
   /* ---------------------------------------------- 搜索 */
   function search(q) {
     if (!INDEX || !INDEX.ready) return [];
-    var ql = normalize(q).toLowerCase();
-    if (!ql) return [];
+    var terms = queryTerms(q);
+    if (!terms.length) return [];
     var hits = [];
 
     INDEX.items.forEach(function (it) {
-      var inTitle = it._t.indexOf(ql) > -1;
-      var inNo = it._n.indexOf(ql) > -1;
-      var inType = it._c.indexOf(ql) > -1;
-      var inTags = it._g.some(function (g) { return g.indexOf(ql) > -1; });
-      var inHead = it._h.some(function (h) { return h.indexOf(ql) > -1; });
-      var inBody = it._x.indexOf(ql) > -1;
-
-      if (!(inTitle || inNo || inType || inTags || inHead || inBody)) return;
-
       /* 排序权重：标题 > 档号 > 章节 > 标签/类型 > 正文 */
       var weight = 0;
-      if (inTitle) weight += 100;
-      if (inNo) weight += 60;
-      if (inHead) weight += 40;
-      if (inTags) weight += 25;
-      if (inType) weight += 20;
-      if (inBody) weight += 10;
-
-      var hitText = '';
-      if (inHead) {
+      var headIndex = -1, bodyAt = -1, bodyTerm = '';
+      var matches = terms.every(function (term) {
+        var inTitle = it._t.indexOf(term) > -1;
+        var inNo = it._n.indexOf(term) > -1;
+        var inType = it._c.indexOf(term) > -1;
+        var inTags = it._g.some(function (g) { return g.indexOf(term) > -1; });
+        var inHead = false;
         for (var i = 0; i < it._h.length; i++) {
-          if (it._h[i].indexOf(ql) > -1) { hitText = it.h[i]; break; }
+          if (it._h[i].indexOf(term) > -1) {
+            inHead = true;
+            if (headIndex < 0) headIndex = i;
+            break;
+          }
         }
-      }
-      if (!hitText && inBody) {
+        var at = it._x.indexOf(term);
+        var inBody = at > -1;
+        if (!(inTitle || inNo || inType || inTags || inHead || inBody)) return false;
+        if (inTitle) weight += 100;
+        if (inNo) weight += 60;
+        if (inHead) weight += 40;
+        if (inTags) weight += 25;
+        if (inType) weight += 20;
+        if (inBody) weight += 10;
+        if (inBody && (bodyAt < 0 || at < bodyAt)) { bodyAt = at; bodyTerm = term; }
+        return true;
+      });
+      if (!matches) return;
+      var hitText = '';
+      if (headIndex >= 0) hitText = it.h[headIndex];
+      if (!hitText && bodyAt >= 0) {
         /* 用归一化坐标取片段，再用原文显示 */
-        var at = it._x.indexOf(ql);
-        var from = Math.max(0, at - 64);
-        var to = Math.min(it.x.length, at + ql.length + 64);
+        var from = Math.max(0, bodyAt - 24);
+        var to = Math.min(it.x.length, bodyAt + bodyTerm.length + 64);
         hitText = (from > 0 ? '……' : '') + it.x.slice(from, to) + (to < it.x.length ? '……' : '');
       }
 
@@ -192,8 +219,11 @@
   }
 
   function render(q, resetScroll) {
-    resetScroll = resetScroll || q !== renderedQuery;
-    renderedQuery = q;
+    var signature = queryTerms(q).slice().sort().join('\u0000');
+    var sameQuery = signature === renderedQuery;
+    var selectedUrl = sameQuery && active >= 0 && results[active] ? results[active].it.u : null;
+    resetScroll = resetScroll || !sameQuery;
+    renderedQuery = signature;
     if (clearBtn) clearBtn.hidden = !input.value;
     if (countLabel) countLabel.textContent = q ? '命中' : '館藏';
     body.setAttribute('aria-busy', !INDEX || !INDEX.ready ? 'true' : 'false');
@@ -219,6 +249,11 @@
     }
     results = search(q);
     active = results.length ? 0 : -1;
+    if (selectedUrl) {
+      for (var selected = 0; selected < results.length; selected++) {
+        if (results[selected].it.u === selectedUrl) { active = selected; break; }
+      }
+    }
 
     if (countEl) countEl.textContent = String(results.length);
 
@@ -229,16 +264,19 @@
 
     replaceBody(results.map(function (r, i) {
       var it = r.it;
+      var tags = (it.g || []).filter(function (tag) {
+        return normalize(tag).toLowerCase().trim() !== normalize(it.c || '').toLowerCase().trim();
+      }).slice(0, 4);
       return '<a class="sr-item' + (i === active ? ' active' : '') + '" href="' + esc(it.u) + '" data-i="' + i + '">'
         + '<div class="sr-top">'
-        + '<span class="sr-no">' + esc(it.n) + '</span>'
+        + '<span class="sr-no">' + mark(it.n, q) + '</span>'
         + '<span class="sr-date">' + esc(it.d) + '</span>'
-        + (it.c ? '<span class="sr-type">' + esc(it.c) + '</span>' : '')
+        + (it.c ? '<span class="sr-type">' + mark(it.c, q) + '</span>' : '')
         + '</div>'
         + '<div class="sr-title">' + mark(it.t, q) + '</div>'
         + (r.snip ? '<div class="sr-snippet">' + mark(r.snip, q) + '</div>' : '')
         + '<div class="sr-meta">約 ' + it.m + ' 分鐘'
-        + (it.g.length ? '<span class="sr-sep">·</span>' + esc(it.g.slice(0, 4).join(' / ')) : '')
+        + (tags.length ? '<span class="sr-sep">·</span>' + mark(tags.join(' / '), q) : '')
         + '</div>'
         + '</a>';
     }).join(''), resetScroll);
@@ -278,6 +316,7 @@
   function close() {
     if (!mask.classList.contains('open')) return;
     clearTimeout(timer);
+    timer = null;
     mask.classList.remove('open');
     openBtn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = previousOverflow;
@@ -324,13 +363,14 @@
   function queueSearch() {
     if (clearBtn) clearBtn.hidden = !input.value;
     clearTimeout(timer);
-    if (!composing) timer = setTimeout(function () { render(input.value.trim()); }, 90);
+    timer = null;
+    if (!composing) timer = setTimeout(function () { timer = null; render(input.value.trim()); }, 90);
   }
   if (clearBtn) clearBtn.addEventListener('click', function () {
-    clearTimeout(timer); input.value = ''; render('', true); input.focus({preventScroll: true});
+    clearTimeout(timer); timer = null; input.value = ''; render('', true); input.focus({preventScroll: true});
   });
   if (input) {
-    input.addEventListener('compositionstart', function () { composing = true; clearTimeout(timer); });
+    input.addEventListener('compositionstart', function () { composing = true; clearTimeout(timer); timer = null; });
     input.addEventListener('compositionend', function () { composing = false; queueSearch(); });
     input.addEventListener('input', queueSearch);
 
@@ -340,7 +380,7 @@
       else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(active - 1); }
       else if (e.key === 'Enter') {
         e.preventDefault();
-        if (timer) { clearTimeout(timer); render(input.value.trim()); timer = null; }
+        if (timer !== null) { clearTimeout(timer); timer = null; render(input.value.trim()); }
         var node = body.querySelector('.sr-item.active');
         if (node) window.location.href = node.getAttribute('href');
       } else if (e.key === 'Escape') { e.preventDefault(); close(); }

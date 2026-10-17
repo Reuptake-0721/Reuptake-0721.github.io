@@ -54,7 +54,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/jirai.bundle.css?v=8495b7b709d0">
+  <link rel="stylesheet" href="/css/jirai.bundle.css?v=4e27020f4f0a">
   
   
 </head>
@@ -198,7 +198,7 @@
   <div class="search-panel">
     <div class="search-head">
       <span class="sh-title">檢索台 <span>†</span></span>
-      <span class="sh-hint">索引 · 卡片目錄</span>
+      <span class="sh-hint">空格組合關鍵詞</span>
       <button class="search-close" id="search-close" type="button" aria-label="關閉">
         <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
@@ -209,16 +209,17 @@
       
       <input class="search-input" id="search-input" type="text" autocomplete="off"
              spellcheck="false" enterkeyhint="search" aria-controls="search-body"
-             aria-label="輸入檔號、關鍵詞或診斷碼……"
-             placeholder="輸入檔號、關鍵詞或診斷碼……">
+             aria-label="輸入關鍵詞或檔號"
+             placeholder="關鍵詞 / 檔號（如 A8）">
       <button class="search-clear" id="search-clear" type="button" aria-label="清空搜索" hidden><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
 
     <div class="search-body" id="search-body">
       <div class="search-idle">
         <span class="si-big">請輸入檢索詞</span>
-        可按檔號（A-001）、標題、部位、診斷碼 查找<br>
-        <span style="opacity:.7">↑↓ 選擇 &nbsp;·&nbsp; Enter 取出 &nbsp;·&nbsp; Esc 關閉</span>
+        可搜標題、正文或診斷碼<br>
+        <span class="search-query-example">例如：遊戲 哲學 / A8</span>
+        <span class="search-key-hint">↑↓ 選擇 &nbsp;·&nbsp; Enter 取出 &nbsp;·&nbsp; Esc 關閉</span>
       </div>
     </div>
 
@@ -415,7 +416,7 @@
 
 
 
-<script src="/js/jirai.bundle.js?v=5ce2abf4fc2a" defer></script>
+<script src="/js/jirai.bundle.js?v=14c1adef6975" defer></script>
 
 <script>
   window.__JIRAI__ = {
