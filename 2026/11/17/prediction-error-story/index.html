@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#08050a">
+  <title>《Prediction Error》剧情解读：当出口不再是另一个房间 | 某独立游戏开发者的记录</title>
+
+  
+  <script>try{if(sessionStorage.getItem('jirai-booted')==='1'){document.documentElement.className+=' boot-skip';}}catch(e){}</script>
+  
+
+  
+  <script>try{var _t=localStorage.getItem('jirai-type');if(['s','m','l','xl'].indexOf(_t)>-1)document.documentElement.setAttribute('data-type',_t);}catch(e){}</script>
+  
+
+  
+  
+  <script>try{
+    if (!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      document.documentElement.className += ' reveal-on';
+    }
+  }catch(e){}</script>
+  
+
+  <meta name="generator" content="Hexo 8.1.1">
+  
+    <meta name="description" content="全文剧透。从突触、迷宫与恐惧病房，到黛梦的身份和两个结局：一束手电的光，如何改变整段旅程的意义。">
+  
+  <meta name="keywords" content="游戏开发, RenPy, 视觉小说, VRChat, 脑神经, 药理学, 哲学">
+  <meta name="author" content="お尼酱~">
+
+  <link rel="canonical" href="https://reuptake-0721.github.io/2026/11/17/prediction-error-story/">
+  <link rel="icon" href="/icon-32.png">
+
+  <meta name="description" content="全文剧透。从突触、迷宫与恐惧病房，到黛梦的身份和两个结局：一束手电的光，如何改变整段旅程的意义。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Prediction Error》剧情解读：当出口不再是另一个房间">
+<meta property="og:url" content="https://reuptake-0721.github.io/2026/11/17/prediction-error-story/index.html">
+<meta property="og:site_name" content="某独立游戏开发者的记录">
+<meta property="og:description" content="全文剧透。从突触、迷宫与恐惧病房，到黛梦的身份和两个结局：一束手电的光，如何改变整段旅程的意义。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://reuptake-0721.github.io/images/prediction-error-synapse.jpg">
+<meta property="og:image" content="https://reuptake-0721.github.io/images/prediction-error-hospital.jpg">
+<meta property="og:image" content="https://reuptake-0721.github.io/images/prediction-error-tree.jpg">
+<meta property="article:published_time" content="2026-11-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-11-16T16:00:00.000Z">
+<meta property="article:author" content="お尼酱~">
+<meta property="article:tag" content="Meta">
+<meta property="article:tag" content="剧情解析">
+<meta property="article:tag" content="哲学">
+<meta property="article:tag" content="游戏开发">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://reuptake-0721.github.io/images/prediction-error-synapse.jpg">
+
+  
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/jirai.bundle.css?v=648b0978d56d">
+  
+  
+</head>
+<body class="no-scanline ">
+
+  
+
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+  
+
+
+<div class="boot" id="jirai-boot" role="status" aria-label="加载中"
+     data-min-ms="900">
+  <div class="boot-panel">
+    <div class="boot-brand">
+      <span class="boot-mark">✚</span>
+      <span class="boot-title" data-text="JIRAI-OS">JIRAI-OS</span>
+      <span class="boot-ver">v1.0 / 地雷系</span>
+    </div>
+    <p class="boot-sub">地雷系个人终端 · 起動シーケンス</p>
+
+    <div class="boot-log" id="boot-log">
+      
+        <span class="boot-line" data-i="0">CHECKING CONSCIOUSNESS ......... OK</span>
+      
+        <span class="boot-line" data-i="1">LOADING NEUROTRANSMITTER ...... 87%</span>
+      
+        <span class="boot-line" data-i="2">SCANNING FOR LANDMINES ........ 3 FOUND</span>
+      
+        <span class="boot-line" data-i="3">MOUNTING /dev/heart ........... FAILED</span>
+      
+        <span class="boot-line" data-i="4">RETRYING WITH TEARS ........... OK</span>
+      
+        <span class="boot-line" data-i="5">WARNING: 取り扱い注意 · HANDLE WITH CARE</span>
+      
+    </div>
+
+    <div class="boot-bar"><i id="boot-fill"></i></div>
+
+    <div class="boot-foot">
+      <span class="boot-pct"><b id="boot-pct">0</b>%</span>
+      <button class="boot-skip" id="boot-skip" type="button">SKIP / 跳过 ›</button>
+    </div>
+
+    <p class="boot-finish" id="boot-finish">進入許可 / ACCESS GRANTED</p>
+  </div>
+  <div class="boot-shutter left"></div>
+  <div class="boot-shutter right"></div>
+  <div class="boot-grid" aria-hidden="true"></div>
+</div>
+
+
+
+<canvas id="jirai-particles" class="particles" aria-hidden="true"
+        data-count="24"
+        data-trail="false"
+        data-trail-max="26"
+        data-link="0"
+        data-gravity="-0.012"></canvas>
+
+
+
+
+  
+
+
+<div class="laceframe" aria-hidden="true">
+  <i class="lf-top"></i>
+  <i class="lf-bottom"></i>
+  <i class="lf-left"></i>
+  <i class="lf-right"></i>
+  <b class="lf-tl"></b>
+  <b class="lf-tr"></b>
+  <b class="lf-bl"></b>
+  <b class="lf-br"></b>
+</div>
+
+
+
+
+
+
+
+  
+  <div class="grain" aria-hidden="true"></div>
+  
+
+  
+<nav class="nav" id="site-nav" aria-label="主导航">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 21s-8-4.9-8-10.2A4.8 4.8 0 0 1 12 7.6a4.8 4.8 0 0 1 8 3.2C20 16.1 12 21 12 21z"/>
+      </svg>
+      <span class="brand-text">某独立游戏开发者的记录</span>
+      <span class="brand-sub">Reuptake</span>
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="nav-links">
+      <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a class="" href="/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5h6l2 2.2h10V19H3z"/></svg><span>碎片檔案庫</span></a></li><li><a class="" href="/archives/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg><span>病歷庫</span></a></li><li><a class="" href="/categories/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5c1.4-3.8 4-5.6 7.5-5.6s6.1 1.8 7.5 5.6"/></svg><span>部位索引</span></a></li><li><a class="" href="/tags/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.8 3.4 20.6 9.2M17.9 6.5 8.7 15.7l-3.4.9.9-3.4 9.2-9.2zM4.4 19.6l2.4-2.4"/></svg><span>診斷碼表</span></a></li><li><a class="" href="/about/"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11a7 7 0 0 1 14 0v3.2l-1.6 1.2v2.1a1.5 1.5 0 0 1-1.5 1.5H8.1a1.5 1.5 0 0 1-1.5-1.5v-2.1L5 14.2z"/><circle cx="9.2" cy="11.4" r="1.5"/><circle cx="14.8" cy="11.4" r="1.5"/><path d="M11 15.6h2"/></svg><span>施術者</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+  
+
+
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon-track" style="animation-duration:34s">
+    <span class="ribbon-run">地雷系 · JIRAI-KEI · 取り扱い注意</span>
+  </div>
+</div>
+
+
+
+<div class="halo-layer" aria-hidden="true"><i></i></div>
+
+
+<div class="deco"><span>†</span></div>
+
+
+
+
+
+<div class="med-cursor" id="med-cursor" aria-hidden="true">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="10.4" fill="none" stroke="currentColor" stroke-width="1.1" stroke-dasharray="3 4" opacity=".55"/>
+    <path d="M12 4.6v14.8M4.6 12h14.8" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+  </svg>
+</div>
+
+  
+
+
+
+<div class="search-mask" id="jirai-search" role="dialog" aria-modal="true" aria-hidden="true" aria-label="檢索台">
+  <div class="search-panel">
+    <div class="search-head">
+      <span class="sh-title">檢索台 <span>†</span></span>
+      <span class="sh-hint">空格組合關鍵詞</span>
+      <button class="search-close" id="search-close" type="button" aria-label="關閉">
+        <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <div class="search-input-row">
+      <span class="si-prompt">›</span>
+      
+      <input class="search-input" id="search-input" type="text" autocomplete="off"
+             spellcheck="false" enterkeyhint="search" aria-controls="search-body"
+             aria-label="輸入關鍵詞或檔號"
+             placeholder="關鍵詞 / 檔號（如 A8）">
+      <button class="search-clear" id="search-clear" type="button" aria-label="清空搜索" hidden><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+
+    <div class="search-body" id="search-body">
+      <div class="search-idle">
+        <span class="si-big">請輸入檢索詞</span>
+        可搜標題、正文或診斷碼<br>
+        <span class="search-query-example">例如：遊戲 哲學 / A8</span>
+        <span class="search-key-hint">↑↓ 選擇 &nbsp;·&nbsp; Enter 取出 &nbsp;·&nbsp; Esc 關閉</span>
+      </div>
+    </div>
+
+    <div class="search-foot">
+      <span role="status" aria-live="polite"><span id="search-count-label">館藏</span> <span class="sf-count" id="search-count">—</span> 份<span class="search-status" id="search-status"></span></span>
+      <span style="margin-left:auto">本館藏 · jirai 檔案館</span>
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+<div class="dock" id="jirai-dock">
+
+  
+  <button class="search-btn" id="jirai-search-btn" type="button" aria-label="檢索">
+    <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6.5h12M8 12h12M8 17.5h12"/><circle cx="4.4" cy="6.5" r="1.1"/><circle cx="4.4" cy="12" r="1.1"/><circle cx="4.4" cy="17.5" r="1.1"/></svg>
+    <span>檢索</span>
+  </button>
+  
+
+  
+  <button class="type-btn" id="jirai-type" type="button" title="切換字級">
+    字級 <b>標準</b>
+  </button>
+  
+
+  
+  <button class="ambient" id="jirai-ambient" type="button"
+          aria-pressed="false"
+          data-volume="0.16"
+          data-style="music-box"
+          data-bpm="52"
+          data-autoplay="false"
+          title="氛圍音（Web Audio 合成）">
+    <span class="amb-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="amb-label">AMBIENT</span>
+  </button>
+  
+
+</div>
+
+
+
+  <main class="wrap" id="main-content" tabindex="-1">
+
+    
+    <div class="curtain" aria-hidden="true">
+      <span class="curtain-line"></span>
+      <span class="curtain-text">と て も い た い の</span>
+      <span class="curtain-line"></span>
+    </div>
+    
+
+    
+
+<div class="layout">
+<div class="main-col">
+
+<article class="card post" data-reading-key="/2026/11/17/prediction-error-story/" data-reading-revision="26825b97f3a6">
+
+  <header class="dossier">
+    
+    <div class="dossier-top">
+      <div class="dossier-spine" aria-hidden="true">
+        <span class="sp-no">A-010</span>
+      </div>
+
+      <div class="dossier-body">
+        <h1 data-no-variant="title">《Prediction Error》剧情解读：当出口不再是另一个房间</h1>
+        <div class="seal-mark" aria-hidden="true">
+          <span class="seal-status">已閱</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="meta-row">
+        <span class="post-meta-date"><span class="k">收錄</span> <time datetime="2026-11-16T16:00:00.000Z">2026.11.17</time></span>
+        
+          <span class="post-meta-category"><span class="k">部位</span>
+            <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a></span>
+        
+        
+        <span class="post-meta-reading"><span class="k">篇幅</span> 2934 字 · 8 分鐘</span>
+    </div>
+  </header>
+
+  <aside class="reading-resume" id="reading-resume" aria-label="继续阅读" hidden>
+    <p>上次讀到 <b data-reading-percent data-no-variant>0</b>%</p>
+    <div class="reading-resume-actions">
+      <button type="button" data-reading-continue>繼續閱讀<span aria-hidden="true"> →</span></button>
+      <button type="button" data-reading-clear aria-label="清除此文章的阅读位置">清除</button>
+    </div>
+  </aside>
+
+  
+  
+  <details class="toc-box">
+    <summary><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6.5h12M8 12h12M8 17.5h12"/><circle cx="4.4" cy="6.5" r="1.1"/><circle cx="4.4" cy="12" r="1.1"/><circle cx="4.4" cy="17.5" r="1.1"/></svg><span>索引 / INDEX</span></summary>
+    <div class="toc-inner"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%81%E8%A7%A6%EF%BC%9A%E5%BD%93%E8%87%AA%E5%B7%B1%E8%A2%AB%E8%A7%A3%E9%87%8A%E6%88%90%E4%B8%80%E5%8F%B0%E9%9C%80%E8%A6%81%E4%BF%AE%E7%90%86%E7%9A%84%E6%9C%BA%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">突触：当自己被解释成一台需要修理的机器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%B7%E5%AE%AB%EF%BC%9A%E7%86%9F%E6%82%89%E7%9A%84%E7%97%9B%E8%8B%A6%EF%BC%8C%E4%B9%9F%E4%BC%9A%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E4%BF%9D%E6%8A%A4"><span class="toc-number">2.</span> <span class="toc-text">迷宫：熟悉的痛苦，也会成为一种保护</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%97%85%E6%88%BF%EF%BC%9A%E4%B8%80%E6%9D%9F%E5%85%89%EF%BC%8C%E5%BC%80%E5%A7%8B%E6%94%B9%E5%8F%98%E4%BD%A0%E4%B8%8E%E6%81%90%E6%83%A7%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">3.</span> <span class="toc-text">病房：一束光，开始改变你与恐惧的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E4%B8%8B%EF%BC%9A%E6%95%99%E4%BD%A0%E4%B8%BE%E8%B5%B7%E5%85%89%E7%9A%84%E4%BA%BA%EF%BC%8C%E8%AF%B7%E4%BD%A0%E7%85%A7%E5%90%91%E5%A5%B9"><span class="toc-number">4.</span> <span class="toc-text">树下：教你举起光的人，请你照向她</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E7%BB%93%E5%B1%80%EF%BC%9A%E7%95%99%E4%B8%8B%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%B8%A6%E7%9D%80%E5%91%8A%E5%88%AB%E7%A6%BB%E5%BC%80"><span class="toc-number">5.</span> <span class="toc-text">两个结局：留下，以及带着告别离开</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%86%84%E7%81%AF%EF%BC%9A%E5%9B%9E%E5%88%B0%E9%82%A3%E4%B8%AA%E4%BB%8D%E6%9C%89%E4%BA%BA%E7%AD%89%E4%BD%A0%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="toc-number">5.1.</span> <span class="toc-text">熄灯：回到那个仍有人等你的地方</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E6%8C%81%E6%B3%A8%E8%A7%86%EF%BC%9A%E8%AE%A9%E9%99%AA%E4%BC%B4%E6%88%90%E4%B8%BA%E4%B8%80%E6%AE%B5%E5%8F%AF%E4%BB%A5%E7%BB%93%E6%9D%9F%E7%9A%84%E7%BB%8F%E5%8E%86"><span class="toc-number">5.2.</span> <span class="toc-text">保持注视：让陪伴成为一段可以结束的经历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E9%A2%98%E9%87%8C%E7%9A%84%E2%80%9C%E9%94%99%E8%AF%AF%E2%80%9D%EF%BC%8C%E6%9C%80%E5%90%8E%E8%90%BD%E5%9C%A8%E4%BA%86%E5%93%AA%E9%87%8C"><span class="toc-number">6.</span> <span class="toc-text">标题里的“错误”，最后落在了哪里</span></a></li></ol></div>
+  </details>
+  
+
+  <div class="post-body" id="post-body">
+    <blockquote>
+<p><strong>全文剧透，包含黛梦的身份、最终选择与两个结局。</strong> 如果你还没有通关，可以先去 <a target="_blank" rel="noopener" href="https://store.steampowered.com/app/5227780/">Steam 体验《Prediction Error》</a>，再回来读这份记录。</p>
+</blockquote>
+<p>《Prediction Error》开场，有一个很容易被略过的词。</p>
+<p>黛梦告诉你，系统重连完毕，你“又一次”被困在这个意识载体里。</p>
+<p>第一次听见时，它只是黑暗中的一句背景说明。等你走完某一个结局，再次听见同样的声音，这三个字才会突然变得具体：你以为自己刚刚开始的旅程，也可能是一次已经发生过的返回。</p>
+<p>这篇文章沿着游戏实际的行进顺序，重新看一遍那些房间、声音与选择。它们怎样一步步改变含义，最后把问题交到屏幕之外。</p>
+<h2 id="突触：当自己被解释成一台需要修理的机器" data-num="10" class="has-num"><a href="#突触：当自己被解释成一台需要修理的机器" class="headerlink" title="突触：当自己被解释成一台需要修理的机器"></a>突触：当自己被解释成一台需要修理的机器</h2><picture><source srcset="/images/prediction-error-synapse-300.webp 300w, /images/prediction-error-synapse-450.webp 450w, /images/prediction-error-synapse-600.webp 600w, /images/prediction-error-synapse-750.webp 750w, /images/prediction-error-synapse-900.webp 900w, /images/prediction-error-synapse-1200.webp 1200w, /images/prediction-error-synapse.webp 1800w" sizes="(max-width: 860px) calc(100vw - 40px), calc(min(58vw, 900px) - 30px)" type="image/webp"><img src="/images/prediction-error-synapse.jpg" alt="游戏中的突触通道，冰蓝色光纹向黑暗深处延伸" class="jirai-photo" width="1800" height="1012"></picture>
+<p>你醒来的地方被黛梦称为“突触间隙”。黯淡的光尘、近乎停机的系统，以及前方等待选择的控制台，共同构成了第一幕。</p>
+<p>这里有三种药物选择。游戏分别用感官变化与对白，把它们演成三种不同的处境：悲伤被隔开的麻木、找不到出口的亢奋，以及奖励回路被重新安排后的狂热与效率。每次只能选择其中一种；不同演出最后都把你带向下一扇门。</p>
+<p>理解这一幕时，要把黛梦的判断放回她自己的位置。她对药物、受体和救赎的尖锐描述，属于这个虚构世界的叙述；游戏的夸张演出并不对应现实中的药物疗效。随着后面的身份揭示，她的权威本身也需要重新审视。</p>
+<p>第一幕真正留下的困惑，是一个人被解释成“出了故障的机器”之后，仍然找不到安放自身经验的位置。</p>
+<p>系统能够继续运转，那个正在承受一切的“我”却还在追问：我的生活为什么会变成这样？别人所说的恢复，是否也包含我自己的感受？</p>
+<p>带着这个没有被回答的问题，你穿过了门。</p>
+<h2 id="迷宫：熟悉的痛苦，也会成为一种保护" data-num="20" class="has-num"><a href="#迷宫：熟悉的痛苦，也会成为一种保护" class="headerlink" title="迷宫：熟悉的痛苦，也会成为一种保护"></a>迷宫：熟悉的痛苦，也会成为一种保护</h2><p>接下来，你进入实验室般的空间。黛梦把前方称为你的“预测模型”。两个终端需要被激活，重塑之桥才会生长，让你跨过断口，进入更深的走廊。</p>
+<p>这个动作已经在表达故事：一条原本不存在的路，要由你的介入才会出现。但走过桥之后，迎接你的仍然是迷失。</p>
+<p>声音在不同位置出现。它说自己在这里，说那边安全，也会突然责问你为什么没有听从指引。你追逐一个可以信任的方向，却始终无法确定，自己听见的究竟是帮助、诱导，还是同一个意识内部互相冲突的念头。</p>
+<p>黛梦甚至提前告诉过你：你困在自己的海马体里，而她是为了逃避孤独而出现的“幻肢”。所以最终的身份揭示，早在途中就留下了裂缝。那时的你，可能还把它当作一句令人不安的比喻。</p>
+<p>如果在迷宫停留足够久，还会触发一段额外对白。她指出你对未知分支的恐惧，然后说：</p>
+<blockquote>
+<p>“毕竟，已知的痛苦，永远比未知的自由更让人安心……”</p>
+</blockquote>
+<p>这句话很残酷，也带着黛梦惯有的指责。它所触及的矛盾值得留下：熟悉的处境可以让人受伤，同时也给人一种知道下一步会发生什么的确定感。走出去，则意味着原来用于解释世界的办法可能不再有效。</p>
+<p>从这个角度读，迷宫的高墙就有了双重作用。它限制你的行动，也挡住那些尚未被理解的可能。你反复绕行的路线，保存着一种昂贵的安全感。</p>
+<p>“预测误差”在这里开始成为可以亲身感受到的东西：你预期会找到一个可靠的指引，实际得到的却是不断动摇的方向。连那个告诉你出口在哪里的声音，也住在这座迷宫之中。</p>
+<h2 id="病房：一束光，开始改变你与恐惧的关系" data-num="30" class="has-num"><a href="#病房：一束光，开始改变你与恐惧的关系" class="headerlink" title="病房：一束光，开始改变你与恐惧的关系"></a>病房：一束光，开始改变你与恐惧的关系</h2><picture><source srcset="/images/prediction-error-hospital-300.webp 300w, /images/prediction-error-hospital-450.webp 450w, /images/prediction-error-hospital-600.webp 600w, /images/prediction-error-hospital-750.webp 750w, /images/prediction-error-hospital-900.webp 900w, /images/prediction-error-hospital-1200.webp 1200w, /images/prediction-error-hospital.webp 1800w" sizes="(max-width: 860px) calc(100vw - 40px), calc(min(58vw, 900px) - 30px)" type="image/webp"><img src="/images/prediction-error-hospital.jpg" alt="恐惧病房里的桌面上放着手电筒，周围是昏暗的医疗器械与冰蓝色粒子" class="jirai-photo" width="1800" height="1012" loading="lazy" decoding="async"></picture>
+<p>离开迷宫后，你坠入被称为“杏仁核深层”的空间。房间呈现出阴暗病房的形态，桌上留着一支手电筒。黛梦把它解释为你仅存的理性，以及重新审视自己的能力。</p>
+<p>你必须亲手拾起它。</p>
+<p>随后逼近的无面黑影，被对白称为“内化客体”：诊断报告、社会施加的贬低、父母的失望，变成了仿佛从自己内部发出的声音。这里真正令人窒息的，是外部评价被内化之后，开始像最终判决一样定义你。</p>
+<p>而应对黑影的动作很具体。你要开着灯，持续照向它。移开视线后，已经消退的部分会逐渐恢复；保持注视，黑影才会最终解体。三个黑影依次被驱散，离开的通道随后打开。</p>
+<p><strong>这一幕让“审视”拥有了重量。</strong> 恐惧逼近时，转头和逃跑是很自然的冲动。游戏却要求你停留在令人不适的观看里，直到那个看似完整、不可反驳的形象开始散开。</p>
+<p>把这一过程读成一种象征，它表达的是对自我定义的重新检查：某个评价可能曾经伤害过你，却不因此获得概括你全部人生的权力。</p>
+<p>于是，手电成为了玩家可以信赖的东西。黛梦教会你，它能够帮助你识破恐惧，夺回解释自己的主动权。</p>
+<p>也正因为这份信任已经建立，下一幕才会如此难以承受。</p>
+<h2 id="树下：教你举起光的人，请你照向她" data-num="40" class="has-num"><a href="#树下：教你举起光的人，请你照向她" class="headerlink" title="树下：教你举起光的人，请你照向她"></a>树下：教你举起光的人，请你照向她</h2><picture><source srcset="/images/prediction-error-tree-300.webp 300w, /images/prediction-error-tree-450.webp 450w, /images/prediction-error-tree-600.webp 600w, /images/prediction-error-tree-750.webp 750w, /images/prediction-error-tree-900.webp 900w, /images/prediction-error-tree-1200.webp 1200w, /images/prediction-error-tree.webp 1800w" sizes="(max-width: 860px) calc(100vw - 40px), calc(min(58vw, 900px) - 30px)" type="image/webp"><img src="/images/prediction-error-tree.jpg" alt="终局的旷野中，一棵发着冰蓝色光的树立在水边" class="jirai-photo" width="1800" height="1012" loading="lazy" decoding="async"></picture>
+<p>穿过病房，你来到开阔的旷野与发光的树前。空间终于舒展开来，像是漫长压迫之后的一次呼吸。</p>
+<p>黛梦开始回顾你走过的路：突触、药物、迷宫，以及那些被你亲手驱散的黑影。她把它们串成一次逐层深入的过程，然后指出，意识最底层还留下了最后一个“病灶”。</p>
+<p>那就是她自己。</p>
+<p>她承认，自己既不是高级医疗人工智能，也不是“受试者 S”。在这段叙述里，她是你为了抵御孤独、在荒谬世界中继续活下去，而分裂出的最后一个“幻肢”。</p>
+<blockquote>
+<p>“你因为你的存在而痛苦，而我……只因为你的逃避而存在。”</p>
+</blockquote>
+<p>这句话让此前所有的陪伴同时发生了变化。</p>
+<p>那个催促你走出牢笼的声音，也依赖着牢笼中的你；那个教你识破外部定义的存在，自己同样无法承受最后的审视。她曾经帮助你往前走，如今却成了继续前行时必须面对的关系。</p>
+<p>这里的痛感来自一个具体的交换：<strong>第三幕里，举起光意味着保护自己；到了这里，同一个动作开始意味着告别。</strong></p>
+<p>理性没有突然失效。它正在兑现自己一路以来的作用。只是这一次，被它照见的东西恰好是你舍不得失去的。</p>
+<h2 id="两个结局：留下，以及带着告别离开" data-num="50" class="has-num"><a href="#两个结局：留下，以及带着告别离开" class="headerlink" title="两个结局：留下，以及带着告别离开"></a>两个结局：留下，以及带着告别离开</h2><p>最终选择落在玩家一直使用的动作上：熄灭手电，或者保持亮灯，持续注视黛梦。</p>
+<h3 id="熄灯：回到那个仍有人等你的地方" data-num="60" class="has-num"><a href="#熄灯：回到那个仍有人等你的地方" class="headerlink" title="熄灯：回到那个仍有人等你的地方"></a>熄灯：回到那个仍有人等你的地方</h3><p>如果关掉光，黛梦会接纳你的留下。系统重新锁定在低能耗保护模式，她告诉你，即使这里是一个谎言，你也永远不再孤身一人。</p>
+<p>心跳重新响起，游戏把你送回最初的突触场景。</p>
+<p>于是，开场的“又一次”获得了它最直接的回声。你从循环中得到陪伴，也把这段尚未完成的离开重新交还给循环。</p>
+<p>这个结局的诱惑很真实。它提供了一个仍会回应你的声音，一个熟悉的秩序，一次暂时不用继续承担未知的休息。它的代价同样具体：出口被推迟了，最初的处境又一次成为现在。</p>
+<h3 id="保持注视：让陪伴成为一段可以结束的经历" data-num="70" class="has-num"><a href="#保持注视：让陪伴成为一段可以结束的经历" class="headerlink" title="保持注视：让陪伴成为一段可以结束的经历"></a>保持注视：让陪伴成为一段可以结束的经历</h3><p>如果保持光亮，持续注视她，黛梦会接受自己的消散。她提醒你，外面的世界没有任务目标、没有背景音乐，也没有她的陪伴，只有推不完的石头与荒谬的日常。</p>
+<p>然后，告别的语气改变了。</p>
+<p>她感谢你曾经一次次为她举起光，感谢你面对真相时没有转头，也感谢你没有把她的存在，当成一场需要被抹杀的错误。</p>
+<p>这几句对白让前面的“病灶”一词不再足以概括她。她的身份可以被揭开，她的陪伴却仍然在这段旅程里发生过。它曾经支撑过你，也曾经限制过你；承认其中一面，并不需要擦去另一面。</p>
+<p>这使离开获得了一种更难、更温柔的解释：你允许一段重要的关系结束，同时保留它曾经重要的事实。</p>
+<p>告别之后，碎裂声响起，画面转黑。停顿结束，游戏退出，桌面重新出现在你面前。</p>
+<p>你走到的出口，终于越出了游戏可以继续替你安排的空间。</p>
+<h2 id="标题里的“错误”，最后落在了哪里" data-num="80" class="has-num"><a href="#标题里的“错误”，最后落在了哪里" class="headerlink" title="标题里的“错误”，最后落在了哪里"></a>标题里的“错误”，最后落在了哪里</h2><p>回看整段旅程，玩家的预期一直在被改写。</p>
+<p>你起初等待一个能够让系统恢复正常的办法，随后寻找可信的方向，再学会用光驱散恐惧。到最后，你已经习惯于相信：只要继续按正确的方法行动，下一扇门后总会有奖励，有更安全的地方，有一个继续陪你说话的人。</p>
+<p>而终局收回了这份保证。</p>
+<p>它把“逃出去以后怎么办”留在了没有任务标记的现实里。黛梦提到的石头并没有因为真相被揭开而消失；日常仍然需要被承担，自由也没有附带一份让所有选择都正确的说明书。</p>
+<p>这里可以读出标题的最后一层含义：屏幕前的你，也在经历一次预期与结果的落差。你带着通关后应当获得安慰的期待走到结尾，最后收到的是一次告别，以及重新交还给你的时间。</p>
+<p>因此，黛梦那句“没有把我的存在，当成一场需要被抹杀的错误”，才显得格外重要。</p>
+<p>一段曾经帮助你活下去的虚构，可以被看清，可以被放下。它带来的感动仍然属于你。离开时，你也不必把那个曾经需要它的自己，一并判定为错误。</p>
+<p>游戏关闭以后，房间还在，明天还在，那些没有完成的事也还在。</p>
+<p><strong>她把你带到出口，然后把出口之外的生活，还给了你。</strong></p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://store.steampowered.com/app/5227780/">在 Steam 查看《Prediction Error》</a></p>
+<p><em>本文依据游戏中的场景对白与实际结局机制整理。剧情复述之外的含义分析，是对这些细节的一种解读。配图来自游戏场景。</em></p>
+
+  </div>
+
+  <div class="post-end" aria-hidden="true">
+    <span class="pe-line"></span>
+    <span class="pe-text">至此</span>
+    <span class="pe-line"></span>
+  </div>
+
+  <footer class="post-foot">
+    
+      <div class="meta-row" style="margin-bottom:14px">
+        <span class="k">診斷碼</span>
+        
+          <a class="tag-chip" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+        
+          <a class="tag-chip" href="/tags/Meta/">Meta</a>
+        
+          <a class="tag-chip" href="/tags/%E5%93%B2%E5%AD%A6/">哲学</a>
+        
+          <a class="tag-chip" href="/tags/%E5%89%A7%E6%83%85%E8%A7%A3%E6%9E%90/">剧情解析</a>
+        
+      </div>
+    
+
+    
+    <nav class="post-nav is-single" aria-label="文章导航">
+      
+      
+        <a class="next" href="/2026/08/19/%E7%8E%B0%E5%AE%9E%E7%B2%89%E7%A2%8E%E7%97%87%E5%80%99%E7%BE%A4%EF%BC%9A%E7%BA%AA%E5%BF%B5%E6%88%91%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%AC%AC%E4%B8%80%E4%BD%8D%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C%E4%BC%99%E4%BC%B4/" rel="next">
+          <span class="dir"><span>後一份 A-009</span><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span><span class="post-nav-title">现实粉碎症候群：纪念我真正的第一位游戏制作伙伴</span>
+        </a>
+      
+    </nav>
+    
+  </footer>
+
+</article>
+
+</div>
+
+<aside class="side">
+
+  <div class="widget profile">
+    <div class="widget-title"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5c1.4-3.8 4-5.6 7.5-5.6s6.1 1.8 7.5 5.6"/></svg><span>病歷 / PROFILE</span></div>
+    <span class="room-tag">三号室</span>
+    
+      <div class="avatar-fallback">お</div>
+    
+    <div class="name">お尼酱~</div>
+    <p class="motto">不要靠近，会炸的。</p>
+
+    <div class="pulse-line" aria-hidden="true">
+      <svg viewBox="0 0 200 26" preserveAspectRatio="none">
+        <path d="M0 13h34l4-8 5 16 5-20 5 24 4-12h22l4-7 5 14 5-16 5 18 4-9h94"/>
+      </svg>
+    </div>
+
+    <div class="profile-stats">
+      <div><span class="n">10</span><span class="l">紙</span></div>
+      <div><span class="n">3</span><span class="l">部位</span></div>
+      <div><span class="n">12</span><span class="l">診斷</span></div>
+    </div>
+
+    <div class="profile-foot">
+      <span>SINCE 2026-02-26</span>
+      <span class="pf-sep">/</span>
+      <span>264 DAYS</span>
+    </div>
+    
+      <div class="profile-updated">LAST UPDATE · 2026-11-17</div>
+    
+    <div class="barcode" aria-hidden="true"></div>
+  </div>
+
+  
+
+  
+  <div class="widget">
+    <div class="widget-title"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9z"/><path d="M18.6 3.2l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg><span>近期收錄</span></div>
+    <ul class="widget-list">
+      
+        <li>
+          <a href="/2026/08/19/%E7%8E%B0%E5%AE%9E%E7%B2%89%E7%A2%8E%E7%97%87%E5%80%99%E7%BE%A4%EF%BC%9A%E7%BA%AA%E5%BF%B5%E6%88%91%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%AC%AC%E4%B8%80%E4%BD%8D%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C%E4%BC%99%E4%BC%B4/">现实粉碎症候群：纪念我真正的第一位游戏制作伙伴</a>
+          <span class="n">A-009</span>
+        </li>
+      
+        <li>
+          <a href="/2026/08/17/%E9%80%80%E5%87%BA%E8%B5%9B%E5%8D%9A%E8%A7%92%E6%96%97%E5%9C%BA/">退出赛博角斗场</a>
+          <span class="n">A-008</span>
+        </li>
+      
+        <li>
+          <a href="/2026/08/04/%E5%AF%B9%E6%B7%B1%E5%BA%A6%E6%B2%9F%E9%80%9A%E7%9A%84%E6%8E%A2%E7%B4%A2%EF%BC%88ai%E5%AF%B9%E8%AF%9D%E6%97%A5%E5%B8%B82)/">对深度沟通的探索（ai对话日常2）</a>
+          <span class="n">A-007</span>
+        </li>
+      
+        <li>
+          <a href="/2026/07/25/%E5%85%AC%E5%BC%80%E6%88%98%E4%B9%A6/">公开战书</a>
+          <span class="n">A-006</span>
+        </li>
+      
+        <li>
+          <a href="/2026/07/23/%E5%AF%B9%E6%97%A0%E6%84%8F%E8%AF%86%E7%9A%84%E6%8E%A2%E7%B4%A2%EF%BC%88ai%E5%AF%B9%E8%AF%9D%E6%97%A5%E5%B8%B81%EF%BC%89/">对无意识的探索（ai对话日常1）</a>
+          <span class="n">A-005</span>
+        </li>
+      
+    </ul>
+  </div>
+
+  
+</aside>
+
+</div>
+
+
+
+    
+    <div class="heart-beat" aria-hidden="true">
+      <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.8s-7.8-4.8-7.8-9.8A4.5 4.5 0 0 1 12 7.9a4.5 4.5 0 0 1 7.8 3.1c0 5-7.8 9.8-7.8 9.8z"/><path d="M12 7.9v3.3l-2 1.6 2.6 1.6"/></svg>
+    </div>
+    
+
+  </main>
+
+  
+<footer class="footer">
+  <div class="footer-warn" aria-hidden="true">
+    <span>取り扱い注意</span>
+  </div>
+  <svg class="foot-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12 21s-8-4.9-8-10.2A4.8 4.8 0 0 1 12 7.6a4.8 4.8 0 0 1 8 3.2C20 16.1 12 21 12 21z"/>
+  </svg>
+  <div>© 2026 お尼酱~</div>
+  <div style="margin-top:8px">
+    <span>運轉於 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a></span>
+    <span class="foot-sep">·</span>
+    <span>裝訂 <span class="theme-name">jirai</span> 地雷系</span>
+    
+  </div>
+  <div style="margin-top:12px;opacity:.55;font-family:var(--font-mono);font-size:11px;letter-spacing:.18em">
+    EST. 2026 — 無訊號，僅雜訊
+  </div>
+</footer>
+
+<div class="progress" id="read-progress"></div>
+
+
+<div class="toolbar" id="jirai-toolbar">
+  <button class="tb-btn" id="to-top" type="button" aria-label="歸位" title="歸位">
+    <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19.5V5.2"/><path d="M6 11.2 12 5.2l6 6"/></svg>
+  </button>
+  
+  <button class="tb-btn tb-variant" id="jirai-variant" type="button" aria-pressed="false"
+          title="切換簡體 / 繁體（Alt+V）">
+    <span>繁體</span>
+  </button>
+  
+</div>
+
+
+<script type="application/json" id="jirai-variant-map">{"p":{},"c":{"开":"開","战":"戰","书":"書","寻":"尋","级":"級","来":"來","场":"場","时":"時","个":"個","从":"從","发":"發","游":"遊","戏":"戲","并":"並","过":"過","审":"審","后":"後","给":"給","数":"數","据":"據","间":"間","凭":"憑","绝":"絕","对":"對","规":"規","则":"則","纯":"純","协":"協","运":"運","营":"營","听":"聽","论":"論","怀":"懷","终":"終","关":"關","胜":"勝","赌":"賭","愿":"願","输":"輸","败":"敗","无":"無","条":"條","帮":"幫","项":"項","没":"沒","资":"資","历":"歷","视":"視","链":"鏈","实":"實","说":"說","话":"話","吗":"嗎","识":"識","问":"問","潜":"潛","称":"稱","为":"為","这":"這","种":"種","东":"東","学":"學","证":"證","经":"經","复":"複","贝":"貝","验":"驗","纪":"紀","让":"讓","头":"頭","着":"著","脑":"腦","电":"電","图":"圖","们":"們","随":"隨","决":"決","动":"動","记":"記","录":"錄","准":"準","确":"確","显":"顯","试":"試","钟":"鐘","辅":"輔","区":"區","备":"備","号":"號","进":"進","现":"現","额":"額","极":"極","层":"層","叶":"葉","选":"選","择":"擇","结":"結","志":"誌","错":"錯","觉":"覺","损":"損","导":"導","变":"變","会":"會","见":"見","满":"滿","碍":"礙","里":"裡","释":"釋","类":"類","传":"傳","达":"達","体":"體","参":"參","况":"況","处":"處","杂":"雜","环":"環","仅":"僅","点":"點","制":"製","构":"構","镜":"鏡","系":"係","统":"統","当":"當","别":"別","样":"樣","观":"觀","语":"語","离":"離","线":"線","拟":"擬","状":"狀","态":"態","应":"應","维":"維","击":"擊","骤":"驟","际":"際","强":"強","闭":"閉","逻":"邏","负":"負","责":"責","报":"報","迟":"遲","频":"頻","虚":"虛","装":"裝","惧":"懼","检":"檢","测":"測","认":"認","伤":"傷","跃":"躍","键":"鍵","递":"遞","质":"質","浓":"濃","门":"門","带":"帶","领":"領","连":"連","须":"須","讲":"講","叹":"嘆","气":"氣","调":"調","节":"節","抛":"拋","预":"預","设":"設","刚":"剛","适":"適","齐":"齊","隐":"隱","机":"機","陈":"陳","货":"貨","绪":"緒","灵":"靈","长":"長","词":"詞","汇":"匯","费":"費","师":"師","彻":"徹","尽":"盡","独":"獨","习":"習","该":"該","脉":"脈","络":"絡","温":"溫","纱":"紗","术":"術","众":"眾","残":"殘","谈":"談","夺":"奪","获":"獲","权":"權","简":"簡","盘":"盤","执":"執","阶":"階","标":"標","筛":"篩","厅":"廳","闲":"閒","尔":"爾","欢":"歡","还":"還","禅":"禪","读":"讀","触":"觸","换":"換","懒":"懶","声":"聲","题":"題","奋":"奮","几":"幾","锁":"鎖","转":"轉","边":"邊","静":"靜","顺":"順","诱":"誘","牵":"牽","敌":"敵","许":"許","团":"團","队":"隊","计":"計","员":"員","虑":"慮","坚":"堅","双":"雙","恶":"惡","属":"屬","总":"總","写":"寫","讨":"討","码":"碼","锐":"銳","练":"練","鸣":"鳴","谁":"誰","烂":"爛","冲":"衝","远":"遠","误":"誤","画":"畫","骂":"罵","载":"載","艺":"藝","义":"義","畅":"暢","钱":"錢","课":"課","组":"組","织":"織","赖":"賴","断":"斷","围":"圍","毁":"毀","单":"單","缝":"縫","济":"濟","顿":"頓","疗":"療","诉":"訴","启":"啟","辈":"輩","驱":"驅","顶":"頂","贵":"貴","训":"訓","谓":"謂","虽":"雖","忆":"憶","暂":"暫","雇":"僱","驳":"駁","势":"勢","紧":"緊","壳":"殼","干":"幹","迹":"跡","杀":"殺","脚":"腳","迈":"邁","轻":"輕","侧":"側","护":"護","赞":"讚","赏":"賞","热":"熱","将":"將","务":"務","撑":"撐","劳":"勞","创":"創","馈":"饋","垒":"壘","压":"壓","饰":"飾","马":"馬","优":"優","钢":"鋼","铁":"鐵","躯":"軀","脱":"脫","洁":"潔","础":"礎","够":"夠","谋":"謀","聪":"聰","稳":"穩","腻":"膩","评":"評","奖":"獎","爱":"愛","华":"華","锻":"鍛","剑":"劍","锋":"鋒","摆":"擺","愤":"憤","网":"網","继":"繼","续":"續","厌":"厭","劲":"勁","软":"軟","荣":"榮","挂":"掛","坏":"壞","赢":"贏","笔":"筆","沟":"溝","译":"譯","积":"積","缘":"緣","销":"銷","赚":"賺","绕":"繞","墙":"牆","乱":"亂","办":"辦","阐":"闡","银":"銀","润":"潤","舍":"捨","风":"風","综":"綜","剧":"劇","梦":"夢","块":"塊","渐":"漸","针":"針","泪":"淚","诸":"諸","户":"戶","窥":"窺","笼":"籠","雾":"霧","采":"採","蓝":"藍","约":"約","险":"險","毕":"畢","联":"聯","尘":"塵","鸡":"雞","闹":"鬧","赛":"賽","弹":"彈","轨":"軌","乐":"樂","响":"響","兴":"興","谢":"謝","儿":"兒","请":"請","郁":"鬱","惯":"慣","药":"藥","郑":"鄭","悦":"悅","骄":"驕","纵":"縱","叙":"敘","怜":"憐","扩":"擴","医":"醫","废":"廢","扫":"掃","旧":"舊","议":"議","范":"範","细":"細","罗":"羅","径":"徑","难":"難","补":"補","弃":"棄","监":"監","汉":"漢","顾":"顧","贯":"貫","闪":"閃","滤":"濾","缓":"緩","诚":"誠","旷":"曠","担":"擔","忧":"憂","车":"車","脸":"臉","恋":"戀","娱":"娛","秘":"祕","灾":"災","麦":"麥","摇":"搖","纠":"糾","缠":"纏","烦":"煩","缩":"縮","诞":"誕","浅":"淺","韩":"韓","欲":"慾","灭":"滅","谅":"諒","阳":"陽","励":"勵","宫":"宮","桥":"橋","坠":"墜","阴":"陰","诊":"診","灯":"燈","树":"樹","举":"舉","阔":"闊","纳":"納","谎":"謊","编":"編"}}</script>
+
+
+
+
+
+<script src="/js/jirai.bundle.js?v=14c1adef6975" defer></script>
+
+<script>
+  window.__JIRAI__ = {
+    scanline: false,
+    lace: true,
+    hearts: true,
+    cursorGlitter: false,
+    medCross: true,
+    hud: false,
+    toast: false,
+    boot: true,
+    particles: true,
+    rail: false,
+    ambient: true,
+    danger: false,
+    ecg: false,
+    crosshatch: false,
+    bandageHr: true,
+    seal: true,
+    search: true,
+    typeScale: true,
+    keynav: true,
+    keynavHint: false,
+    reveal: true,
+    root: '/',
+    mark: '†'
+  };
+</script>
+
+  
+</body>
+</html>

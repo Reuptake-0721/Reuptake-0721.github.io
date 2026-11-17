@@ -577,7 +577,7 @@ body.no-lace .nav::after { display: none; }
 .tag-chip .count { color: var(--text-faint); font-size: var(--fs-xs); }
 
 /* ---------------------------------------------- 文章正文 */
-.card.about-page { --sp-6-5: 26px; }
+.card.post { --sp-6-5: 26px; }
 
 .post-head {
   margin: 0 0 var(--sp-6-5);
